@@ -1,0 +1,9 @@
+@font-face {
+    font-family: 'SofiaProRegular';
+    src: url('fonts/SofiaProRegular.eot');
+    src: url('fonts/SofiaProRegular.eot') format('embedded-opentype'),
+         url('fonts/SofiaProRegular.woff2') format('woff2'),
+         url('fonts/SofiaProRegular.woff') format('woff'),
+         url('fonts/SofiaProRegular.ttf') format('truetype'),
+         url('fonts/SofiaProRegular.svg#SofiaProRegular') format('svg');
+}
