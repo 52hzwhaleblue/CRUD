@@ -2,12 +2,15 @@
 @section('title')
     Chỉnh sửa sản phẩm cấp 1
 @endsection
+
+    <script src="/ckeditor/ckeditor.js"></script>
+
 @section('content')
 <form action="{{ route('news.store') }}" method="POST">
     <div class="card-body">
         <div class="form-group">
             <label for="menu">Ảnh Sản Phẩm</label>
-            <input type="file"  class="form-control" id="upload">
+            <input type="file_name"  class="form-control" id="upload">
         </div>
         <div class="row">
             <div class="col-md-6">

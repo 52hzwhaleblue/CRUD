@@ -2,6 +2,9 @@
 @section('title')
     Chỉnh sửa sản phẩm cấp 1
 @endsection
+
+    <script src="/ckeditor/ckeditor.js"></script>
+
 @section('content')
 <form action="{{ route('news.store') }}" method="POST">
     <div class="card-body">
