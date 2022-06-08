@@ -5,11 +5,8 @@ use App\Http\Controllers\ProductListController;
 use App\Http\Controllers\ProductCatController;
 use App\Http\Controllers\NewController;
 use App\Http\Controllers\HomeController;
-<<<<<<< HEAD
 use App\Http\Controllers\CriteriaController;
-=======
 use App\Http\Controllers\BlogController;
->>>>>>> 5ca6c53940c6faaf9aaf1d9591d4ea4e8354e067
 
 
 /*
