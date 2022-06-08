@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductListController;
 use App\Http\Controllers\ProductCatController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\BlogController;
 
 
 /*
@@ -63,3 +64,15 @@ Route::delete('admin/product-cat/destroy/{product_cat}',[ProductCatController::c
 Route::get('admin/product-cat/edit/{product_cat}',[ProductCatController::class,'edit'])->name("product_cat.edit");
 Route::put('admin/product-cat/edit/{product_cat}',[ProductCatController::class,'update'])->name("product_cat.update");
 
+/* BLogs */
+Route::get('admin/blog',[BlogController::class,'index'])->name("blog.index");
+
+Route::get('admin/blog/create',[BlogController::class,'create'])->name("blog.create");
+Route::post('admin/blog/create',[BlogController::class,'store'])->name("blog.store");
+
+Route::post('admin/blog/storeFileUpload',[BlogController::class,'storeFileUpload'])->name("blog.storeFileUpload");
+
+Route::delete('admin/blog/destroy/{blog}',[BlogController::class,'destroy'])->name("blog.destroy");
+
+Route::get('admin/blog/edit/{blog}',[BlogController::class,'edit'])->name("blog.edit");
+Route::put('admin/blog/edit/{blog}',[BlogController::class,'update'])->name("blog.update");

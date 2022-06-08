@@ -1,11 +1,11 @@
 @extends('admin.layout')
 @section('title')
-    Thêm sản phẩm cấp 2
+    Thêm blog
 @endsection
 @section('content')
     <div class="row">
         <div class="col-lg-6">
-            <form method="post" action="{{ route('product_cat.store') }}"  enctype="multipart/form-data" >
+            <form id="form_product_list" method="post" action="{{ route('blog.store') }}"  enctype="multipart/form-data" >
                 @csrf
                 
                 <input type="text" name="name" id="name" placeholder="name ">
@@ -21,7 +21,7 @@
             </form>
         </div>
         {{-- <div class="col-lg-6">
-            <form method="post" action="{{ route('product_cat.store') }}" enctype="multipart/form-data"
+            <form method="post" action="{{ route('product_list.store') }}" enctype="multipart/form-data"
                 class="dropzone" id="dropzone">
                 @csrf
             </form>
