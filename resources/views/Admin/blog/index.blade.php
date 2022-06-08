@@ -1,23 +1,23 @@
 @extends('admin.layout')
 @section('title')
-Sản phẩm cấp 1
+Blog
 @endsection
 @section('content')
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 <div class="app-title">
     <div>
-        <h1>All Products</h1>
+        <h1>All Blogs</h1>
         {{-- <p>Xin chào {{ Session::get('emp')->fullName }} </p> --}}
     </div>
     <ul class="app-breadcrumb breadcrumb">
 
         <li class="breadcrumb-item"><i class="fa fa-home" aria-hidden="true"></i></li>
-        <li class="breadcrumb-item"><a href="#">All Products</a></li>
+        <li class="breadcrumb-item"><a href="#">All Blogs</a></li>
     </ul>
 </div>
 <div class="col-sm-4">
     <button type="button" class="btn btn-info add-btn "><i class="fa fa-plus"></i><a
-            href="{{ route('product_list.create') }}"> Add New</a></button>
+            href="{{ route('blog.create') }}"> Add New</a></button>
 </div>
 {{-- {{ $data->links() }} --}}
 
@@ -44,12 +44,6 @@ Sản phẩm cấp 1
                         </select>
                     </div>
                 </div>
-            </div>
-            <div class="col-lg-4 text-right">
-                <button class="btn btn-primary">
-                    <i class="anticon anticon-plus-circle m-r-5"></i>
-                    <span>Add Product</span>
-                </button>
             </div>
         </div>
         <div class="table-responsive">
@@ -100,13 +94,13 @@ Sản phẩm cấp 1
                             <input type="checkbox" name="status[]" value="hienthi"> Hiển thị
                             <?php }?>
                         </td>
-                        <td>
-                        <a class="btn btn-info" href="{{ route('product_list.edit', $v->id) }}">
+                       <td>
+                        <a class="btn btn-info" href="{{ route('blog.edit', $v->id) }}">
                             Edit
                         </a>
                     </td>
                     <td>
-                        <form action="{{ route('product_list.destroy', $v->id) }}" method="post">
+                        <form action="{{ route('blog.destroy', $v->id) }}" method="post">
                             @csrf
                             @method('DELETE')
                             <button class="btn btn-danger">
