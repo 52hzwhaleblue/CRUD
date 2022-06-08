@@ -12,7 +12,7 @@ Trang chủ
         <div class="slideprod-item">
             <div class="slideprod-img">
                 <a href="">
-                    <img  width="300" height="200" src="{{ asset('backend/assets/img/products/'.$v->photo) }}" alt="" />
+                    <img width="300" height="200" src="{{ asset('backend/assets/img/products/'.$v->photo) }}" alt="" />
                 </a>
             </div>
             <div class="slideprod-overlay">
@@ -198,6 +198,8 @@ Trang chủ
 </div>
 
 <!-- Our Blogs -->
+<?php if(count($blogs)) { ?>
+
 <div class="blog-wrapper">
     <div class="wrap-content">
         <h3 class="title-main">our blogs</h3>
@@ -207,10 +209,12 @@ Trang chủ
             good health.
         </p>
         <div class="blog-items">
+            @foreach ($blogs as $v )
             <div class="blog-item">
                 <div class="blog-img">
                     <a href="">
-                        <img src="{{ asset('frontend/assets/img/blog2.jpg') }}" alt="" />
+                        <img style="background:white" src="{{ asset('backend/assets/img/products/'.$v->photo) }}"
+                                class="rounded" alt="{{ $v->photo }}" width="430" height="375">
                     </a>
                     <div class="blog-time">
                         <span class="blog-date">02</span>
@@ -219,7 +223,7 @@ Trang chủ
                 </div>
                 <p class="blog-cat">news</p>
                 <h3 class="name-product">
-                    <a href="">China’s Heirloom Tea Plants</a>
+                    <a href="">{{ $v->name }}</a>
                 </h3>
                 <p class="blog-desc">
                     Alishan is a region of Taiwan well known for its high mountain
@@ -229,10 +233,13 @@ Trang chủ
                     <a href="">read more</a>
                 </div>
             </div>
-
+            @endforeach
         </div>
     </div>
 </div>
+
+
+<?php }?>
 
 <div class="newsletter-wrapper">
     <div class="wrap-content">

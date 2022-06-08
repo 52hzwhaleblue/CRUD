@@ -7,6 +7,7 @@ use Illuminate\Support\ServiceProvider;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\Schema;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -27,9 +28,16 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-           $splist = DB::table('product_lists')
-           ->select('*')
-           ->get();
-           View::share('splist', $splist);
+        $splist = DB::table('product_lists')
+        ->select('*')
+        ->get();
+        View::share('splist', $splist);
+
+        
+            $blogs = DB::table('blogs')
+            ->select('*')
+            ->get();
+            View::share('blogs', $blogs);
+        
     }
 }

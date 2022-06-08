@@ -5,7 +5,11 @@ use App\Http\Controllers\ProductListController;
 use App\Http\Controllers\ProductCatController;
 use App\Http\Controllers\NewController;
 use App\Http\Controllers\HomeController;
+<<<<<<< HEAD
 use App\Http\Controllers\CriteriaController;
+=======
+use App\Http\Controllers\BlogController;
+>>>>>>> 5ca6c53940c6faaf9aaf1d9591d4ea4e8354e067
 
 
 /*
@@ -84,3 +88,15 @@ Route::post('admin/criteria/storeFileUpload',[CriteriaController::class,'storeFi
 Route::delete('admin/criteria/destroy/{criteria}',[CriteriaController::class,'destroy'])->name("criteria.destroy");
 Route::get('admin/criterias/edit/{criteria}',[CriteriaController::class,'edit'])->name("criteria.edit");
 Route::put('admin/criteria/edit/{criteria}',[CriteriaController::class,'update'])->name("criteria.update");
+/* BLogs */
+Route::get('admin/blog',[BlogController::class,'index'])->name("blog.index");
+
+Route::get('admin/blog/create',[BlogController::class,'create'])->name("blog.create");
+Route::post('admin/blog/create',[BlogController::class,'store'])->name("blog.store");
+
+Route::post('admin/blog/storeFileUpload',[BlogController::class,'storeFileUpload'])->name("blog.storeFileUpload");
+
+Route::delete('admin/blog/destroy/{blog}',[BlogController::class,'destroy'])->name("blog.destroy");
+
+Route::get('admin/blog/edit/{blog}',[BlogController::class,'edit'])->name("blog.edit");
+Route::put('admin/blog/edit/{blog}',[BlogController::class,'update'])->name("blog.update");

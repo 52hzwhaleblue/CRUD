@@ -58,15 +58,27 @@
                 </li>
             </ul>
         </li>
+
+
+        {{-- Quản lý bài viết --}}
+        <li class="treeview">
+            <a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-th-list"></i><span
+                    class="app-menu__label">Quản lý bài viết</span><i
+                    class="treeview-indicator fa fa-angle-right"></i></a>
+            <ul class="treeview-menu">
+                <li>
+                    <a class="treeview-item" href="{{ route('blog.index') }}"><i
+                            class="icon fa fa-circle-o"></i> Blog</a>
+                </li>
+            </ul>
+        </li>
+        
+        {{-- Quản lý sản phẩm --}}
         <li class="treeview">
             <a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-th-list"></i><span
                     class="app-menu__label">Quản lý sản phẩm</span><i
                     class="treeview-indicator fa fa-angle-right"></i></a>
             <ul class="treeview-menu">
-                <li>
-                    <a class="treeview-item" href="table-basic.html"><i class="icon fa fa-circle-o"></i> Basic
-                        Tables</a>
-                </li>
                 <li>
                     <a class="treeview-item" href="{{ route('product_list.index') }}"><i
                             class="icon fa fa-circle-o"></i> Product_List</a>
