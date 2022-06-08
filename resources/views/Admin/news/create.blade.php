@@ -21,12 +21,12 @@
 
         <div class="form-group">
             <label>Mô Tả </label>
-            <textarea name="desc" class="form-control"></textarea>
+            <input name="desc" class="form-control"></input>
         </div>
 
         <div class="form-group">
             <label>Mô Tả Chi Tiết</label>
-            <textarea name="content" id="content" class="form-control"></textarea>
+            <textarea name="content" id="cke_content" class="form-control"></textarea>
         </div>
 
           <div class="form-group">

@@ -28,16 +28,19 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $splist = DB::table('product_lists')
-        ->select('*')
-        ->get();
-        View::share('splist', $splist);
+        if(Schema::hasTable('product_lists')){
+            $splist = DB::table('product_lists')
+            ->select('*')
+            ->get();
+            View::share('splist', $splist);
+        }
 
-        
+
+        if(Schema::hasTable('blogs')){
             $blogs = DB::table('blogs')
             ->select('*')
             ->get();
             View::share('blogs', $blogs);
-        
+        } 
     }
 }
