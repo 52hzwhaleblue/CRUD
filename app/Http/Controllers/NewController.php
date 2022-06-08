@@ -37,19 +37,23 @@ class NewController extends Controller
      */
     public function store(Request $request)
     {
-        $news = new News;
-        $news->name = $request->get('name');
-        $news->desc = $request->get('desc');
-        $news->content = $request->get('content');
+        $countNews = News::all()->count();
 
         if($request->has('image')){
         $file= $request->image;
-        $ext = $request->image->extension();//lấy đuôi file png||jpg
-        $file_name = Date('Ymd').'-'.'product'.'.'.$ext;
-        $file->move(public_path('backend/assets/img/products'),$file_name);//chuyển file vào đường dẫn chỉ định
+        $ext = $request->image->extension();
+        $file_name = Date('Ymd').'-'.'news'.$countNews.'.'.$ext;
+        $file->move(public_path('backend/assets/img/products'),$file_name);
         }
+
+        $news = new News;
+
+        $news->name = $request->get('name');
+        $news->desc = $request->get('desc');
+        $news->content = $request->get('content');
         $news->photo = $file_name;
         $news->status = implode(',', $request->get('status'));
+
         $news->save();
 
         return redirect()->route('news.index');
@@ -86,22 +90,31 @@ class NewController extends Controller
      */
     public function update(Request $request,News $News)
     {
-        
         $fix_status = implode(',', $request->get('status'));
-            $News->update(
-            [
-                'name' => $request->get('name'),
-                'desc' => $request->get('desc'),
-                'content' => $request->get('content'),
-                'status'=> $fix_status,
-            ],
-            $request->except([
-                '_token',
-                '_method',
-            ])
-        );
 
-    return redirect()->route("news.index");
+        $countNews = News::all()->count();
+
+        if($request->has('image')){
+            $file= $request->image;
+            $ext = $request->image->extension();
+            $file_name = Date('Ymd').'-'.'news'.$countNews.'.'.$ext;
+            $file->move(public_path('backend/assets/img/products'),$file_name);
+        }
+
+        $news->update(
+        [
+        'name' => $request->get('name'),
+        'desc' => $request->get('desc'),
+        'content' => $request->get('content'),
+        'photo' => $file_name,
+        'status'=> $fix_status,
+        ],
+        $request->except([
+        '_token',
+        '_method',
+        ])
+        );
+        return redirect()->route("news.index");
     }
 
     /**

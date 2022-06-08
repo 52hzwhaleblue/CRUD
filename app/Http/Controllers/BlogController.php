@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Blog;
 
@@ -38,17 +38,20 @@ class BlogController extends Controller
      */
     public function store(Request $request)
     {
+        $countBlogs = Blog::all()->count();
+
+        if($request->has('image')){
+            $file= $request->image;
+            $ext = $request->image->extension();//lấy đuôi file png||jpg
+            $file_name = Date('Ymd').'-'.'blog'.$countBlogs.'.'.$ext;
+            $file->move(public_path('backend/assets/img/products'),$file_name);//chuyển file vào đường dẫn chỉ định
+        }
+
         $blog = new Blog;
+
         $blog->name = $request->get('name');
         $blog->desc = $request->get('desc');
         $blog->content = $request->get('content');
-
-        if($request->has('image')){
-        $file= $request->image;
-        $ext = $request->image->extension();//lấy đuôi file png||jpg
-        $file_name = Date('Ymd').'-'.'product'.'.'.$ext;
-        $file->move(public_path('backend/assets/img/products'),$file_name);//chuyển file vào đường dẫn chỉ định
-        }
         $blog->photo = $file_name;
         $blog->status = implode(',', $request->get('status'));
 
@@ -90,22 +93,23 @@ class BlogController extends Controller
      */
     public function update(Request $request,Blog $blog)
     {
-        // $blog sẽ validate xem có tồn tại id hay chưa, không cần xét điều kiện where
         $fix_status = implode(',', $request->get('status'));
 
-        $file= $request->image;
-        $ext = $request->image->extension();//lấy đuôi file png||jpg
-        $file_name = Date('Ymd').'-'.'product'.'.'.$ext;
-        $file->move(public_path('backend/assets/img/products'),$file_name);
+        $countBlogs = Blog::all()->count();
 
-        $blog->photo = $file_name;
+        if($request->has('image')){
+            $file= $request->image;
+            $ext = $request->image->extension();
+            $file_name = Date('Ymd').'-'.'blog'.$countBlogs.'.'.$ext;
+            $file->move(public_path('backend/assets/img/products'),$file_name);
+        }
 
         $blog->update(
         [
             'name' => $request->get('name'),
             'desc' => $request->get('desc'),
             'content' => $request->get('content'),
-            'photo' => $blog->photo,
+            'photo' => $file_name,
             'status'=> $fix_status,
         ],
         $request->except([
