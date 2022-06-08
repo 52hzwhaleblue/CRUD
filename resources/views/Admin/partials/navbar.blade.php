@@ -89,8 +89,12 @@
                 </li>
 
                 <li>
-                    <a class="treeview-item" href="{{ route('product_list.index') }}"><i
-                            class="icon fa fa-circle-o"></i> All Products</a>
+                    <a class="treeview-item" href="{{ route('news.index') }}"><i
+                            class="icon fa fa-circle-o"></i>News</a>
+                </li>
+                <li>
+                    <a class="treeview-item" href="{{ route('criteria.index') }}"><i
+                            class="icon fa fa-circle-o"></i>Tiêu chí</a>
                 </li>
             </ul>
         </li>

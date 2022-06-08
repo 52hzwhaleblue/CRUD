@@ -3,8 +3,13 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductListController;
 use App\Http\Controllers\ProductCatController;
+use App\Http\Controllers\NewController;
 use App\Http\Controllers\HomeController;
+<<<<<<< HEAD
+use App\Http\Controllers\CriteriaController;
+=======
 use App\Http\Controllers\BlogController;
+>>>>>>> 5ca6c53940c6faaf9aaf1d9591d4ea4e8354e067
 
 
 /*
@@ -64,6 +69,25 @@ Route::delete('admin/product-cat/destroy/{product_cat}',[ProductCatController::c
 Route::get('admin/product-cat/edit/{product_cat}',[ProductCatController::class,'edit'])->name("product_cat.edit");
 Route::put('admin/product-cat/edit/{product_cat}',[ProductCatController::class,'update'])->name("product_cat.update");
 
+/* -------News---------- */
+Route::get('admin/news',[NewController::class,'index'])->name("news.index");
+Route::get('admin/news/create',[NewController::class,'create'])->name("news.create");
+Route::post('admin/news/create',[NewController::class,'store'])->name("news.store");
+Route::post('admin/news/storeFileUpload',[NewController::class,'storeFileUpload'])->name("news.storeFileUpload");
+
+Route::delete('admin/news/destroy/{news}',[NewController::class,'destroy'])->name("news.destroy");
+Route::get('admin/news/edit/{news}',[NewController::class,'edit'])->name("news.edit");
+Route::put('admin/news/edit/{news}',[NewController::class,'update'])->name("news.update");
+
+/* -------Criteria---------- */
+Route::get('admin/criteria',[CriteriaController::class,'index'])->name("criteria.index");
+Route::get('admin/criteria/create',[CriteriaController::class,'create'])->name("criteria.create");
+Route::post('admin/criteria/create',[CriteriaController::class,'store'])->name("criteria.store");
+Route::post('admin/criteria/storeFileUpload',[CriteriaController::class,'storeFileUpload'])->name("criteria.storeFileUpload");
+
+Route::delete('admin/criteria/destroy/{criteria}',[CriteriaController::class,'destroy'])->name("criteria.destroy");
+Route::get('admin/criterias/edit/{criteria}',[CriteriaController::class,'edit'])->name("criteria.edit");
+Route::put('admin/criteria/edit/{criteria}',[CriteriaController::class,'update'])->name("criteria.update");
 /* BLogs */
 Route::get('admin/blog',[BlogController::class,'index'])->name("blog.index");
 
