@@ -37,24 +37,28 @@ class CriteriaController extends Controller
      */
     public function store(Request $request)
     {
+        $countCriteria = Criteria::all()->count();
+
+        if($request->has('image')){
+            $file= $request->image;
+            $ext = $request->image->extension();
+            $file_name = Date('Ymd').'-'.'criteria'.$countCriteria.'.'.$ext;
+            $file->move(public_path('backend/assets/img/products'),$file_name);
+        }
+
         $criteria = new Criteria;
+
         $criteria->name = $request->get('name');
         $criteria->desc = $request->get('desc');
         $criteria->content = $request->get('content');
-
-        if($request->has('image')){
-        $file= $request->image;
-        $ext = $request->image->extension();//lấy đuôi file png||jpg
-        $file_name = Date('Ymd').'-'.'product'.'.'.$ext;
-        $file->move(public_path('backend/assets/img/products'),$file_name);//chuyển file vào đường dẫn chỉ định
-        }
         $criteria->photo = $file_name;
         $criteria->status = implode(',', $request->get('status'));
+
         $criteria->save();
 
         return redirect()->route('criteria.index');
     }
-     /**
+    /**
      * Display the specified resource.
      *
      * @param  int  $id
@@ -86,13 +90,23 @@ class CriteriaController extends Controller
      */
     public function update(Request $request,Criteria $Criteria)
     {
-        
         $fix_status = implode(',', $request->get('status'));
-            $Criteria->update(
+
+        $countCriteria = Criteria::all()->count();
+
+        if($request->has('image')){
+            $file= $request->image;
+            $ext = $request->image->extension();
+            $file_name = Date('Ymd').'-'.'criteria'.$countCriteria.'.'.$ext;
+            $file->move(public_path('backend/assets/img/products'),$file_name);
+        }
+
+        $criteria->update(
             [
                 'name' => $request->get('name'),
                 'desc' => $request->get('desc'),
                 'content' => $request->get('content'),
+                'photo' => $file_name,
                 'status'=> $fix_status,
             ],
             $request->except([
@@ -100,8 +114,7 @@ class CriteriaController extends Controller
                 '_method',
             ])
         );
-
-    return redirect()->route("criteria.index");
+        return redirect()->route("criteria.index");
     }
 
     /**
