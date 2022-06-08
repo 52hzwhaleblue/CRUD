@@ -1,0 +1,56 @@
+@extends('admin.layout')
+@section('title')
+    Chỉnh sửa sản phẩm cấp 1
+@endsection
+@section('content')
+<form method="post" action="{{ route('news.store') }}"  enctype="multipart/form-data" >
+    @csrf
+    <div class="card-body">
+        <div class="form-group">
+            <label for="menu">Ảnh Sản Phẩm</label>
+            <input type="file" name="image" class="form-control" id="upload">
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="menu">Tên Sản Phẩm</label>
+                    <input type="text" name="name" class="form-control"  placeholder="Nhập tên sản phẩm">
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Mô Tả </label>
+            <textarea name="description" class="form-control"></textarea>
+        </div>
+
+        <div class="form-group">
+            <label>Mô Tả Chi Tiết</label>
+            <textarea name="content" id="content" class="form-control"></textarea>
+        </div>
+
+          <div class="form-group">
+            <label>Kích Hoạt</label>
+            <div class="custom-control custom-radio">
+                <input type="checkbox" name="status[]" value="noibat"> Nổi bật
+                <input type="checkbox" name="status[]" value="hienthi"> Hiển thị
+                <label for="active" class="custom-control-label">Có</label>
+            </div>
+
+        </div> 
+        <div class="form-group">
+            <label>Ngày tạo<object data="" type=""></object></label>
+            <textarea name="content" id="content" class="form-control"></textarea>
+        </div>
+        <div class="form-group">
+            <label>Loại<object data="" type=""></object></label>
+            <textarea name="content" id="content" class="form-control"></textarea>
+        </div>
+    </div>
+
+    <div class="card-footer">
+        <button type="submit" class="btn btn-primary">Thêm Sản Phẩm</button>
+    </div>
+    @csrf
+</form>
+@endsection
