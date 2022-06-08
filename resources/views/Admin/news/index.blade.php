@@ -30,7 +30,7 @@
             </td>
             <td>{{ $v->name }}</td>
             <td>{{ $v->desc }}</td>
-            <td>{{ $v->content }}</td>
+            <td >{{ $v->content }}</td>
             <td>
                 <?php if($v->status == 'noibat,hienthi') {?>
                     <input type="checkbox" name="status[]" value="noibat" checked> Nổi bật

@@ -70,6 +70,14 @@
                     <a class="treeview-item" href="{{ route('blog.index') }}"><i
                             class="icon fa fa-circle-o"></i> Blog</a>
                 </li>
+                <li>
+                    <a class="treeview-item" href="{{ route('news.index') }}"><i
+                            class="icon fa fa-circle-o"></i>News</a>
+                </li>
+                <li>
+                    <a class="treeview-item" href="{{ route('criteria.index') }}"><i
+                            class="icon fa fa-circle-o"></i>Tiêu chí</a>
+                </li>
             </ul>
         </li>
         
@@ -81,20 +89,11 @@
             <ul class="treeview-menu">
                 <li>
                     <a class="treeview-item" href="{{ route('product_list.index') }}"><i
-                            class="icon fa fa-circle-o"></i> Product_List</a>
+                            class="icon fa fa-circle-o"></i> Product List</a>
                 </li>
                 <li>
                     <a class="treeview-item" href="{{ route('product_cat.index') }}"><i class="icon fa fa-circle-o"></i>
-                        Product_Cat</a>
-                </li>
-
-                <li>
-                    <a class="treeview-item" href="{{ route('news.index') }}"><i
-                            class="icon fa fa-circle-o"></i>News</a>
-                </li>
-                <li>
-                    <a class="treeview-item" href="{{ route('criteria.index') }}"><i
-                            class="icon fa fa-circle-o"></i>Tiêu chí</a>
+                        Product Cat</a>
                 </li>
             </ul>
         </li>

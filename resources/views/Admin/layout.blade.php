@@ -23,7 +23,7 @@ define('RESOURCES', './resources/');
     <link href="{{ asset('backend/assets/vendors/datatables/dataTables.bootstrap.min.css') }}"> --}}
     <!-- icheck bootstrap -->
     <link rel="stylesheet" type="text/css" href="{{ asset('admin/template/admin/dist/css/adminlte.min.css')}}"/>
-    <script src="/ckeditor/ckeditor.js"></script>
+    {{-- <script src="/ckeditor/ckeditor.js"></script> --}}
     <title>@yield('title')</title>
 </head>
 
@@ -34,12 +34,15 @@ define('RESOURCES', './resources/');
         @yield('content')
     </main>
 
-
     <script src="{{ asset('backend/assets/js/jquery-3.2.1.min.js') }}"></script>
     <script src="{{ asset('backend/assets/js/popper.min.js') }}"></script>
     <script src="{{ asset('backend/assets/js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('backend/assets/js/main.js') }}"></script>
     <script src="{{ asset('backend/assets/js/plugins/pace.min.js') }}"></script>
+    <script src="{{ asset('backend/ckeditor/ckeditor.js') }}"></script>
+    <script type="text/javascript">
+        CKEDITOR.replace( 'cke_content');
+    </script>
    {{--  <script src="/template/admin/plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
 <script src="/template/admin/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
