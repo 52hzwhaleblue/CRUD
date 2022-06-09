@@ -1,6 +1,7 @@
 <?php
-
+use Laravel\Socialite\Facades\Socialite;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ProductListController;
 use App\Http\Controllers\ProductCatController;
 use App\Http\Controllers\NewController;
@@ -8,19 +9,22 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CriteriaController;
 use App\Http\Controllers\BlogController;
 
+Route::get('/auth/redirect/{provider}', function ($provider) {
+    return Socialite::driver($provider)->redirect();
+})->name('auth.redirect');
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+Route::get('/auth/callback/{provider}', function ($provider) {
+    $user = Socialite::driver($provider)->user();
+    dd($user);
+})->name('auth.callback');
 
 /*User routes*/
+
+Route::get('/login', function () {
+    return view('user.login');
+})->name('user.login');
+
+
 Route::get('/',[HomeController::class,'index'])->name("user.index");
 
 // Route::get('/', function () {
