@@ -4,6 +4,8 @@
 @endsection
 @section('content')
 
+ <th style="width: 100px">&nbsp;</th>
+
 <div class="app-title">
     <div>
         <h1>All Blogs</h1>

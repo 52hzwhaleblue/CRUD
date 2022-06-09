@@ -1,23 +1,22 @@
 @extends('admin.layout')
 @section('title')
-    Trang thông tin
+    Sản phẩm cấp 1
 @endsection
 @section('content')
-
 <div class="app-title">
     <div>
-        <h1>All Blogs</h1>
+        <h1>All Products</h1>
         {{-- <p>Xin chào {{ Session::get('emp')->fullName }} </p> --}}
     </div>
     <ul class="app-breadcrumb breadcrumb">
 
         <li class="breadcrumb-item"><i class="fa fa-home" aria-hidden="true"></i></li>
-        <li class="breadcrumb-item"><a href="#">All Blogs</a></li>
+        <li class="breadcrumb-item"><a href="#">All Products</a></li>
     </ul>
 </div>
 <div class="col-sm-4">
     <button type="button" class="btn btn-info add-btn "><i class="fa fa-plus"></i><a
-            href="{{ route('criteria.create') }}"> Add New</a></button>
+            href="{{ route('product_list.create') }}"> Add New</a></button>
 </div>
 {{-- {{ $data->links() }} --}}
 
@@ -45,6 +44,12 @@
                     </div>
                 </div>
             </div>
+            <div class="col-lg-4 text-right">
+                <button class="btn btn-primary">
+                    <i class="anticon anticon-plus-circle m-r-5"></i>
+                    <span>Add Product</span>
+                </button>
+            </div>
         </div>
         <div class="table-responsive">
             <table class="table table-hover e-commerce-table">
@@ -59,8 +64,6 @@
                         <th>STT</th>
                         <th>Hình</th>
                         <th>Tiêu đề</th>
-                        <th>Mô tả</th>
-                        <th>Nội dung</th>
                         <th>Trạng thái</th>
                     </tr>
                 </thead>
@@ -83,8 +86,6 @@
                         </td>
 
                         <td>{{ $v->name }}</td>
-                        <td>{{ $v->desc }}</td>
-                        <td>{{ $v->content }}</td>
                         <td>
                             {{-- {{ $v->status }} --}}
                             <?php if($v->status == 'noibat,hienthi') {?>
@@ -98,13 +99,13 @@
                             <input type="checkbox" name="status[]" value="hienthi"> Hiển thị
                             <?php }?>
                         </td>
-                       <td>
-                        <a class="btn btn-info" href="{{ route('criteria.edit', $v->id) }}">
+                        <td>
+                        <a class="btn btn-info" href="{{ route('product_cat.edit', $v->id) }}">
                             Edit
                         </a>
                     </td>
                     <td>
-                        <form action="{{ route('criteria.destroy', $v->id) }}" method="post">
+                        <form action="{{ route('product_cat.destroy', $v->id) }}" method="post">
                             @csrf
                             @method('DELETE')
                             <button class="btn btn-danger">

@@ -17,7 +17,7 @@
 </div>
 <div class="col-sm-4">
     <button type="button" class="btn btn-info add-btn "><i class="fa fa-plus"></i><a
-            href="{{ route('criteria.create') }}"> Add New</a></button>
+            href="{{ route('news.create') }}"> Add New</a></button>
 </div>
 {{-- {{ $data->links() }} --}}
 

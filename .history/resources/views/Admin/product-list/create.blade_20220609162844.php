@@ -1,9 +1,9 @@
 @extends('admin.layout')
 @section('title')
-    Thêm sản phẩm cấp 2
+    Thêm sản phẩm cấp 1
 @endsection
 @section('content')
-<form method="post" action="{{ route('product_cat.store') }}"  enctype="multipart/form-data" >
+<form method="post" action="{{ route('blog.store') }}"  enctype="multipart/form-data" >
     @csrf
     <div class="card-body">
         <div class="form-group">
