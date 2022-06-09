@@ -3,7 +3,25 @@
     Thêm blog
 @endsection
 @section('content')
-  <form method="post" action="{{ route('blog.store') }}"  enctype="multipart/form-data" >
+{{--     <div class="row">
+        <div class="col-lg-6">
+            <form id="form_product_list" method="post" action="{{ route('blog.store') }}"  enctype="multipart/form-data" >
+                @csrf
+                
+                <input type="text" name="name" id="name" placeholder="name ">
+                <input type="text" name="desc" id="desc" placeholder="desc ">
+                <input type="text" name="content" id="content" placeholder="content ">
+                <input type="file" class="form-control" placeholder="Chọn ảnh" name="image">
+                <input type="checkbox" name="status[]" value="noibat"> Nổi bật
+                <input type="checkbox" name="status[]" value="hienthi"> Hiển thị
+
+                <button type="submit">
+                    Lưu
+                </button>
+            </form>
+        </div>
+    </div> --}}
+    <form method="post" action="{{ route('blog.store') }}"  enctype="multipart/form-data" >
         @csrf
         <div class="card-body">
             <div class="form-group">
@@ -18,17 +36,6 @@
                     </div>
                 </div>
             </div>
-    
-            <div class="form-group">
-                <label>Mô Tả </label>
-                <textarea name="desc" class="form-control"></textarea>
-            </div>
-    
-            <div class="form-group">
-                <label>Mô Tả Chi Tiết</label>
-                <textarea name="content"  id="cke_content" class="form-control"></textarea>
-            </div>
-    
               <div class="form-group">
                 <label>Trạng thái</label>
                 <div class="custom-control custom-radio">

@@ -3,7 +3,7 @@
     Thêm sản phẩm cấp 2
 @endsection
 @section('content')
-<form method="post" action="{{ route('product_cat.store') }}"  enctype="multipart/form-data" >
+<form method="post" action="{{ route('product_list.store') }}"  enctype="multipart/form-data" >
     @csrf
     <div class="card-body">
         <div class="form-group">

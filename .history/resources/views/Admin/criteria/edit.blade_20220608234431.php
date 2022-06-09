@@ -42,10 +42,10 @@
             </div>
         </div> 
     </div>
-
-    <div class="card-footer">
+{{-- 
+    <div class="card-footer"> --}}
         <button type="submit" class="btn btn-primary">Thêm Sản Phẩm</button>
-    </div>
+   {{--  </div> --}}
     @csrf
 </form>
 
