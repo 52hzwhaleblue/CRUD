@@ -9,7 +9,6 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CriteriaController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\SlideController;
-use App\Http\Controllers\VideoController;
 
 Route::get('/auth/redirect/{provider}', function ($provider) {
     return Socialite::driver($provider)->redirect();
@@ -121,5 +120,5 @@ Route::post('admin/video/create',[VideoController::class,'store'])->name("video.
 Route::post('admin/video/storeFileUpload',[VideoController::class,'storeFileUpload'])->name("video.storeFileUpload");
 
 Route::delete('admin/video/destroy/{video}',[VideoController::class,'destroy'])->name("video.destroy");
-Route::get('admin//video/edit/{video}',[VideoController::class,'edit'])->name("video.edit");
-Route::put('admin/video/edit/{video}',[VideoController::class,'update'])->name("video.update");
+Route::get('admin//video/edit/{video}',[VideoController::class,'edit'])->name("slide.edit");
+Route::put('admin/slide/edit/{slide}',[VideoController::class,'update'])->name("slide.update");
