@@ -8,8 +8,6 @@ use App\Http\Controllers\NewController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CriteriaController;
 use App\Http\Controllers\BlogController;
-use App\Http\Controllers\SlideController;
-use App\Http\Controllers\VideoController;
 
 Route::get('/auth/redirect/{provider}', function ($provider) {
     return Socialite::driver($provider)->redirect();
@@ -106,20 +104,10 @@ Route::put('admin/blog/edit/{blog}',[BlogController::class,'update'])->name("blo
 
 /* -------Slide---------- */
 Route::get('admin/slide',[SlideController::class,'index'])->name("slide.index");
-Route::get('admin/slide/create',[SlideController::class,'create'])->name("slide.create");
-Route::post('admin/slide/create',[SlideController::class,'store'])->name("slide.store");
-Route::post('admin/slide/storeFileUpload',[SlideController::class,'storeFileUpload'])->name("slide.storeFileUpload");
+Route::get('admin/slide/create',[SlideController::class,'create'])->name("criteria.create");
+Route::post('admin/criteria/create',[CriteriaController::class,'store'])->name("criteria.store");
+Route::post('admin/criteria/storeFileUpload',[CriteriaController::class,'storeFileUpload'])->name("criteria.storeFileUpload");
 
-Route::delete('admin/slide/destroy/{slide}',[SlideController::class,'destroy'])->name("slide.destroy");
-Route::get('admin//slide/edit/{slide}',[SlideController::class,'edit'])->name("slide.edit");
-Route::put('admin/slide/edit/{slide}',[SlideController::class,'update'])->name("slide.update");
-
-/* --------Video---------- */
-Route::get('admin/video',[VideoController::class,'index'])->name("video.index");
-Route::get('admin/video/create',[VideoController::class,'create'])->name("video.create");
-Route::post('admin/video/create',[VideoController::class,'store'])->name("video.store");
-Route::post('admin/video/storeFileUpload',[VideoController::class,'storeFileUpload'])->name("video.storeFileUpload");
-
-Route::delete('admin/video/destroy/{video}',[VideoController::class,'destroy'])->name("video.destroy");
-Route::get('admin//video/edit/{video}',[VideoController::class,'edit'])->name("video.edit");
-Route::put('admin/video/edit/{video}',[VideoController::class,'update'])->name("video.update");
+Route::delete('admin/criteria/destroy/{criteria}',[CriteriaController::class,'destroy'])->name("criteria.destroy");
+Route::get('admin/criterias/edit/{criteria}',[CriteriaController::class,'edit'])->name("criteria.edit");
+Route::put('admin/criteria/edit/{criteria}',[CriteriaController::class,'update'])->name("criteria.update");

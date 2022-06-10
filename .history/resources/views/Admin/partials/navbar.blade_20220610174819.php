@@ -79,11 +79,11 @@
                             class="icon fa fa-circle-o"></i>Tiêu chí</a>
                 </li>
                 <li>
-                    <a class="treeview-item" href="{{ route('slide.index') }}"><i
-                            class="icon fa fa-circle-o"></i>Slide</a>
+                    <a class="treeview-item" href="{{ route('criteria.index') }}"><i
+                            class="icon fa fa-circle-o"></i>Slide/a>
                 </li>
                 <li>
-                    <a class="treeview-item" href="{{ route('video.index') }}"><i
+                    <a class="treeview-item" href="{{ route('criteria.index') }}"><i
                             class="icon fa fa-circle-o"></i>Video</a>
                 </li>
             </ul>
