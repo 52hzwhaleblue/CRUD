@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers;
 
+// use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Schema;
+use App\Http\Controllers\Alert;
+
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Models\ProductList;
@@ -13,19 +17,29 @@ class ProductListController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(ProductList $productList)
+    public function index(Request $request,ProductList $productList)
     {
-         // $data = DB::table('product_lists')
-         // ->whereJsonContains('status', 'noibat')
-         // ->get();
-
-         // var_dump($data);
-         // die();
-
         $data = ProductList::get();
         return view('admin.product-list.index',[
             'data' => $data,
         ]);
+    }
+
+    public function locSanPhamTheoStatus($status){
+
+        $data = DB::table('product_lists')
+        ->where('status', $status)
+        ->get();
+
+        foreach($data as $item){
+            $path = 'backend/assets/img/products/';
+        $output = 
+        '<tr>
+            <td>'.$item->name.'</td>
+
+        </tr>';
+        }
+        return $data;
     }
 
     /**
@@ -46,22 +60,24 @@ class ProductListController extends Controller
      */
     public function store(Request $request)
     {
-        $countProduct = ProductList::all()->count();
-        
+        $countProductList = ProductList::all()->count();
+
         if($request->has('image')){
             $file= $request->image;
             $ext = $request->image->extension();//lấy đuôi file png||jpg
-            $file_name = Date('Ymd').'-'.'product'.$countProduct.'.'.$ext;
+            $file_name = Date('Ymd').'-'.'productList'.$countProductList.'.'.$ext;
             $file->move(public_path('backend/assets/img/products'),$file_name);//chuyển file vào đường dẫn chỉ định
         }
-        $product_list = new ProductList;
-        $product_list->name = $request->get('name');
-        $product_list->desc = $request->get('desc');
-        $product_list->content = $request->get('content');
-        $product_list->photo = $file_name;
-        $product_list->status = implode(',', $request->get('status'));
 
-        $product_list->save();
+        $ProductList = new ProductList;
+
+        $ProductList->name = $request->get('name');
+        $ProductList->desc = $request->get('desc');
+        $ProductList->content = $request->get('content');
+        $ProductList->photo = $file_name;
+        $ProductList->status = implode(',', $request->get('status'));
+
+        $ProductList->save();
 
         return redirect()->route('product_list.index');
     }
@@ -100,26 +116,33 @@ class ProductListController extends Controller
     {
         $fix_status = implode(',', $request->get('status'));
 
-        $countProduct = ProductList::all()->count();
+        $countproductList = ProductList::all()->count();
 
         if($request->has('image')){
             $file= $request->image;
             $ext = $request->image->extension();
-            $file_name = Date('Ymd').'-'.'product'.$countProduct.'.'.$ext;
+            $file_name = Date('Ymd').'-'.'productList'.$countproductList.'.'.$ext;
             $file->move(public_path('backend/assets/img/products'),$file_name);
+        }else{
+            $id = $request->input('id');
+    
+            $data = DB::table('product_lists')
+            ->where('id',$id)
+            ->select('photo')
+            ->get();
+            $file_name = $data[0]->photo;
         }
-
         $productList->update(
         [
-        'photo' => $file_name,
-        'name' => $request->get('name'),
-        'desc' => $request->get('desc'),
-        'content' => $request->get('content'),
-        'status'=> $fix_status,
+            'name' => $request->get('name'),
+            'desc' => $request->get('desc'),
+            'content' => $request->get('content'),
+            'photo' => $file_name,
+            'status'=> $fix_status,
         ],
         $request->except([
-        '_token',
-        '_method',
+            '_token',
+            '_method',
         ])
         );
         return redirect()->route("product_list.index");
@@ -135,6 +158,6 @@ class ProductListController extends Controller
     public function destroy(ProductList $productList)
     {
         $productList->delete();
-        return redirect()->route('product_list.index');
+        return redirect()->route('product_list.index')->with('message', 'Bạn đã xóa sản phẩm thành công!');
     }
 }

@@ -58,6 +58,9 @@ Route::delete('admin/product-list/destroy/{product_list}',[ProductListController
 Route::get('admin/product-list/edit/{product_list}',[ProductListController::class,'edit'])->name("product_list.edit");
 Route::put('admin/product-list/edit/{product_list}',[ProductListController::class,'update'])->name("product_list.update");
 
+/* Lọc sản phẩm theo status: noibat, hienthi, noibat,hienthi */
+Route::get('admin/product-list/locSanPhamTheoStatus/{status}',[ProductListController::class,'locSanPhamTheoStatus'])->name("product_list.locSanPhamTheoStatus");
+
 
 /* Product Cat */
 Route::get('admin/product-cat',[ProductCatController::class,'index'])->name("product_cat.index");

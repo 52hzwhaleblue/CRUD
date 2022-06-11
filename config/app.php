@@ -139,6 +139,7 @@ return [
         /*
          * Laravel Framework Service Providers...
          */
+        
         App\Providers\ViewComposerProvider::class,
         Illuminate\Auth\AuthServiceProvider::class,
         Illuminate\Broadcasting\BroadcastServiceProvider::class,
@@ -191,6 +192,7 @@ return [
 
     'aliases' => [
 
+        // 'Input' => Illuminate\Support\Facades\Request::class,
         'App' => Illuminate\Support\Facades\App::class,
         'Arr' => Illuminate\Support\Arr::class,
         'Artisan' => Illuminate\Support\Facades\Artisan::class,

@@ -9,12 +9,8 @@ class Video extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'photo',
+        'link',
         'name',
-        'desc',
-        'content',
-        'status',
-        'date_create',
     ];
 
     protected $casts = [

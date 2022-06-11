@@ -14,7 +14,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Leckerli+One:regular" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,200italic,300,300italic,regular,italic,600,600italic,700,700italic,900,900italic" rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,200italic,300,300italic,regular,italic,600,600italic,700,700italic,900,900italic"
+        rel="stylesheet" />
 
     {{-- Kit Front awesome --}}
     <script src="https://kit.fontawesome.com/8548ee4b2e.js" crossorigin="anonymous"></script>
@@ -53,9 +55,11 @@
 </body>
 
 {{-- JS File --}}
-<script type="text/javascript" src="{{ asset('frontend/assets/js/app.js') }}"></script>
+{{-- <script type="text/javascript" src="{{ asset('frontend/assets/js/app.js') }}"></script> --}}
+
 
 <script>
+    // Slider
     $(document).ready(function() {
         $(".owl-slide").owlCarousel({
             items: 1,
@@ -66,12 +70,35 @@
             margin: 10,
         });
 
-        $(".prev-slide").click(function() {
-            $(".owl-slide").trigger("prev.owl.carousel");
+        $(".owl-product").owlCarousel({
+            items: 3,
+            loop: false,
+            dots: true,
+            autoplay: true,
+            nav: false,
+            margin: 30,
+            responsive: {
+                0: {
+                    items: 2,
+                },
+
+                600: {
+                    items: 2,
+                },
+                1000: {
+                    items: 3,
+                },
+            },
         });
-        $(".next-slide").click(function() {
-            $(".owl-slide").trigger("next.owl.carousel");
-        });
+
+
+
+        // $(".prev-slide").click(function () {
+        //     $(".owl-slide").trigger("prev.owl.carousel");
+        // });
+        // $(".next-slide").click(function () {
+        //     $(".owl-slide").trigger("next.owl.carousel");
+        // });
     });
 </script>
 

@@ -31,10 +31,10 @@ class AppServiceProvider extends ServiceProvider
         if(Schema::hasTable('product_lists')){
             $splist = DB::table('product_lists')
             ->select('*')
+            ->whereJsonContains('status', 'noibat')
             ->get();
             View::share('splist', $splist);
         }
-
 
         if(Schema::hasTable('blogs')){
             $blogs = DB::table('blogs')
@@ -42,5 +42,12 @@ class AppServiceProvider extends ServiceProvider
             ->get();
             View::share('blogs', $blogs);
         } 
+
+        if(Schema::hasTable('slides')){
+            $slides = DB::table('slides')
+            ->select('*')
+            ->get();
+            View::share('slides', $slides);
+        }
     }
 }

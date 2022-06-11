@@ -8,6 +8,10 @@
     @method('PUT')
     <div class="card-body">
         <div class="form-group">
+            <label hidden="" for="menu">ID</label>
+            <input hidden id="menu" type="text" name="id"  value="{{ $each->id }}" class="form-control" id="upload">
+        </div>
+        <div class="form-group">
             <label for="menu">Ảnh Sản Phẩm</label>
             <input type="file" name="image"  value="{{ $each->photo }}" class="form-control" id="upload">
         </div>
@@ -48,7 +52,7 @@
     </div>
 
     <div class="card-footer">
-        <button type="submit" class="btn btn-primary">Thêm Sản Phẩm</button>
+        <button type="submit" class="btn btn-primary">Lưu</button>
     </div>
     @csrf
 </form>

@@ -39,7 +39,7 @@
         </div>
     
         <div class="card-footer">
-            <button type="submit" class="btn btn-primary">Thêm Sản Phẩm</button>
+            <button type="submit" class="btn btn-primary">Thêm</button>
         </div>
         @csrf
     </form>

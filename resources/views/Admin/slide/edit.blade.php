@@ -19,36 +19,10 @@
                 </div>
             </div>
         </div>
-
-        <div class="form-group">
-            <label>Mô Tả </label>
-            <textarea name="desc" class="form-control">{{ $each->desc }}</textarea>
-        </div>
-
-        <div class="form-group">
-            <label>Mô Tả Chi Tiết</label>
-            <textarea name="content" id="cke_content" class="form-control">{{ $each->content }}</textarea>
-        </div>
-
-          <div class="form-group">
-            <label>Trạng thái</label>
-            <div class="custom-control custom-radio">
-                <?php if($each->status == 'noibat,hienthi') {?>
-                    <input type="checkbox" name="status[]" value="noibat" checked> Nổi bật
-                    <input type="checkbox" name="status[]" value="hienthi" checked> Hiển thị
-                <?php } elseif($each->status == 'hienthi') {?>
-                    <input type="checkbox" name="status[]" value="noibat"> Nổi bật
-                    <input type="checkbox" name="status[]" value="hienthi" checked> Hiển thị
-                <?php } elseif($each->status == 'noibat') {?>
-                    <input type="checkbox" name="status[]" value="noibat" checked> Nổi bật
-                    <input type="checkbox" name="status[]" value="hienthi"> Hiển thị
-                <?php }?>          
-            </div>
         </div> 
     </div>
-
     <div class="card-footer">
-        <button type="submit" class="btn btn-primary">Thêm Sản Phẩm</button>
+        <button type="submit" class="btn btn-primary">Lưu</button>
     </div>
     @csrf
 </form>

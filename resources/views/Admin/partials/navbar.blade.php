@@ -78,14 +78,6 @@
                     <a class="treeview-item" href="{{ route('criteria.index') }}"><i
                             class="icon fa fa-circle-o"></i>Tiêu chí</a>
                 </li>
-                <li>
-                    <a class="treeview-item" href="{{ route('slide.index') }}"><i
-                            class="icon fa fa-circle-o"></i>Slide</a>
-                </li>
-                <li>
-                    <a class="treeview-item" href="{{ route('video.index') }}"><i
-                            class="icon fa fa-circle-o"></i>Video</a>
-                </li>
             </ul>
         </li>
         
@@ -105,6 +97,24 @@
                 </li>
             </ul>
         </li>
+
+        {{-- Quản lý hình ảnh - video --}}
+        <li class="treeview">
+            <a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-th-list"></i><span
+                    class="app-menu__label">Quản lý hình ảnh - video</span><i
+                    class="treeview-indicator fa fa-angle-right"></i></a>
+            <ul class="treeview-menu">
+                <li>
+                    <a class="treeview-item" href="{{ route('slide.index') }}"><i
+                            class="icon fa fa-circle-o"></i> Slideshow</a>
+                </li>
+                <li>
+                    <a class="treeview-item" href="{{ route('video.index') }}"><i class="icon fa fa-circle-o"></i>
+                        Video</a>
+                </li>
+            </ul>
+        </li>
+
         <li class="treeview">
             <a class="app-menu__item" href="#" data-toggle="treeview"><i
                     class="app-menu__icon fa fa-file-text"></i><span class="app-menu__label">Pages</span><i
