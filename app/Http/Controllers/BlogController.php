@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Blog;
@@ -95,15 +97,22 @@ class BlogController extends Controller
     {
         $fix_status = implode(',', $request->get('status'));
 
-        $countBlogs = Blog::all()->count();
+        $countBlog = Blog::all()->count();
 
         if($request->has('image')){
             $file= $request->image;
             $ext = $request->image->extension();
-            $file_name = Date('Ymd').'-'.'blog'.$countBlogs.'.'.$ext;
+            $file_name = Date('Ymd').'-'.'blog'.$countBlog.'.'.$ext;
             $file->move(public_path('backend/assets/img/products'),$file_name);
-        }
+        }else{
+            $id = $request->input('id');
 
+            $data = DB::table('blogs')
+            ->where('id',$id)
+            ->select('photo')
+            ->get();
+            $file_name = $data[0]->photo;
+        }
         $blog->update(
         [
             'name' => $request->get('name'),

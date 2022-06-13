@@ -92,29 +92,36 @@ class NewController extends Controller
     {
         $fix_status = implode(',', $request->get('status'));
 
-        $countNews = News::all()->count();
+        $countnews = News::all()->count();
 
         if($request->has('image')){
             $file= $request->image;
             $ext = $request->image->extension();
-            $file_name = Date('Ymd').'-'.'news'.$countNews.'.'.$ext;
+            $file_name = Date('Ymd').'-'.'news'.$countnews.'.'.$ext;
             $file->move(public_path('backend/assets/img/products'),$file_name);
-        }
+        }else{
+            $id = $request->input('id');
 
+        $data = DB::table('news')
+            ->where('id',$id)
+            ->select('photo')
+            ->get();
+            $file_name = $data[0]->photo;
+        }
         $News->update(
         [
-        'photo' => $file_name,
-        'name' => $request->get('name'),
-        'desc' => $request->get('desc'),
-        'content' => $request->get('content'),
-        'status'=> $fix_status,
+            'name' => $request->get('name'),
+            'desc' => $request->get('desc'),
+            'content' => $request->get('content'),
+            'photo' => $file_name,
+            'status'=> $fix_status,
         ],
         $request->except([
-        '_token',
-        '_method',
+            '_token',
+            '_method',
         ])
         );
-        return redirect()->route("news.index");
+    return redirect()->route("news.index");
     }
 
     /**

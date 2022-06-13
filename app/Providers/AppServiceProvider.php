@@ -31,11 +31,24 @@ class AppServiceProvider extends ServiceProvider
         if(Schema::hasTable('product_lists')){
             $splist = DB::table('product_lists')
             ->select('*')
-            ->whereJsonContains('status', 'noibat')
             ->get();
             View::share('splist', $splist);
         }
 
+        if(Schema::hasTable('product_cats')){
+            $spcat = DB::table('product_cats')
+            ->select('*')
+            ->get();
+            View::share('spcat', $spcat);
+        }
+
+        if(Schema::hasTable('product_lists')){
+            $splistnb = DB::table('product_lists')
+            ->whereJsonContains('status', 'noibat,hienthi')
+            ->get();
+            View::share('splistnb', $splistnb);
+        }
+        // dd($splistnb);
         if(Schema::hasTable('blogs')){
             $blogs = DB::table('blogs')
             ->select('*')

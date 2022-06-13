@@ -40,21 +40,21 @@ class CriteriaController extends Controller
         $countCriteria = Criteria::all()->count();
 
         if($request->has('image')){
-            $file= $request->image;
-            $ext = $request->image->extension();
-            $file_name = Date('Ymd').'-'.'criteria'.$countCriteria.'.'.$ext;
-            $file->move(public_path('backend/assets/img/products'),$file_name);
+        $file= $request->image;
+        $ext = $request->image->extension();//lấy đuôi file png||jpg
+        $file_name = Date('Ymd').'-'.'Criteria'.$countCriteria.'.'.$ext;
+        $file->move(public_path('backend/assets/img/products'),$file_name);//chuyển file vào đường dẫn chỉ định
         }
 
-        $criteria = new Criteria;
+        $Criteria = new Criteria;
 
-        $criteria->name = $request->get('name');
-        $criteria->desc = $request->get('desc');
-        $criteria->content = $request->get('content');
-        $criteria->photo = $file_name;
-        $criteria->status = implode(',', $request->get('status'));
+        $Criteria->name = $request->get('name');
+        $Criteria->desc = $request->get('desc');
+        $Criteria->content = $request->get('content');
+        $Criteria->photo = $file_name;
+        $Criteria->status = implode(',', $request->get('status'));
 
-        $criteria->save();
+        $Criteria->save();
 
         return redirect()->route('criteria.index');
     }
@@ -97,21 +97,29 @@ class CriteriaController extends Controller
         if($request->has('image')){
             $file= $request->image;
             $ext = $request->image->extension();
-            $file_name = Date('Ymd').'-'.'criteria'.$countCriteria.'.'.$ext;
+            $file_name = Date('Ymd').'-'.'Criteria'.$countCriteria.'.'.$ext;
             $file->move(public_path('backend/assets/img/products'),$file_name);
-        }
+        }else{
+            $id = $request->input('id');
 
+            $data = DB::table('criterias')
+            ->where('id',$id)
+            ->select('photo')
+            ->get();
+
+            $file_name = $data[0]->photo;
+        }
         $Criteria->update(
-            [
-                'name' => $request->get('name'),
-                'desc' => $request->get('desc'),
-                'content' => $request->get('content'),
-                'photo' => $file_name,
-                'status'=> $fix_status,
-            ],
-            $request->except([
-                '_token',
-                '_method',
+        [
+            'name' => $request->get('name'),
+            'desc' => $request->get('desc'),
+            'content' => $request->get('content'),
+            'photo' => $file_name,
+            'status'=> $fix_status,
+        ],
+        $request->except([
+            '_token',
+            '_method',
             ])
         );
         return redirect()->route("criteria.index");

@@ -9,6 +9,7 @@ class ProductCat extends Model
 {
     use HasFactory;
     protected $fillable = [
+        'id_list',
         'photo',
         'name',
         'desc',
@@ -19,4 +20,9 @@ class ProductCat extends Model
     protected $casts = [
         'status' => 'array',
     ];
+
+    // public function product_list()
+    // {
+    //     return $this->belongsTo(ProductList::class);
+    // }
 }

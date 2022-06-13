@@ -1,9 +1,9 @@
 @extends('admin.layout')
 @section('title')
-    Chỉnh sửa blog
+    Chỉnh sửa sản phẩm cấp 1
 @endsection
 @section('content')
-<form method="post" action="{{ route('blog.update', $each) }} "  enctype="multipart/form-data" >
+<form method="post" action="{{ route('product_list.update', $each) }} "  enctype="multipart/form-data" >
     @csrf
     @method('PUT')
     <div class="card-body">

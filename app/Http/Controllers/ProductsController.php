@@ -2,45 +2,22 @@
 
 namespace App\Http\Controllers;
 
-// use Illuminate\Support\Facades\Input;
-use Illuminate\Support\Facades\Schema;
-use App\Http\Controllers\Alert;
-
-use Illuminate\Support\Facades\DB;
+use App\Models\Products;
 use Illuminate\Http\Request;
-use App\Models\ProductList;
 
-class ProductListController extends Controller
+class ProductsController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request,ProductList $productList)
+    public function index(Request $request,Products $Products)
     {
-        $data = ProductList::get();
-        return view('admin.product-list.index',[
+        $data = Products::get();
+        return view('admin.product.index',[
             'data' => $data,
         ]);
-    }
-
-    public function locSanPhamTheoStatus($status){
-
-        $data = DB::table('product_lists')
-        ->whereJsonContains('status', $status)
-        ->get();
-
-        dd($data);
-        foreach($data as $item){
-            $path = 'backend/assets/img/products/';
-        $output = 
-        '<tr>
-            <td>'.$item->name.'</td>
-
-        </tr>';
-        }
-        return $data;
     }
 
     /**
@@ -50,7 +27,7 @@ class ProductListController extends Controller
      */
     public function create()
     {
-        return view('admin.product-list.create');
+        return view('admin.product.create');
     }
 
     /**
@@ -61,34 +38,43 @@ class ProductListController extends Controller
      */
     public function store(Request $request)
     {
-        $countProductList = ProductList::all()->count();
+        $countProducts = Products::all()->count();
 
         if($request->has('image')){
             $file= $request->image;
             $ext = $request->image->extension();//lấy đuôi file png||jpg
-            $file_name = Date('Ymd').'-'.'productList'.$countProductList.'.'.$ext;
+            $file_name = Date('Ymd').'-'.'Products'.$countProducts.'.'.$ext;
             $file->move(public_path('backend/assets/img/products'),$file_name);//chuyển file vào đường dẫn chỉ định
         }
+        $id_list = $request->id_list;
+        $id_cat = $request->id_cat;
+        // dd($id_list);
+        $Products = new Products;
 
-        $ProductList = new ProductList;
+        $Products->id_list = $id_list;
+        $Products->id_cat = $id_cat;
+        $Products->name = $request->get('name');
+        $Products->desc = $request->get('desc');
+        $Products->content = $request->get('content');
+        $Products->regular_price = $request->get('regular_price');
+        $Products->discount = $request->get('discount');
+        $Products->sale_price = $request->get('sale_price');
+        $Products->stock = $request->get('stock');
+        $Products->photo = $file_name;
+        $Products->status = implode(',', $request->get('status'));
 
-        $ProductList->name = $request->get('name');
-        $ProductList->desc = $request->get('desc');
-        $ProductList->content = $request->get('content');
-        $ProductList->photo = $file_name;
-        $ProductList->status = implode(',', $request->get('status'));
+        $Products->save();
 
-        $ProductList->save();
-
-        return redirect()->route('product_list.index');
+        return redirect()->route('product.index');
     }
+
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Products  $products
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Products $products)
     {
         //
     }
@@ -96,13 +82,13 @@ class ProductListController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Products  $products
      * @return \Illuminate\Http\Response
      */
-    public function edit(ProductList $productList)
+    public function edit(Products $products)
     {
-        return view('admin.product-list.edit',[
-            'each' => $productList,
+        return view('admin.product.edit',[
+            'each' => $products,
         ]);
     }
 
@@ -110,55 +96,60 @@ class ProductListController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Models\Products  $products
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,ProductList $productList)
+    public function update(Request $request,Product $Product)
     {
         $fix_status = implode(',', $request->get('status'));
 
-        $countproductList = ProductList::all()->count();
+        $countProduct = Products::all()->count();
 
         if($request->has('image')){
             $file= $request->image;
             $ext = $request->image->extension();
-            $file_name = Date('Ymd').'-'.'productList'.$countproductList.'.'.$ext;
+            $file_name = Date('Ymd').'-'.'product'.$countProduct.'.'.$ext;
             $file->move(public_path('backend/assets/img/products'),$file_name);
         }else{
             $id = $request->input('id');
-    
-            $data = DB::table('product_lists')
+
+            $data = DB::table('products')
             ->where('id',$id)
             ->select('photo')
             ->get();
+
             $file_name = $data[0]->photo;
         }
-        $productList->update(
+        $Product->update(
         [
+            'id_list' => $request->get('id_list'),
+            'id_cat' => $request->get('id_cat'),
             'name' => $request->get('name'),
             'desc' => $request->get('desc'),
             'content' => $request->get('content'),
+            'regular_price' => $request->get('regular_price'),
+            'discount' => $request->get('discount'),
+            'sale_price' => $request->get('sale_price'),
+            'stock' => $request->get('stock'),
             'photo' => $file_name,
             'status'=> $fix_status,
         ],
         $request->except([
             '_token',
             '_method',
-        ])
+            ])
         );
-        return redirect()->route("product_list.index");
+        return redirect()->route("product.index");
     }
-
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\Products  $products
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ProductList $productList)
+    public function destroy(Products $products)
     {
-        $productList->delete();
-        return redirect()->route('product_list.index')->with('message', 'Bạn đã xóa sản phẩm thành công!');
+        //
     }
 }

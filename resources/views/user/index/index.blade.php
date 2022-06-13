@@ -9,7 +9,7 @@
     <div class="slideprod-wrapper">
         <div class="wrap-content">
             <div class="owl-product owl-carousel owl-theme">
-                @foreach ($data as $k => $v)
+                @foreach ($splistnb as $k => $v)
                     <div class="slideprod-item">
                         <div class="slideprod-img">
                             <a href="">
