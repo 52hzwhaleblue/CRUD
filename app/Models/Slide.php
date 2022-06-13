@@ -11,10 +11,6 @@ class Slide extends Model
     protected $fillable = [
         'photo',
         'name',
-        'desc',
-        'content',
-        'status',
-        'date_create',
     ];
 
     protected $casts = [

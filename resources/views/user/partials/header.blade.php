@@ -21,12 +21,14 @@
                     @if (count($splist))
                         @foreach ($splist as $k => $v)
                             <li>
-                                <a href="{{ route('user.index') }}">{{ $v->name }}</a>
+                                <a href="">{{ $v->name }}</a>
 
                                 <ul>
-                                    <li><a href="">Danh mục cấp 2</a></li>
-                                    <li><a href="">Danh mục cấp 2</a></li>
-                                    <li><a href="">Danh mục cấp 2</a></li>
+                                    @foreach ($spcat as $k => $v)
+                                    <li>
+                                        <a href="">{{ $v->name }}</a>
+                                    </li>    
+                                    @endforeach
                                 </ul>
                             </li>
                         @endforeach

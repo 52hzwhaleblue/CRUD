@@ -49,13 +49,17 @@ class ProductCatController extends Controller
         $countProductCat = ProductCat::all()->count();
 
         if($request->has('image')){
-        $file= $request->image;
-        $ext = $request->image->extension();//lấy đuôi file png||jpg
-        $file_name = Date('Ymd').'-'.'product'.$countProductCat.'.'.$ext;
-        $file->move(public_path('backend/assets/img/products'),$file_name);//chuyển file vào đường dẫn chỉ định
+            $file= $request->image;
+            $ext = $request->image->extension();//lấy đuôi file png||jpg
+            $file_name = Date('Ymd').'-'.'product'.$countProductCat.'.'.$ext;
+            $file->move(public_path('backend/assets/img/products'),$file_name);//chuyển file vào đường dẫn chỉ định
         }
 
+        $id_list = $request->id_list;
+        // dd($id_list);
+
         $product_cat = new ProductCat;
+        $product_cat->id_list = $id_list;
         $product_cat->name = $request->get('name');
         $product_cat->desc = $request->get('desc');
         $product_cat->content = $request->get('content');
@@ -100,31 +104,38 @@ class ProductCatController extends Controller
      */
     public function update(Request $request,ProductCat $productCat)
     {
-        // $ProductCat sẽ validate xem có tồn tại id hay chưa, không cần xét điều kiện where
         $fix_status = implode(',', $request->get('status'));
-        $countProductCat = ProductCat::all()->count();
+
+        $countproductCat = ProductCat::all()->count();
 
         if($request->has('image')){
             $file= $request->image;
             $ext = $request->image->extension();
-            $file_name = Date('Ymd').'-'.'product'. $countProductCat.'.'.$ext;
+            $file_name = Date('Ymd').'-'.'productCat'.$countproductCat.'.'.$ext;
             $file->move(public_path('backend/assets/img/products'),$file_name);
+        }else{
+        $id = $request->input('id');
+
+        $data = DB::table('product_cats')
+            ->where('id',$id)
+            ->select('photo')
+            ->get();
+            $file_name = $data[0]->photo;
         }
         $productCat->update(
-            [
-                'photo' => $file_name,
-                'name' => $request->get('name'),
-                'desc' => $request->get('desc'),
-                'content' => $request->get('content'),
-                'status'=> $fix_status,
-            ],
-            $request->except([
-                '_token',
-                '_method',
-            ])
+        [
+            'name' => $request->get('name'),
+            'desc' => $request->get('desc'),
+            'content' => $request->get('content'),
+            'photo' => $file_name,
+            'status'=> $fix_status,
+        ],
+        $request->except([
+            '_token',
+            '_method',
+        ])
         );
-
-    return redirect()->route("product_cat.index");
+        return redirect()->route("product_cat.index");
     }
 
     /**

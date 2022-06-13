@@ -15,6 +15,13 @@ class CreateProductCatsTable extends Migration
     {
         Schema::create('product_cats', function (Blueprint $table) {
             $table->increments('id');
+
+            $table->unsignedInteger('id_list');
+            $table->foreign('id_list')
+                ->references('id')
+                ->on('product_lists')
+                ->onDelete('cascade');
+
             $table->string('photo');
             $table->string('name');
             $table->string('desc');

@@ -22,4 +22,15 @@ class ProductList extends Model
         'status' => 'array',
     ];
 
+
+    public function product_cat()
+    {
+        return $this->hasMany(ProductCat::class,'id'); // id của product_cats
+    }
+
+    public function products()
+    {
+        return $this->hasMany(Products::class,'id'); // id của products
+    }
+
 }

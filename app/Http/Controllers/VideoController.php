@@ -36,23 +36,10 @@ class VideoController extends Controller
      */
     public function store(Request $request)
     {
-        $countVideo = Video::all()->count();
-
-        if($request->has('image')){
-            $file= $request->image;
-            $ext = $request->image->extension();
-            $file_name = Date('Ymd').'-'.'video'.$countVideo.'.'.$ext;
-            $file->move(public_path('backend/assets/img/products'),$file_name);
-        }
-
         $video = new Video;
 
         $video->name = $request->get('name');
-        $video->desc = $request->get('desc');
-        $video->content = $request->get('content');
-        $video->photo = $file_name;
-        $video->status = implode(',', $request->get('status'));
-
+        $video->name = $request->get('link');
         $video->save();
 
         return redirect()->route('video.index');
@@ -89,8 +76,6 @@ class VideoController extends Controller
      */
     public function update(Request $request,Video $Video)
     {
-        $fix_status = implode(',', $request->get('status'));
-
         $countVideo = Video::all()->count();
 
         if($request->has('image')){

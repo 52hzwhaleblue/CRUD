@@ -48,10 +48,7 @@ class SlideController extends Controller
         $slide = new Slide;
 
         $slide->name = $request->get('name');
-        $slide->desc = $request->get('desc');
-        $slide->content = $request->get('content');
         $slide->photo = $file_name;
-        $slide->status = implode(',', $request->get('status'));
 
         $slide->save();
 
@@ -89,8 +86,6 @@ class SlideController extends Controller
      */
     public function update(Request $request,Slide $Slide)
     {
-        $fix_status = implode(',', $request->get('status'));
-
         $countSlide = Slide::all()->count();
 
         if($request->has('image')){
@@ -103,10 +98,7 @@ class SlideController extends Controller
         $Slide->update(
             [
                 'name' => $request->get('name'),
-                'desc' => $request->get('desc'),
-                'content' => $request->get('content'),
                 'photo' => $file_name,
-                'status'=> $fix_status,
             ],
             $request->except([
                 '_token',

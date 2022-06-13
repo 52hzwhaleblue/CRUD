@@ -35,12 +35,32 @@ class AppServiceProvider extends ServiceProvider
             View::share('splist', $splist);
         }
 
+        if(Schema::hasTable('product_cats')){
+            $spcat = DB::table('product_cats')
+            ->select('*')
+            ->get();
+            View::share('spcat', $spcat);
+        }
 
+        if(Schema::hasTable('product_lists')){
+            $splistnb = DB::table('product_lists')
+            ->whereJsonContains('status', 'noibat,hienthi')
+            ->get();
+            View::share('splistnb', $splistnb);
+        }
+        // dd($splistnb);
         if(Schema::hasTable('blogs')){
             $blogs = DB::table('blogs')
             ->select('*')
             ->get();
             View::share('blogs', $blogs);
         } 
+
+        if(Schema::hasTable('slides')){
+            $slides = DB::table('slides')
+            ->select('*')
+            ->get();
+            View::share('slides', $slides);
+        }
     }
 }
