@@ -56,7 +56,7 @@ class NewController extends Controller
 
         $news->save();
 
-        return redirect()->route('news.index');
+        return redirect()->route('news.index')->with('message', 'Bạn đã thêm tin tức thành công!');
     }
      /**
      * Display the specified resource.
@@ -121,7 +121,7 @@ class NewController extends Controller
             '_method',
         ])
         );
-    return redirect()->route("news.index");
+    return redirect()->route("news.index")->with('message', 'Bạn đã cập nhât tin tức thành công!');
     }
 
     /**
@@ -133,6 +133,6 @@ class NewController extends Controller
     public function destroy(News $News)
     {
         $News->delete();
-        return redirect()->route('news.index');
+        return redirect()->route('news.index')->with('message', 'Bạn đã xóa tin tức thành công!');
     }
 }

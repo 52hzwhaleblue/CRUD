@@ -59,7 +59,7 @@ class BlogController extends Controller
 
         $blog->save();
 
-        return redirect()->route('blog.index');
+        return redirect()->route('blog.index')->with('message', 'Bạn đã tạo blog thành công!');
     }
 
     /**
@@ -126,7 +126,7 @@ class BlogController extends Controller
             '_method',
             ])
         );
-        return redirect()->route("blog.index");
+        return redirect()->route("blog.index")->with('message', 'Bạn đã cập nhật blog thành công!');
     }
 
     /**
@@ -138,6 +138,6 @@ class BlogController extends Controller
     public function destroy(Blog $blog)
     {
         $blog->delete();
-        return redirect()->route('blog.index');
+        return redirect()->route('blog.index')->with('message', 'Bạn đã xóa blog thành công!');
     }
 }

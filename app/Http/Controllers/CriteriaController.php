@@ -56,7 +56,7 @@ class CriteriaController extends Controller
 
         $Criteria->save();
 
-        return redirect()->route('criteria.index');
+        return redirect()->route('criteria.index')->with('message', 'Bạn đã thêm tiêu chí thành công!');
     }
     /**
      * Display the specified resource.
@@ -122,7 +122,7 @@ class CriteriaController extends Controller
             '_method',
             ])
         );
-        return redirect()->route("criteria.index");
+        return redirect()->route("criteria.index")->with('message', 'Bạn đã cập nhât tiêu chí thành công!');
     }
 
     /**
@@ -134,6 +134,6 @@ class CriteriaController extends Controller
     public function destroy(Criteria $Criteria)
     {
         $Criteria->delete();
-        return redirect()->route('criteria.index');
+        return redirect()->route('criteria.index')->with('message', 'Bạn đã xóa tiêu chí thành công!');
     }
 }

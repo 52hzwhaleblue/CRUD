@@ -68,7 +68,7 @@ class ProductCatController extends Controller
 
         $product_cat->save();
 
-        return redirect()->route('product_cat.index');
+        return redirect()->route('product_cat.index')->with('message', 'Bạn đã thêm danh mục cấp 2 thành công!');
     }
 
     /**
@@ -135,7 +135,7 @@ class ProductCatController extends Controller
             '_method',
         ])
         );
-        return redirect()->route("product_cat.index");
+        return redirect()->route("product_cat.index")->with('message', 'Bạn đã cập nhật danh mục cấp 2 thành công!');
     }
 
     /**
@@ -147,6 +147,6 @@ class ProductCatController extends Controller
     public function destroy(ProductCat $ProductCat)
     {
         $ProductCat->delete();
-        return redirect()->route('product_cat.index');
+        return redirect()->route('product_cat.index')->with('message', 'Bạn đã xóa danh mục cấp 2 thành công!');
     }
 }
