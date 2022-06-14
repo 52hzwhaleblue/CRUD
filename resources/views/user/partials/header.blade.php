@@ -3,7 +3,9 @@
     <div class="wrap-content">
         <div class="header-left">
             <div class="logo">
-                <img src="{{ asset('frontend/assets/img/logo.png') }}" alt="" />
+                <a href="{{ route('user.index') }}">
+                    <img src="https://cdn.shopify.com/s/files/1/0563/5827/3071/files/logo.png?v=1646210955" alt="" />
+                </a>
             </div>
         </div>
 
@@ -14,7 +16,7 @@
                 <?php if($com == '' || $com == 'user.index') {?>
                     active
                 ">
-                <?php } ?>
+                        <?php } ?>
 
                         <a href="{{ route('user.index') }}">@lang('auth.home')</a>
                     </li>
@@ -25,9 +27,9 @@
 
                                 <ul>
                                     @foreach ($spcat as $k => $v)
-                                    <li>
-                                        <a href="">{{ $v->name }}</a>
-                                    </li>    
+                                        <li>
+                                            <a href="">{{ $v->name }}</a>
+                                        </li>
                                     @endforeach
                                 </ul>
                             </li>
@@ -39,6 +41,7 @@
                     <li><a href="{{ route('user.shop') }}">Shop</a></li>
                     <li><a href="#">About</a></li>
                     <li><a href="#">Blog</a></li>
+                    <li><a href="#">Contact</a></li>
                     <li><a href="#">Contact</a></li>
                 </ul>
             </div>

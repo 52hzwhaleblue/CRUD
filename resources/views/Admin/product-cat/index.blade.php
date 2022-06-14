@@ -3,6 +3,11 @@
     Sản phẩm cấp 1
 @endsection
 @section('content')
+@if(session()->has('message'))
+    <div class="alert alert-success">
+        {{ session()->get('message') }}
+    </div>
+@endif
 <div class="app-title">
     <div>
         <h1>All Products</h1>

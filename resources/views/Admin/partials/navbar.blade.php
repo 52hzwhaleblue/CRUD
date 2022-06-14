@@ -89,12 +89,12 @@
             <ul class="treeview-menu">
                 <li>
                     <a class="treeview-item" href="{{ route('product_list.index') }}"><i
-                            class="icon fa fa-circle-o"></i> Product List</a>
+                            class="icon fa fa-circle-o"></i> Danh mục cấp 1</a>
                 </li>
                 <li>
                     <a class="treeview-item" href="{{ route('product_cat.index') }}"><i
                             class="icon fa fa-circle-o"></i>
-                        Product Cat</a>
+                        Danh mục cấp 2</a>
                 </li>
                 <li>
                     <a class="treeview-item" href="{{ route('product.index') }}"><i class="icon fa fa-circle-o"></i>

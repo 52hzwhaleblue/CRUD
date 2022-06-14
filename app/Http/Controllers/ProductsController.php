@@ -65,7 +65,7 @@ class ProductsController extends Controller
 
         $Products->save();
 
-        return redirect()->route('product.index');
+        return redirect()->route('product.index')->with('message', 'Bạn đã thêm sản phẩm thành công!');
     }
 
     /**
@@ -139,7 +139,7 @@ class ProductsController extends Controller
             '_method',
             ])
         );
-        return redirect()->route("product.index");
+        return redirect()->route("product.index")->with('message', 'Bạn đã cập nhật sản phẩm thành công!');
     }
 
     /**
@@ -150,6 +150,7 @@ class ProductsController extends Controller
      */
     public function destroy(Products $products)
     {
-        //
+        $products->delete();
+        return redirect()->route('product.index')->with('message', 'Bạn đã xóa sản phẩm thành công!');
     }
 }

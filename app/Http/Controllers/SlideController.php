@@ -28,7 +28,7 @@ class SlideController extends Controller
     {
         return view('admin.slide.create');
     }
-     /**
+    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -52,7 +52,7 @@ class SlideController extends Controller
 
         $slide->save();
 
-        return redirect()->route('slide.index');
+        return redirect()->route('slide.index')->with('message', 'Bạn đã thêm slider thành công!');
     }
     /**
      * Display the specified resource.
@@ -105,7 +105,7 @@ class SlideController extends Controller
                 '_method',
             ])
         );
-        return redirect()->route("slide.index");
+        return redirect()->route("slide.index")->with('message', 'Bạn đã cập nhật slider thành công!');
     }
 
     /**
@@ -117,6 +117,6 @@ class SlideController extends Controller
     public function destroy(Slide $Slide)
     {
         $Slide->delete();
-        return redirect()->route('slide.index');
+        return redirect()->route('slide.index')->with('message', 'Bạn đã xóa slider thành công!');
     }
 }

@@ -1,5 +1,4 @@
 <?php
-use Laravel\Socialite\Facades\Socialite;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ProductListController;
@@ -13,20 +12,21 @@ use App\Http\Controllers\BlogController;
 use App\Http\Controllers\SlideController;
 use App\Http\Controllers\VideoController;
 
+Route::get('login',[AuthController::class,'login'])->name("user.login");
+Route::get('register',[AuthController::class,'register'])->name("user.register");
+Route::post('registering',[AuthController::class,'registering'])->name("user.registering");
+
 Route::get('/auth/redirect/{provider}', function ($provider) {
     return Socialite::driver($provider)->redirect();
 })->name('auth.redirect');
 
-Route::get('/auth/callback/{provider}', function ($provider) {
-    $user = Socialite::driver($provider)->user();
-    dd($user);
-})->name('auth.callback');
+Route::get('/auth/callback/{provider}', [AuthController::class,'callback'])->name('auth.callback');
 
 /*User routes*/
 
-Route::get('/login', function () {
-    return view('user.login');
-})->name('user.login');
+Route::get('/info', function () {
+    return view('user.info.index');
+})->name('user.info');
 
 
 Route::get('/',[HomeController::class,'index'])->name("user.index");

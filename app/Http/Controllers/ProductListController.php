@@ -80,7 +80,7 @@ class ProductListController extends Controller
 
         $ProductList->save();
 
-        return redirect()->route('product_list.index');
+        return redirect()->route('product_list.index')->with('message', 'Bạn đã tạo danh mục cấp 1 thành công!');
     }
     /**
      * Display the specified resource.
@@ -146,7 +146,7 @@ class ProductListController extends Controller
             '_method',
         ])
         );
-        return redirect()->route("product_list.index");
+        return redirect()->route("product_list.index")->with('message', 'Bạn đã cập nhật danh mục cấp 1 thành công!');
     }
 
 
@@ -159,6 +159,6 @@ class ProductListController extends Controller
     public function destroy(ProductList $productList)
     {
         $productList->delete();
-        return redirect()->route('product_list.index')->with('message', 'Bạn đã xóa sản phẩm thành công!');
+        return redirect()->route('product_list.index')->with('message', 'Bạn đã xóa danh mục cấp 1 thành công!');
     }
 }
