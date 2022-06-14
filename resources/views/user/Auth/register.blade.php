@@ -10,10 +10,12 @@
             <img src="https://cdn.shopify.com/s/files/1/0563/5827/3071/files/logo.png?v=1646210955" alt="" />
         </div>
         <h3 >Register</h3>
+        @auth
         <div class="d-flex justify-content-center">
             <img src="{{ auth()->user()->avatar }}" alt="profile-pic" style="border-radius:50%; width:50px;height:50px;">
         </div>
-        <form >
+         @endauth
+        <form action="{{ route('user.registering') }}" method="post">
             @csrf
             @auth
                 
@@ -26,46 +28,13 @@
                 <input type="email" placeholder="Email" required name="email">
             @endguest
 
-            <input type=" password" placeholder="Password">
+            <input type=" password" placeholder="Password" name="password">
             <button type="submit" class="btn3">Register</button>
         </form>
         <div class="box-register">
             <span class="or-register mr-2"><a href="{{ route('user.login') }}">Back to login</a></span>
         </div>
     </div>
-    {{-- <div class="account-page">
-        <div class="container">
-            <div class="row3">
-                <div class="col-6">
-                    <div class="form-container">
-                        <div class="form-btn">
-                            <span onclick="login()">Login</span>
-                            <span onclick="register()">Register</span>
-                            <hr id="Indicator">
-                        </div>
-                       
-                        <form id="RegForm" action="{{ route('user.registering') }}" method="post">
-                            @csrf
-                            @auth
-                                <img src="{{ auth()->user()->avatar }}" alt="profile-pic"
-                                    style="border-radius:50%; width:50px;height:50px;">
-                                <input type="text" placeholder="Username" disabled value="{{ auth()->user()->name }}">
-                                <input type="email" placeholder="Email" disabled value="{{ auth()->user()->email }}">
-                            @endauth
-
-                            @guest
-                                <input type="text" placeholder="Username" required name="name">
-                                <input type="email" placeholder="Email" required name="email">
-                            @endguest
-
-                            <input type=" password" placeholder="Password">
-                            <button type="submit" class="btn3">Register</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> --}}
 
     <script>
         var LoginForm = document.getElementById("LoginForm");

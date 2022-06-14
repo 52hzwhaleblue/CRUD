@@ -22,8 +22,8 @@
             </div>
             <ul class="social-login row">
                     <li class="">
-                        <a href="">
-                            <i class="fa-brands fa-instagram"></i>
+                        <a href="{{ route('auth.redirect', 'gitlab') }}">
+                            <i class="fa-brands fa-gitlab"></i>
                         </a>
                     </li>
                     <li class="">

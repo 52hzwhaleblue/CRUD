@@ -46,7 +46,7 @@
 <body>
     @include('user.partials.header')
 
-    @if ($com != 'user.products' && $com != 'user.login' && $com != 'user.register' && $com != 'user.info')
+    @if ($com =="user.index")
         @include('user.partials.slide')
     @endif
 
