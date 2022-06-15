@@ -30,7 +30,7 @@ class ProductList extends Model
 
     public function products()
     {
-        return $this->hasMany(Products::class,'id'); // id của products
+        return $this->hasMany(Products::class,'id_list'); // id của products
     }
 
 }
