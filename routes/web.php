@@ -24,16 +24,14 @@ Route::get('/auth/callback/{provider}', [AuthController::class,'callback'])->nam
 
 /*User routes*/
 
-Route::get('/info', function () {
-    return view('user.info.index');
-})->name('user.info');
 
+
+Route::get('/profile', function () {
+    return view('user.profile.index');
+})->name('user.profile');
 
 Route::get('/',[HomeController::class,'index'])->name("user.index");
 
-// Route::get('/', function () {
-// return view('user.index.index');
-// })->name('user.index');
 
 Route::get('/shop', function () {
 return view('user.product.shop');
