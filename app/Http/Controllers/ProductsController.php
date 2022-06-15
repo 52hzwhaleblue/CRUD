@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+
 use App\Models\Products;
 use Illuminate\Http\Request;
 
@@ -87,9 +88,16 @@ class ProductsController extends Controller
      */
     public function edit(Products $products)
     {
+        // Lấy tên danh mục cấp 1 với id sản phẩm
+        $productList = Products::find($products->id)->product_list()->get();
+        $productCat = Products::find($products->id)->product_cat()->get();
+        // dd($idList[0]->name);
         return view('admin.product.edit',[
             'each' => $products,
+            'productList' => $productList,
+            'productCat' => $productCat,
         ]);
+
     }
 
     /**
@@ -139,6 +147,7 @@ class ProductsController extends Controller
             '_method',
             ])
         );
+
         return redirect()->route("product.index")->with('message', 'Bạn đã cập nhật sản phẩm thành công!');
     }
 

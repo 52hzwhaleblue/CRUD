@@ -28,12 +28,12 @@ class Products extends Model
     ];
 
     // // 1 sản phẩm thuộc về 1 danh mục cấp 1
-    // public function product_list(){
-    //     return $this->belongsTo(ProductList::class, 'id_list');
-    // }
+    public function product_list(){
+        return $this->belongsTo(ProductList::class, 'id_list');
+    }
 
-    //     // 1 sản phẩm thuộc về 1 danh mục cấp 2
-    //     public function product_cat(){
-    //         return $this->belongsTo(ProductCat::class, 'id_cat');
-    //     } 
+    // 1 sản phẩm thuộc về 1 danh mục cấp 2
+    public function product_cat(){
+        return $this->belongsTo(ProductCat::class, 'id_cat');
+    } 
 }
