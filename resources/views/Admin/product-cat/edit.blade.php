@@ -6,10 +6,13 @@
     <form method="post" action="{{ route('product_cat.update', $each) }} " enctype="multipart/form-data">
         @csrf
         @method('PUT')
-        <div class="card-body">
+
+        <div class="row">
+                    <div class="col-lg-8">
             <div class="form-group">
                 <label hidden="" for="menu">ID</label>
-                <input hidden id="menu" type="text" name="id" value="{{ $each->id }}" class="form-control" id="upload">
+                <input hidden id="menu" type="text" name="id" value="{{ $each->id }}" class="form-control"
+                    id="upload">
             </div>
             <div class="form-group">
                 <label for="menu">Ảnh Sản Phẩm</label>
@@ -50,6 +53,20 @@
                     <?php }?>
                 </div>
             </div>
+        </div>
+        <div class="col-lg-4">
+            Danh mục sản phẩm
+            <div class="d-md-flex">
+                <div class="m-b-10 m-r-15">
+                    <select name="id_list" class="custom-select" style="min-width: 180px;">
+                        <option value="{{ $productList[0]->id }}"> {{ $productList[0]->name }}</option>
+                        @foreach ($splist as $k => $v)
+                            <option value="{{ $v->id }}"> {{ $v->name }}</option>
+                        @endforeach
+                    </select>
+                </div>
+            </div>
+        </div>
         </div>
 
         <div class="card-footer">

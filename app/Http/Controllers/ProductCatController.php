@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Models\ProductCat;
+use App\Models\Products;
 
 class ProductCatController extends Controller
 {
@@ -90,8 +91,13 @@ class ProductCatController extends Controller
      */
     public function edit(ProductCat $ProductCat)
     {
+
+        // Lấy tên danh mục cấp 1 với id sản phẩm
+        $productList = ProductCat::find($ProductCat->id)->product_list()->get();
+        
         return view('admin.product-cat.edit',[
         'each' => $ProductCat,
+        'productList' => $productList,
         ]);
     }
 
