@@ -27,8 +27,14 @@
                         </a>
                     </li>
                     <li class="">
-                        <a href="">
+                        <a href="{{  route('auth.redirect', 'facebook')  }}">
                             <i class="fa-brands fa-facebook"></i>
+                        </a>
+                    </li>
+
+                    <li class="">
+                        <a href="{{  route('auth.redirect', 'google')  }}">
+                            <i class="fa-brands fa-google"></i>
                         </a>
                     </li>
                     <li class="">

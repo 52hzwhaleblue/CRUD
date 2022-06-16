@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Products;
 use Illuminate\Http\Request;
-
+use DB;
 class ProductsController extends Controller
 {
     /**
@@ -107,11 +107,14 @@ class ProductsController extends Controller
      * @param  \App\Models\Products  $products
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,Product $Product)
+    public function update(Request $request,Products $Product)
     {
         $fix_status = implode(',', $request->get('status'));
 
         $countProduct = Products::all()->count();
+
+        $id_list = $request->id_list;
+        $id_cat = $request->id_cat;
 
         if($request->has('image')){
             $file= $request->image;
@@ -128,10 +131,11 @@ class ProductsController extends Controller
 
             $file_name = $data[0]->photo;
         }
+        
         $Product->update(
         [
-            'id_list' => $request->get('id_list'),
-            'id_cat' => $request->get('id_cat'),
+            'id_list' => $id_list,
+            'id_cat' => $id_cat, 
             'name' => $request->get('name'),
             'desc' => $request->get('desc'),
             'content' => $request->get('content'),
@@ -147,6 +151,7 @@ class ProductsController extends Controller
             '_method',
             ])
         );
+
 
         return redirect()->route("product.index")->with('message', 'Bạn đã cập nhật sản phẩm thành công!');
     }

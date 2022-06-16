@@ -116,8 +116,8 @@
                                     <input type="checkbox" name="status[]" value="hienthi"> Hiển thị
                                     <?php }?>
                                 </td>
-                                <td>{{ $v->id_list }}</td>
-                                <td>{{ $v->cat }}</td>
+                                {{-- <td>{{ $v->id_list }}</td>
+                                <td>{{ $v->cat }}</td> --}}
                                 
                                 <td>
                                     <a class="btn btn-info" href="{{ route('product.edit', $v->id) }}">

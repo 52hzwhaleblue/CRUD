@@ -5,7 +5,8 @@
 @section('content')
 @if(session()->has('message'))
     <div class="alert alert-success">
-        {{ session()->get('message') }}
+        <strong>{{ session()->get('message') }}</strong> 
+        
     </div>
 @endif
 <div class="app-title">
