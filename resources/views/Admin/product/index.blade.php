@@ -84,12 +84,6 @@
                                 </td>
 
                                 <td>{{ $v->name }}</td>
-                                <td>{{ $v->desc }}</td>
-                                <td>{{ $v->content }}</td>
-                                <td>{{ $v->regular_price }}</td>
-                                <td>{{ $v->discount }}</td>
-                                <td>{{ $v->sale_price }}</td>
-                                <td>{{ $v->stock }}</td>
                                 <td>
                                     {{-- {{ $v->status }} --}}
                                     {{-- Dành cho lọc sản phẩm theo status --}}
