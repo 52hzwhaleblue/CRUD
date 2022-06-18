@@ -3,11 +3,11 @@
     Sản phẩm cấp 1
 @endsection
 @section('content')
-@if(session()->has('message'))
-    <div class="alert alert-success">
-        {{ session()->get('message') }}
-    </div>
-@endif
+    @if (session()->has('message'))
+        <div class="alert alert-success">
+            {{ session()->get('message') }}
+        </div>
+    @endif
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <div class="app-title">
         <div>
@@ -67,27 +67,27 @@
                                 </div>
                             </th>
                             <th>STT</th>
+                            <th>Mã sản phẩm</th>
                             <th>Hình</th>
-                            <th>Tiêu đề</th>
-                            <th>Trạng thái</th>
                         </tr>
                     </thead>
                     <tbody id="locSanPhamTheoStatus">
                         @foreach ($data as $k => $v)
                             <tr>
                                 <td>
-                                    <div class="checkbox">
-                                        <input id="check-item-1" type="checkbox">
-                                        <label for="check-item-1" class="m-b-0"></label>
-                                    </div>
+                                                                        <input id="checkAll" type="checkbox">
+                                    <label for="checkAll" class="m-b-0"></label>
                                 </td>
+                                <td># {{ $v->id }} </td>
 
-                                
+                                <td># {{ $v->id_prod }} </td>
+
+
 
                                 <td>
                                     <img style="background:white"
-                                        src="{{ asset('backend/assets/img/products/' . $v->photo) }}"
-                                        class="rounded" alt="Ảnh" width="70" height="70">
+                                        src="{{ asset('backend/assets/img/products/' . $v->photo) }}" class="rounded"
+                                        alt="Ảnh" width="70" height="70">
                                 </td>
                                 </td>
 
@@ -146,12 +146,10 @@
     <script type="text/javascript">
         $('#productListStatus').on('change', function(e) {
             var productListStatus = e.target.value;
-            
-            $.get('product-list/locSanPhamTheoStatus/'+productListStatus,function(data){
+
+            $.get('product-list/locSanPhamTheoStatus/' + productListStatus, function(data) {
                 $('#loadSanphamTheoStatus').html(data);
             });
         });
     </script>
-
-    
 @endsection

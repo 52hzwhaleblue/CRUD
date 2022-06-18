@@ -48,7 +48,7 @@ class AppServiceProvider extends ServiceProvider
             ->get();
             View::share('splistnb', $splistnb);
         }
-        // dd($splistnb);
+
         if(Schema::hasTable('blogs')){
             $blogs = DB::table('blogs')
             ->select('*')
@@ -62,5 +62,14 @@ class AppServiceProvider extends ServiceProvider
             ->get();
             View::share('slides', $slides);
         }
+
+
+        // # Nổi bật
+        // if(Schema::hasTable('products')){
+        //     $prodnb = DB::table('products')
+        //     ->whereJsonContains('status', 'noibat,hienthi')
+        //     ->get();
+        //     View::share('prodnb', $prodnb);
+        // }
     }
 }
