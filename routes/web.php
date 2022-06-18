@@ -84,7 +84,9 @@ Route::get('admin/products',[ProductsController::class,'index'])->name("product.
 Route::get('admin/products/create',[ProductsController::class,'create'])->name("product.create");
 Route::post('admin/products/create',[ProductsController::class,'store'])->name("product.store");
 
-Route::post('admin/products/storeFileUpload',[ProductsController::class,'storeFileUpload'])->name("product.storeFileUpload");
+Route::get('admin/products/showuploadImages',[ProductsController::class,'showuploadImages'])->name("product.showuploadImages");
+
+Route::post('admin/products/uploadImages',[ProductsController::class,'uploadImages'])->name("product.uploadImages");
 
 Route::delete('admin/products/destroy/{products}',[ProductsController::class,'destroy'])->name("product.destroy");
 

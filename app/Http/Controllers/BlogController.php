@@ -97,36 +97,36 @@ class BlogController extends Controller
     {
         $fix_status = implode(',', $request->get('status'));
 
-        $countBlog = Blog::all()->count();
+        $countnews = time();
 
         if($request->has('image')){
-            $file= $request->image;
-            $ext = $request->image->extension();
-            $file_name = Date('Ymd').'-'.'blog'.$countBlog.'.'.$ext;
-            $file->move(public_path('backend/assets/img/products'),$file_name);
+        $file= $request->image;
+        $ext = $request->image->extension();
+        $file_name = Date('Ymd').'-'.'blog'.$countnews.'.'.$ext;
+        $file->move(public_path('backend/assets/img/products'),$file_name);
         }else{
-            $id = $request->input('id');
+        $id = $request->input('id');
 
-            $data = DB::table('blogs')
-            ->where('id',$id)
-            ->select('photo')
-            ->get();
-            $file_name = $data[0]->photo;
+        $data = DB::table('blogs')
+        ->where('id',$id)
+        ->select('photo')
+        ->get();
+        $file_name = $data[0]->photo;
         }
         $blog->update(
         [
-            'name' => $request->get('name'),
-            'desc' => $request->get('desc'),
-            'content' => $request->get('content'),
-            'photo' => $file_name,
-            'status'=> $fix_status,
+        'name' => $request->get('name'),
+        'desc' => $request->get('desc'),
+        'content' => $request->get('content'),
+        'photo' => $file_name,
+        'status'=> $fix_status,
         ],
         $request->except([
-            '_token',
-            '_method',
-            ])
+        '_token',
+        '_method',
+        ])
         );
-        return redirect()->route("blog.index")->with('message', 'Bạn đã cập nhật blog thành công!');
+        return redirect()->route("blog.index")->with('message', 'Bạn đã cập nhât tin tức thành công!');
     }
 
     /**

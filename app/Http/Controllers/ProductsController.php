@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 use App\Models\Products;
 use Illuminate\Http\Request;
 use DB;
+use Illuminate\Support\Facades\Validator;
 class ProductsController extends Controller
 {
     /**
@@ -21,6 +22,40 @@ class ProductsController extends Controller
         ]);
     }
 
+    public function showuploadImages(){
+           return view('admin.product.detail');
+    }
+
+    public function uploadImages(Request $request){
+        $data = array();
+        
+        $validator = Validator::make($request->all(),[
+            'file' => 'required|mimes:png,jpg,jpeg|max:2048',
+        ]);
+
+        // dd($validator->fails());
+        if($validator->fails()){
+            $data['success'] =0;
+            $data['error'] = $validator->errors()->first('file');
+        }
+        else{
+            $file = $request->file('file');
+            $filename = time().'_'.$file->getClientOriginalName();
+
+            #File upload location
+            $location = 'backend/assets/img/products';
+
+            # Uplaod Files
+            $file->move($location, $filename);
+
+            # Response
+            $data['success'] =1;
+            $data['message'] = 'Photo uploaded successfully ';
+
+        }
+
+        return response()->json($data);
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -107,10 +142,10 @@ class ProductsController extends Controller
      * @param  \App\Models\Products  $products
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,Products $Product)
+    public function update(Request $request,Products $Products)
     {
+        
         $fix_status = implode(',', $request->get('status'));
-
         $countProduct = Products::all()->count();
 
         $id_list = $request->id_list;
@@ -132,7 +167,7 @@ class ProductsController extends Controller
             $file_name = $data[0]->photo;
         }
         
-        $Product->update(
+        $Products->update(
         [
             'id_list' => $id_list,
             'id_cat' => $id_cat, 
@@ -151,7 +186,6 @@ class ProductsController extends Controller
             '_method',
             ])
         );
-
 
         return redirect()->route("product.index")->with('message', 'Bạn đã cập nhật sản phẩm thành công!');
     }

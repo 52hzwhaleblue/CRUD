@@ -4441,6 +4441,7 @@ padding: 20px;}
 
 .card-header:first-child {
   border-radius: calc(0.25rem - 1px) calc(0.25rem - 1px) 0 0;
+  border-bottom: 3px #007bff solid;
 }
 
 .card-header+.list-group .list-group-item:first-child {
