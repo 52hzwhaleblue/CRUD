@@ -65,75 +65,85 @@
 
     {{-- Thông tin sản phẩm --}}
     <div class="product-detail-content">
-        <div class="content-head">
-            <div class="wrap-content">
-                <h3 class="name-product"><a onclick="register()"> DESCRIPTION</a></h3>
-                <h3 class="name-product"><a onclick="login()"> ADDITIONAL INFORMATION</a></h3>
-                <h3 class="name-product"><a onclick="review()"> REVIEWS</a></h3>
-            </div>
-        </div>
         <div class="content-body">
             <div class="wrap-content">
-                <div class="content-desc">
-                    dasd
+                <div class="mytabs">
+                    <input type="radio" id="tabfree" name="mytabs" check="checked">
+                    <label for="tabfree">Description</label>
+                    <div class="tab">
+
+                        <p>Maecenas pulvinar ex a fermentum egestas. Curabitur tristique
+                            aliquam felis, a blandit nisl consequat quis. Pellentesque habitant
+                            morbi tristique senectus et netus et malesuada fames ac turpis egestas.
+                            Etiam porttitor purus elit, sit amet viverra orci pretium non. Sed libero
+                            lorem, eleifend at congue quis, semper eget mauris. Nunc ullamcorper cursus
+                            libero a luctus. Nunc urna neque, consectetur eget viverra pretium, tempor eu ex.
+                            Donec faucibus, dui at consectetur gravida, nisi diam varius metus, sit amet
+                            maximus orci eros nec felis. Ut nisi neque, condimentum id magna non, sollicitudin
+                            lobortis nibh. Etiam in fermentum felis, non venenatis augue. Donec quis ipsum tortor.
+                            Suspendisse tempor turpis vitae velit pharetra, ac varius ipsum pharetra. Ut at metus
+                            lobortis, porta tellus at, faucibus odio. Maecenas dictum quam vulputate lacus pharetra,
+                            et iaculis erat scelerisque. Nullam nec dui porta, ultricies leo nec, malesuada enim.
+                        </p>
+                    </div>
+
+                    <input type="radio" id="tabsilver" name="mytabs">
+                    <label for="tabsilver">Reviews (10)</label>
+                    <div class="tab">
+
+                        <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui
+                            blanditiis praesentium voluptatum deleniti atque corrupti quos
+                            dolores et quas molestias excepturi sint occaecati cupiditate
+                            non provident, similique sunt in culpa qui officia deserunt mollitia
+                            animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis
+                            est et expedita distinctio. Nam libero tempore, cum soluta nobis est
+                            eligendi optio cumque nihil impedit quo minus id quod maxime placeat
+                            facere possimus, omnis voluptas assumenda est, omnis dolor repellendus.
+                            Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus
+                            saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae.
+                            Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus
+                            maiores alias consequatur aut perferendis doloribus asperiores repellat.
+                        </p>
+                    </div>
                 </div>
             </div>
-            <div class="form-container">
-                <form id="LoginForm">
-                    <input type="text" placeholder="Username">
-                    <input type="password" placeholder="Password">
-                    <button type="submit" class="btn3">Login</button>
-                    <a href="">Forgot password</a>
-                </form>
-
-                <form id="RegForm">
-                    <input type="text" placeholder="Username">
-                    <input type="email" placeholder="Email">
-                    <input type="password" placeholder="Password">
-                    <button type="submit" class="btn3">Register</button>
-                </form>
-            </div>
         </div>
-    </div>
-    <script>
-        var LoginForm = document.getElementById("LoginForm");
-        var RegForm = document.getElementById("RegForm");
-        var Indicator = document.getElementById("Indicator");
+        <script>
+            var LoginForm = document.getElementById("LoginForm");
+            var RegForm = document.getElementById("RegForm");
 
-        function register() {
-            RegForm.style.transform = "translateX(0px)";
-            LoginForm.style.transform = "translateX(0px)";
-            Indicator.style.transform = "translateX(100px)";
-        }
-
-        function login() {
-            RegForm.style.transform = "translateX(300px)";
-            LoginForm.style.transform = "translateX(300px)";
-            Indicator.style.transform = "translateX(0px)";
-        }
-    </script>
-    <script>
-        $(document).ready(function() {
-            // $('#mirror').text($('#alice').val());
-
-            $('#alice').on('input', function() {
-                // $('#mirror').text($('#alice').val());
-                var soluong = $('#alice').val();
-
-                if (soluong > 4) {
-                    alert("Quá số lượng tồn kho!");
-                    reloadSoLuong();
-                }
-                $('.product-detail-quantity input').attr('value', soluong);
-            })
-
-            function reloadSoLuong() {
-                var soluong = 1;
-
-                // get a ref to your element and assign value
-                var elem = document.getElementById("alice");
-                elem.value = soluong;
+            function description() {
+                RegForm.style.transform = "translateX(0px)";
+                LoginForm.style.transform = "translateX(0px)";
             }
-        });
-    </script>
+
+            function information() {
+                RegForm.style.transform = "translateX(300px)";
+                LoginForm.style.transform = "translateX(300px)";
+            }
+        </script>
+        <script>
+            $(document).ready(function() {
+                // $('#mirror').text($('#alice').val());
+
+                $('#alice').on('input', function() {
+                    // $('#mirror').text($('#alice').val());
+                    var soluong = $('#alice').val();
+
+                    if (soluong > 4) {
+                        alert("Quá số lượng tồn kho!");
+                        reloadSoLuong();
+                    }
+                    $('.product-detail-quantity input').attr('value', soluong);
+                })
+
+                function reloadSoLuong() {
+                    var soluong = 1;
+
+                    // get a ref to your element and assign value
+                    var elem = document.getElementById("alice");
+                    elem.value = soluong;
+                }
+            });
+        </script>
 @endsection
