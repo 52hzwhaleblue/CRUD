@@ -61,27 +61,19 @@
     <!--Khu vực sản phẩm các loại -->
     <div class="product-wrapper">
         <div class="wrap-content">
-            <div class="title-main">
-                <h3>OUR BEST SELLER</h3>
-            </div>
+            <div class="title-main"> <h3>OUR BEST SELLER</h3> </div>
 
             <div class="producttype-wrapper">
-                <div class="producttype-title" data-type="noibat">
-                    <p>NOIBAT</p>
-                </div>
-                <div class="producttype-title">
-                    <p>best seller</p>
-                </div>
-                <div class="producttype-title">
-                    <p>sale off</p>
-                </div>
+                <div class="producttype-title" data-type="noibat"><p>NOIBAT</p> </div>
+                <div class="producttype-title"> <p>best seller</p></div>
+                <div class="producttype-title"> <p>sale off</p> </div>
             </div>
             <!-- product items -->
             <div class="product-items prodnb-items">
                 @foreach ($prod as $k => $v)
                     <div class="product-item">
                         <div class="product-img scale-img">
-                            <a href="">
+                            <a href="{{ route('user.product_detail', $v->id) }}">
                                 <img src="{{ asset('backend/assets/img/products/' . $v->photo) }}" alt="" />
                             </a>
 

@@ -68,68 +68,71 @@
         <div class="content-body">
             <div class="wrap-content">
                 <div class="mytabs">
-                    <input type="radio" id="tabfree" name="mytabs" check="checked">
-                    <label for="tabfree">Description</label>
+                    <input type="radio" id="tabfree" name="mytabs" checked="checked">
+                    <label for="tabfree">DESCRIPTION </label>
                     <div class="tab">
-
-                        <p>Maecenas pulvinar ex a fermentum egestas. Curabitur tristique
-                            aliquam felis, a blandit nisl consequat quis. Pellentesque habitant
-                            morbi tristique senectus et netus et malesuada fames ac turpis egestas.
-                            Etiam porttitor purus elit, sit amet viverra orci pretium non. Sed libero
-                            lorem, eleifend at congue quis, semper eget mauris. Nunc ullamcorper cursus
-                            libero a luctus. Nunc urna neque, consectetur eget viverra pretium, tempor eu ex.
-                            Donec faucibus, dui at consectetur gravida, nisi diam varius metus, sit amet
-                            maximus orci eros nec felis. Ut nisi neque, condimentum id magna non, sollicitudin
-                            lobortis nibh. Etiam in fermentum felis, non venenatis augue. Donec quis ipsum tortor.
-                            Suspendisse tempor turpis vitae velit pharetra, ac varius ipsum pharetra. Ut at metus
-                            lobortis, porta tellus at, faucibus odio. Maecenas dictum quam vulputate lacus pharetra,
-                            et iaculis erat scelerisque. Nullam nec dui porta, ultricies leo nec, malesuada enim.
-                        </p>
+                        <p>Maecenas pulvinar ex a fermentum egestas. Curabitur tristique aliquam felis, a blandit nisl
+                            consequat quis. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac
+                            turpis egestas. Etiam porttitor purus elit, sit amet viverra orci pretium non. Sed libero lorem,
+                            eleifend at congue quis, semper eget mauris. Nunc ullamcorper cursus libero a luctus. Nunc urna
+                            neque, consectetur eget viverra pretium, tempor eu ex. Donec faucibus, dui at consectetur
+                            gravida, nisi diam varius metus, sit amet maximus orci eros nec felis. Ut nisi neque,
+                            condimentum id magna non, sollicitudin lobortis nibh. Etiam in fermentum felis, non venenatis
+                            augue. Donec quis ipsum tortor. Suspendisse tempor turpis vitae velit pharetra, ac varius ipsum
+                            pharetra. Ut at metus lobortis, porta tellus at, faucibus odio. Maecenas dictum quam vulputate
+                            lacus pharetra, et iaculis erat scelerisque. Nullam nec dui porta, ultricies leo nec, malesuada
+                            enim.</p>
                     </div>
 
                     <input type="radio" id="tabsilver" name="mytabs">
-                    <label for="tabsilver">Reviews (10)</label>
+                    <label for="tabsilver">ADDITIONAL INFORMATION</label>
                     <div class="tab">
-
-                        <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui
-                            blanditiis praesentium voluptatum deleniti atque corrupti quos
-                            dolores et quas molestias excepturi sint occaecati cupiditate
-                            non provident, similique sunt in culpa qui officia deserunt mollitia
-                            animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis
-                            est et expedita distinctio. Nam libero tempore, cum soluta nobis est
-                            eligendi optio cumque nihil impedit quo minus id quod maxime placeat
-                            facere possimus, omnis voluptas assumenda est, omnis dolor repellendus.
-                            Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus
-                            saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae.
-                            Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus
-                            maiores alias consequatur aut perferendis doloribus asperiores repellat.
-                        </p>
+                        <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum
+                            deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non
+                            provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et
+                            dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum
+                            soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere
+                            possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et
+                            aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et
+                            molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis
+                            voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.</p>
                     </div>
+
+                    <input type="radio" id="tabgold" name="mytabs">
+                    <label for="tabgold">REVIEWS</label>
+                    <div class="tab">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
+                            labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                            laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
+                            voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+                    </div>
+
                 </div>
             </div>
         </div>
-        <script>
-            $(document).ready(function() {
+    </div>
+    <script>
+        $(document).ready(function() {
+            // $('#mirror').text($('#alice').val());
+
+            $('#alice').on('input', function() {
                 // $('#mirror').text($('#alice').val());
+                var soluong = $('#alice').val();
 
-                $('#alice').on('input', function() {
-                    // $('#mirror').text($('#alice').val());
-                    var soluong = $('#alice').val();
-
-                    if (soluong > 4) {
-                        alert("Quá số lượng tồn kho!");
-                        reloadSoLuong();
-                    }
-                    $('.product-detail-quantity input').attr('value', soluong);
-                })
-
-                function reloadSoLuong() {
-                    var soluong = 1;
-
-                    // get a ref to your element and assign value
-                    var elem = document.getElementById("alice");
-                    elem.value = soluong;
+                if (soluong > 4) {
+                    alert("Quá số lượng tồn kho!");
+                    reloadSoLuong();
                 }
-            });
-        </script>
-    @endsection
+                $('.product-detail-quantity input').attr('value', soluong);
+            })
+
+            function reloadSoLuong() {
+                var soluong = 1;
+
+                // get a ref to your element and assign value
+                var elem = document.getElementById("alice");
+                elem.value = soluong;
+            }
+        });
+    </script>
+@endsection

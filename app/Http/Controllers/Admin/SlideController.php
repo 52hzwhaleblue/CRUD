@@ -1,11 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
+
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
-use App\Models\Video;
+use App\Models\Slide;
 
-class VideoController extends Controller
+class SlideController extends Controller
 {
       /**
      * Display a listing of the resource.
@@ -14,9 +16,9 @@ class VideoController extends Controller
      */
     public function index()
     {
-            $video = Video::get();
-            return view('admin.video.index',[
-                'data' => $video,
+            $slide = Slide::get();
+            return view('admin.slide.index',[
+                'data' => $slide,
             ]);
     }
       /**
@@ -26,9 +28,9 @@ class VideoController extends Controller
      */
     public function create()
     {
-        return view('admin.video.create');
+        return view('admin.slide.create');
     }
-     /**
+    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -36,13 +38,23 @@ class VideoController extends Controller
      */
     public function store(Request $request)
     {
-        $video = new Video;
+        $countSlide = Slide::all()->count();
 
-        $video->name = $request->get('name');
-        $video->name = $request->get('link');
-        $video->save();
+        if($request->has('image')){
+            $file= $request->image;
+            $ext = $request->image->extension();
+            $file_name = Date('Ymd').'-'.'slide'.$countSlide.'.'.$ext;
+            $file->move(public_path('backend/assets/img/products'),$file_name);
+        }
 
-        return redirect()->route('video.index');
+        $slide = new Slide;
+
+        $slide->name = $request->get('name');
+        $slide->photo = $file_name;
+
+        $slide->save();
+
+        return redirect()->route('slide.index')->with('message', 'Bạn đã thêm slider thành công!');
     }
     /**
      * Display the specified resource.
@@ -61,10 +73,10 @@ class VideoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Video $Video)
+    public function edit(Slide $Slide)
     {
-        return view('admin.video.edit',[
-        'each' => $Video,
+        return view('admin.slide.edit',[
+        'each' => $Slide,
         ]);
     }
     /**
@@ -74,31 +86,28 @@ class VideoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,Video $Video)
+    public function update(Request $request,Slide $Slide)
     {
-        $countVideo = Video::all()->count();
+        $countSlide = Slide::all()->count();
 
         if($request->has('image')){
             $file= $request->image;
             $ext = $request->image->extension();
-            $file_name = Date('Ymd').'-'.'video'.$countVideo.'.'.$ext;
+            $file_name = Date('Ymd').'-'.'slide'.$countSlide.'.'.$ext;
             $file->move(public_path('backend/assets/img/products'),$file_name);
         }
 
-        $Video->update(
+        $Slide->update(
             [
                 'name' => $request->get('name'),
-                'desc' => $request->get('desc'),
-                'content' => $request->get('content'),
                 'photo' => $file_name,
-                'status'=> $fix_status,
             ],
             $request->except([
                 '_token',
                 '_method',
             ])
         );
-        return redirect()->route("video.index");
+        return redirect()->route("slide.index")->with('message', 'Bạn đã cập nhật slider thành công!');
     }
 
     /**
@@ -107,9 +116,9 @@ class VideoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Video $Video)
+    public function destroy(Slide $Slide)
     {
-        $Video->delete();
-        return redirect()->route('video.index');
+        $Slide->delete();
+        return redirect()->route('slide.index')->with('message', 'Bạn đã xóa slider thành công!');
     }
 }

@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-// use Illuminate\Support\Facades\Input;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Schema;
 use App\Http\Controllers\Alert;
 

@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Models\ProductDetails;
 use Illuminate\Http\Request;
 
@@ -28,6 +29,7 @@ class ProductDetailsController extends Controller
      */
     public function create($id_prod)
     {
+        
         return view('admin.product-detail.create',[
             'id_prod' => $id_prod,
         ]);

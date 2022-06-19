@@ -2025,9 +2025,10 @@ abc a .icon {
 }
 
 .content-body .wrap-content {
-    max-width: 1125px;
+    /* max-width: 1166px; */
     display: flex;
     justify-content: space-between;
+    padding: 0;
 }
 
 .mytabs {
