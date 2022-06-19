@@ -44,6 +44,7 @@ define('RESOURCES', './resources/');
     <script src="{{ asset('backend/ckeditor/ckeditor.js') }}"></script>
     <script type="text/javascript">
         CKEDITOR.replace('cke_content');
+  
     </script>
     {{-- <script src="/template/admin/plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->

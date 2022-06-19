@@ -9,12 +9,12 @@
     <div class="slideprod-wrapper">
         <div class="wrap-content">
             <div class="owl-product owl-carousel owl-theme">
-                @foreach ($splistnb as $k => $v)
+                @foreach ($prod_list as $k => $v)
                     <div class="slideprod-item">
                         <div class="slideprod-img">
                             <a href="">
-                                <img width="605" height="400" src="{{ asset('backend/assets/img/products/' . $v->photo) }}"
-                                    alt="" />
+                                <img width="605" height="400"
+                                    src="{{ asset('backend/assets/img/products/' . $v->photo) }}" alt="" />
                             </a>
                         </div>
                         <div class="slideprod-overlay">
@@ -66,8 +66,8 @@
             </div>
 
             <div class="producttype-wrapper">
-                <div class="producttype-title">
-                    <p>new arrivals</p>
+                <div class="producttype-title" data-type="noibat">
+                    <p>NOIBAT</p>
                 </div>
                 <div class="producttype-title">
                     <p>best seller</p>
@@ -77,33 +77,36 @@
                 </div>
             </div>
             <!-- product items -->
-            <div class="product-items">
-                <div class="product-item">
-                    <div class="product-img scale-img">
-                        <a href="">
-                            <img src="{{ asset('frontend/assets/img/1.png') }}" alt="" />
-                        </a>
+            <div class="product-items prodnb-items">
+                @foreach ($prod as $k => $v)
+                    <div class="product-item">
+                        <div class="product-img scale-img">
+                            <a href="">
+                                <img src="{{ asset('backend/assets/img/products/' . $v->photo) }}" alt="" />
+                            </a>
 
-                        <div class="product-modal">
-                            <div class="modal-cart">
-                                <i class="fa-solid fa-bag-shopping"></i>
-                            </div>
-                            <div class="modal-quickview">
-                                <i class="fa-solid fa-magnifying-glass"></i>
-                            </div>
-                            <div class="modal-wishlist">
-                                <i class="fa-solid fa-heart"></i>
+                            <div class="product-modal">
+                                <div class="modal-cart">
+                                    <i class="fa-solid fa-bag-shopping"></i>
+                                </div>
+                                <div class="modal-quickview">
+                                    <i class="fa-solid fa-magnifying-glass"></i>
+                                </div>
+                                <div class="modal-wishlist">
+                                    <i class="fa-solid fa-heart"></i>
+                                </div>
                             </div>
                         </div>
+                        <h3 class="name-product"><a href=""> {{ $v->name }} </a></h3>
+                        <div class="product-price">
+                            <span class="price-sale">{{ $v->regular_price }} <sup>đ</sup></span>
+                            <span class="price-current">{{ $v->sale_price }} <sup>đ</sup></span>
+                        </div>
                     </div>
-                    <h3 class="name-product"><a href=""> Organic tea </a></h3>
-                    <div class="product-price">
-                        <span class="price-sale">250.000 <sup>đ</sup></span>
-                        <span class="price-current">500.000 <sup>đ</sup></span>
-                    </div>
-                </div>
-
+                @endforeach
             </div>
+
+
         </div>
     </div>
 
@@ -217,8 +220,9 @@
                     <div class="blog-item">
                         <div class="blog-img">
                             <a href="">
-                                <img style="background:white" src="{{ asset('backend/assets/img/products/' . $v->photo) }}"
-                                    class="rounded" alt="{{ $v->photo }}" width="430" height="375">
+                                <img style="background:white"
+                                    src="{{ asset('backend/assets/img/products/' . $v->photo) }}" class="rounded"
+                                    alt="{{ $v->photo }}" width="430" height="375">
                             </a>
                             <div class="blog-time">
                                 <span class="blog-date">02</span>
@@ -255,7 +259,8 @@
             </div>
             <div class="newsletter-right">
                 <div class="newsletter-email">
-                    <form class="validation-newsletter" novalidate method="post" action="" enctype="multipart/form-data">
+                    <form class="validation-newsletter" novalidate method="post" action=""
+                        enctype="multipart/form-data">
                         <div class="newsletter-input">
                             <input type="email" class="form-border form-control text-sm" id="email-newsletter"
                                 name="dataNewsletter[email]" placeholder="Your email address...." required>
@@ -297,4 +302,29 @@
             </div>
         </div>
     </div>
+
+
+    <script type="text/javascript">
+        $(".producttype-title").click(function() {
+
+            var type = $(this).data("type");
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            $.ajax({
+                type: 'get',
+                url: '/laySanPhamNoiBat',
+                data: {
+                    type: type,
+                },
+                dataType: 'json',
+                success: function(data) {
+                    $(".prodnb-items").html(data);
+                }
+            });
+
+        })
+    </script>
 @endsection

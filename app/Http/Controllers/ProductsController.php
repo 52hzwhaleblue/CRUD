@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 
 use App\Models\Products;
+use App\Models\ProductDetails;
 use Illuminate\Http\Request;
 use DB;
 use Illuminate\Support\Facades\Validator;
@@ -22,8 +23,9 @@ class ProductsController extends Controller
         ]);
     }
 
+
     public function showuploadImages(){
-           return view('admin.product.detail');
+        return view('admin.product.detail');
     }
 
     public function uploadImages(Request $request){
@@ -33,7 +35,6 @@ class ProductsController extends Controller
             'file' => 'required|mimes:png,jpg,jpeg|max:2048',
         ]);
 
-        // dd($validator->fails());
         if($validator->fails()){
             $data['success'] =0;
             $data['error'] = $validator->errors()->first('file');
@@ -41,6 +42,7 @@ class ProductsController extends Controller
         else{
             $file = $request->file('file');
             $filename = time().'_'.$file->getClientOriginalName();
+
 
             #File upload location
             $location = 'backend/assets/img/products';
@@ -53,8 +55,13 @@ class ProductsController extends Controller
             $data['message'] = 'Photo uploaded successfully ';
 
         }
-
         return response()->json($data);
+
+        $ProductDetails = new ProductDetails;
+
+        $ProductDetails->id_prod = 5;
+        $ProductDetails->photo = $filename;
+        $ProductDetails->save();
     }
     /**
      * Show the form for creating a new resource.

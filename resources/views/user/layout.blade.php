@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- CSS Files -->
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/style.css') }}" />
 
@@ -20,7 +20,8 @@
 
     {{-- Kit Front awesome --}}
     <script src="https://kit.fontawesome.com/8548ee4b2e.js" crossorigin="anonymous"></script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <!-- Font Awesome CDN -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
         integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
@@ -40,13 +41,22 @@
     <script type="text/javascript" src="{{ asset('frontend/assets/js/OwlCarousel2-2.3.4/dist/owl.carousel.min.js') }}">
     </script>
 
+    {{-- Fotorama  --}}
+
+    <!-- Fotorama from CDNJS, 19 KB -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.js"></script>
+
     <title>@yield('title')</title>
 </head>
 
 <body>
     @include('user.partials.header')
 
-    @if ($com =="user.index")
+    @if ($com == 'user.index')
         @include('user.partials.slide')
     @endif
 
@@ -71,6 +81,7 @@
         });
 
         $(".owl-product").owlCarousel({
+            autoplayHoverPause: false,
             items: 3,
             loop: false,
             dots: true,

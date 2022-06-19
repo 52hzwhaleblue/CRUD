@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Product_details;
+use App\Models\ProductDetails;
 use Illuminate\Http\Request;
 
 class ProductDetailsController extends Controller
@@ -14,17 +14,23 @@ class ProductDetailsController extends Controller
      */
     public function index()
     {
-        //
+        $data= ProductDetails::get();
+        return view('admin.product-detail.index',[
+            'data' => $data,
+        ]);
     }
+
 
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id_prod)
     {
-        //
+        return view('admin.product-detail.create',[
+            'id_prod' => $id_prod,
+        ]);
     }
 
     /**
@@ -35,7 +41,24 @@ class ProductDetailsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $id_prod = $request->get('id_prod');
+
+
+        if($request->has('image')){
+            $file= $request->image;
+            $ext = $request->image->extension();
+            $file_name = Date('Ymd').'-'.'roducts-detail'.time().'.'.$ext;
+            $file->move(public_path('backend/assets/img/products'),$file_name);
+        }
+
+        $ProductDetails = new ProductDetails;
+
+        $ProductDetails->id_prod = $id_prod;
+        $ProductDetails->photo = $file_name;
+
+        $ProductDetails->save();
+
+        return redirect()->route('product_details.index')->with('message', 'Bạn đã thêm chi tiết sản phẩm thành công!');
     }
 
     /**

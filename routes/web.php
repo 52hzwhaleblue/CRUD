@@ -24,13 +24,16 @@ Route::get('/auth/callback/{provider}', [AuthController::class,'callback'])->nam
 
 /*User routes*/
 
-
-
 Route::get('/profile', function () {
     return view('user.profile.index');
 })->name('user.profile');
 
+# Lấy sản phẩm nổi bật
 Route::get('/',[HomeController::class,'index'])->name("user.index");
+
+Route::get('/laySanPhamNoiBat',[HomeController::class,'laySanPhamNoiBat'])->name("user.laySanPhamNoiBat");
+
+Route::post('/laySanPhamNoiBat',[HomeController::class,'laySanPhamNoiBat'])->name("user.laySanPhamNoiBat");
 
 
 Route::get('/shop', function () {
@@ -39,6 +42,10 @@ return view('user.product.shop');
 
 Route::get('/products', function () {
 return view('user.product.products');
+})->name('user.products');
+
+Route::get('/product-detail', function () {
+return view('user.product.detail');
 })->name('user.products');
 
 Route::get('admin', function () {
@@ -93,10 +100,12 @@ Route::delete('admin/products/destroy/{products}',[ProductsController::class,'de
 Route::get('admin/products/edit/{products}',[ProductsController::class,'edit'])->name("product.edit");
 Route::put('admin/products/edit/{products}',[ProductsController::class,'update'])->name("product.update");
 
+
+
 /* ProductDetails */
 Route::get('admin/product-details',[ProductDetailsController::class,'index'])->name("product_details.index");
 
-Route::get('admin/product-details/create',[ProductDetailsController::class,'create'])->name("product_details.create");
+Route::get('admin/product-details/create/{id}',[ProductDetailsController::class,'create'])->name("product_details.create");
 Route::post('admin/product-details/create',[ProductDetailsController::class,'store'])->name("product_details.store");
 
 Route::post('admin/product-details/storeFileUpload',[ProductDetailsController::class,'storeFileUpload'])->name("product_details.storeFileUpload");

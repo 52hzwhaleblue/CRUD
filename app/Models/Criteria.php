@@ -12,12 +12,5 @@ class Criteria extends Model
         'photo',
         'name',
         'desc',
-        'content',
-        'status',
-        'date_create',
-    ];
-
-    protected $casts = [
-        'status' => 'array',
     ];
 }

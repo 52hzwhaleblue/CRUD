@@ -148,40 +148,40 @@
                             </div>
                         </div>
                     </div>
+                    <h3><a  href="{{ route("product_details.create", $each->id) }}">Tạo chi tiết sản phẩm</a></h3>
                 </div>
             </div>
         </div>
     </form>
 
 
-                    <div class="card card-primary card-outline text-sm">
-                    <div class="card-header">
-                        <h5>Chi tiết ảnh sản phẩm</h5>
-                        <div class="card-body">
-                            <form enctype="multipart/form-data" class="dropzone"
-                                action="{{ route('product.uploadImages') }} ">
+    <div class="card card-primary card-outline text-sm">
+        <div class="card-header">
+            <h5>Chi tiết ảnh sản phẩm</h5>
+            <div class="card-body">
+                <form enctype="multipart/form-data" class="dropzone" action="{{ route('product.uploadImages') }} ">
 
-                                <script type="text/javascript">
-                                    var CSRF_TOKEN = document.querySelector('meta[name="csrf-token"]').getAttribute("content");
+                    <script type="text/javascript">
+                        var CSRF_TOKEN = document.querySelector('meta[name="csrf-token"]').getAttribute("content");
 
-                                    Dropzone.autoDiscover = false;
-                                    var myDropzone = new Dropzone(".dropzone", {
-                                        maxFilesize: 2,
-                                        acceptedFiles: ".jpeg,.jpg,.png"
-                                    });
+                        Dropzone.autoDiscover = false;
+                        var myDropzone = new Dropzone(".dropzone", {
+                            maxFilesize: 2,
+                            acceptedFiles: ".jpeg,.jpg,.png"
+                        });
 
-                                    myDropzone.on("sending", function(file, xhr, formData) {
-                                        formData.append("_token", CSRF_TOKEN);
-                                    });
+                        myDropzone.on("sending", function(file, xhr, formData) {
+                            formData.append("_token", CSRF_TOKEN);
+                        });
 
-                                    myDropzone.on("success", function(file, response) {
-                                        if (response.success == 0) {
-                                            alert(response.error);
-                                        }
-                                    });
-                                </script>
-                            </form>
-                        </div>
-                    </div>
-                </div>
+                        myDropzone.on("success", function(file, response) {
+                            if (response.success == 0) {
+                                alert(response.error);
+                            }
+                        });
+                    </script>
+                </form>
+            </div>
+        </div>
+    </div>
 @endsection

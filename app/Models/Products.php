@@ -36,4 +36,9 @@ class Products extends Model
     public function product_cat(){
         return $this->belongsTo(ProductCat::class, 'id_cat');
     } 
+
+    public function product_details()
+    {
+        return $this->hasMany(ProductDetails::class,'id');
+    }
 }
