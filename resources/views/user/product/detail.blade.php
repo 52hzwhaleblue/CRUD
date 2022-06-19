@@ -109,20 +109,6 @@
             </div>
         </div>
         <script>
-            var LoginForm = document.getElementById("LoginForm");
-            var RegForm = document.getElementById("RegForm");
-
-            function description() {
-                RegForm.style.transform = "translateX(0px)";
-                LoginForm.style.transform = "translateX(0px)";
-            }
-
-            function information() {
-                RegForm.style.transform = "translateX(300px)";
-                LoginForm.style.transform = "translateX(300px)";
-            }
-        </script>
-        <script>
             $(document).ready(function() {
                 // $('#mirror').text($('#alice').val());
 
@@ -146,4 +132,4 @@
                 }
             });
         </script>
-@endsection
+    @endsection

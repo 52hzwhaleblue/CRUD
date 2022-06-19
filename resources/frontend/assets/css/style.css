@@ -2008,23 +2008,54 @@ abc a .icon {
     text-align: center;
 }
 
-.prod-detail-buynow:hover{
+.prod-detail-buynow:hover {
     background: #738443;
-
 }
 
-.content-head{}
+.content-head {
+}
 
-.content-head .wrap-content{
+.content-head .wrap-content {
     max-width: 545px;
     display: flex;
     justify-content: space-between;
 }
 
-.content-body{}
+.content-body {
+}
 
-.content-body .wrap-content{
+.content-body .wrap-content {
     max-width: 1125px;
     display: flex;
     justify-content: space-between;
+}
+
+.mytabs {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 1000px;
+}
+.mytabs input[type="radio"] {
+    display: none;
+}
+.mytabs label {
+    padding: 25px;
+    background: #fff;
+    font-weight: bold;
+    color: #111;
+}
+.mytabs .tab {
+    width: 100%;
+    padding: 20px;
+    background: #fff;
+    order: 1;
+    display: none;
+}
+
+.mytabs input[type="radio"]:checked + label + .tab {
+    display: block;
+}
+.mytabs input[type="radio"]:checked + label {
+    background: #738443;
+    color: #fff;
 }
