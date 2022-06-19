@@ -18,8 +18,6 @@ class CreateCriterias extends Migration
             $table->string('photo');
             $table->string('name');
             $table->string('desc');
-            $table->string('content');
-            $table->json('status')->nullable();
             $table->timestamps(); 
         });
     }

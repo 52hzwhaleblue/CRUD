@@ -8,7 +8,7 @@
     <div class="product-detail-wrapper">
         <div class="wrap-content">
             <div class="product-detail-left">
-                <div class="fotorama" data-nav="thumbs">
+                <div class="fotorama" data-nav="thumbs" data-thumbwidth="98" data-thumbheight="98">
                     <img src="https://s.fotorama.io/1.jpg" />
                     <img src="https://s.fotorama.io/2.jpg" />
                     <img src="https://s.fotorama.io/2.jpg" />
@@ -23,7 +23,7 @@
             </div>
             <div class="product-detail-right">
                 <div class="row justify-content-between">
-                <h3 class="name-product"><a href="">Tea Plus</a> </h3>
+                    <h3 class="name-product"><a href="">Tea Plus</a> </h3>
 
                     <div class="wishlist-btn">
                         <div class="icon">
@@ -42,7 +42,98 @@
                     <span class="price-sale">120.000 <sup>đ</sup></span>
                     <span class="price-current">120.000<sup>đ</sup></span>
                 </div>
+                <p class="blog-desc">Things You Need To Know Using advanced edging technology and high-quality materials,
+                    our premium sunglasses have a luxurious look and feel with subtly curved lenses. These striking,
+                    sophisticated sunglasses offer timeless design updated with shiny gold metal accents at the temples for
+                    just a bit of bling. The wide frame...
+                </p>
+
+                <div class="prod-detail-btn">
+                    <input id="alice" type="number" step="any" value="1">
+                    <button>
+                        add to cart
+                    </button>
+                </div>
+
+                <div class="prod-detail-buynow">
+                    buy it now
+                </div>
+
             </div>
         </div>
     </div>
+
+    {{-- Thông tin sản phẩm --}}
+    <div class="product-detail-content">
+        <div class="content-head">
+            <div class="wrap-content">
+                <h3 class="name-product"><a onclick="register()"> DESCRIPTION</a></h3>
+                <h3 class="name-product"><a onclick="login()"> ADDITIONAL INFORMATION</a></h3>
+                <h3 class="name-product"><a onclick="review()"> REVIEWS</a></h3>
+            </div>
+        </div>
+        <div class="content-body">
+            <div class="wrap-content">
+                <div class="content-desc">
+                    dasd
+                </div>
+            </div>
+            <div class="form-container">
+                <form id="LoginForm">
+                    <input type="text" placeholder="Username">
+                    <input type="password" placeholder="Password">
+                    <button type="submit" class="btn3">Login</button>
+                    <a href="">Forgot password</a>
+                </form>
+
+                <form id="RegForm">
+                    <input type="text" placeholder="Username">
+                    <input type="email" placeholder="Email">
+                    <input type="password" placeholder="Password">
+                    <button type="submit" class="btn3">Register</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script>
+        var LoginForm = document.getElementById("LoginForm");
+        var RegForm = document.getElementById("RegForm");
+        var Indicator = document.getElementById("Indicator");
+
+        function register() {
+            RegForm.style.transform = "translateX(0px)";
+            LoginForm.style.transform = "translateX(0px)";
+            Indicator.style.transform = "translateX(100px)";
+        }
+
+        function login() {
+            RegForm.style.transform = "translateX(300px)";
+            LoginForm.style.transform = "translateX(300px)";
+            Indicator.style.transform = "translateX(0px)";
+        }
+    </script>
+    <script>
+        $(document).ready(function() {
+            // $('#mirror').text($('#alice').val());
+
+            $('#alice').on('input', function() {
+                // $('#mirror').text($('#alice').val());
+                var soluong = $('#alice').val();
+
+                if (soluong > 4) {
+                    alert("Quá số lượng tồn kho!");
+                    reloadSoLuong();
+                }
+                $('.product-detail-quantity input').attr('value', soluong);
+            })
+
+            function reloadSoLuong() {
+                var soluong = 1;
+
+                // get a ref to your element and assign value
+                var elem = document.getElementById("alice");
+                elem.value = soluong;
+            }
+        });
+    </script>
 @endsection

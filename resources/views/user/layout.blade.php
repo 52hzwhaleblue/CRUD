@@ -42,9 +42,6 @@
     </script>
 
     {{-- Fotorama  --}}
-    <!-- Fotorama -->
-    <!-- jQuery 1.8 or later, 33 KB -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
     <!-- Fotorama from CDNJS, 19 KB -->
     <link

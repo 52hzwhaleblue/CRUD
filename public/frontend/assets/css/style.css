@@ -22,6 +22,10 @@ body {
 }
 
 /* General */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    opacity: 1;
+}
 a {
     text-decoration: none;
 }
@@ -1856,14 +1860,13 @@ abc a .icon {
 }
 
 .product-detail-wrapper .wrap-content {
-    max-width: 1270px;
     display: flex;
     justify-content: space-between;
     padding: 80px 0;
 }
 
 .product-detail-left {
-    width: 53.1496062992%;
+    width: 51.149606%;
 }
 .product-detail-right {
     width: 40.157480315%;
@@ -1871,10 +1874,13 @@ abc a .icon {
 
 .product-detail-right .name-product {
     text-align: left;
+    padding-left: 13px;
 }
 
 .product-detail-right .product-price {
     display: block;
+    border-bottom: 1px #dedede solid;
+    padding-bottom: 30px;
 }
 .product-detail-right .product-price span {
     padding: 0;
@@ -1959,4 +1965,66 @@ abc a .icon {
     bottom: -6px;
     transform: translate(-50%) rotate(45deg);
     transition: 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.prod-detail-btn {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 25px;
+}
+
+.prod-detail-btn input {
+    width: 45px;
+    padding: 10px 0;
+    text-indent: calc(100% / 2.5);
+}
+
+.prod-detail-btn button {
+    width: 405px;
+    padding: 14px;
+    background: #738443;
+    font-size: 14px;
+    text-transform: uppercase;
+    color: #fff;
+    border: none;
+    font-family: "SofiaPro";
+}
+
+.prod-detail-btn button:hover {
+    background: #e96d00;
+    transition: 0.3s;
+}
+
+.prod-detail-buynow {
+    width: 305px;
+    padding: 14px;
+    background: #111;
+    font-size: 14px;
+    text-transform: uppercase;
+    color: #fff;
+    border: none;
+    font-family: "SofiaPro";
+    text-align: center;
+}
+
+.prod-detail-buynow:hover{
+    background: #738443;
+
+}
+
+.content-head{}
+
+.content-head .wrap-content{
+    max-width: 545px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.content-body{}
+
+.content-body .wrap-content{
+    max-width: 1125px;
+    display: flex;
+    justify-content: space-between;
 }
