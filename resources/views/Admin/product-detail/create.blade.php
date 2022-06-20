@@ -14,7 +14,7 @@
                     </div>
                     <div class="card-body">
                         <div class="form-group">
-                            <input hidden type="text" name="id_prod" value="{{ $id_prod }}" >
+                            <input  type="text" name="id_prod" value="{{ $id_prod }}" >
                         </div>
                     </div>
                 </div>

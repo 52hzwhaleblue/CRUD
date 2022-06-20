@@ -1,13 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-
+use App\Http\Controllers\Controller;
 use App\Models\Products;
 use App\Models\ProductDetails;
 use Illuminate\Http\Request;
 use DB;
 use Illuminate\Support\Facades\Validator;
+
 class ProductsController extends Controller
 {
     /**
