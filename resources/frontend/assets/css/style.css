@@ -1855,6 +1855,12 @@ abc a .icon {
     background-color: rgb(255, 255, 255);
 }
 
+/* Profile */
+
+.profile-wrapper .wrap-content {
+    display: flex;
+    justify-content: space-between;
+}
 /* Product Detail */
 .product-detail-wrappper {
 }
