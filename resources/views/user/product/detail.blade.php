@@ -10,6 +10,9 @@
             <div class="product-detail-left">
                 <div class="fotorama" data-nav="thumbs" data-thumbwidth="98" data-thumbheight="98">
                     <img src="{{ asset('backend/assets/img/products/' .  $data[0]->photo ) }}" />
+                    @foreach ($prod_details as $k => $v)
+                    <img src="{{ asset('backend/assets/img/products/' .  $v->photo ) }}" />
+                    @endforeach
                 </div>
             </div>
             <div class="product-detail-right">
@@ -33,8 +36,8 @@
                     <span class="price-sale">120.000 <sup>đ</sup></span>
                     <span class="price-current">120.000<sup>đ</sup></span>
                 </div>
-                <p class="blog-desc">{{ $data[0]->desc }}
-                </p>
+                <p class="blog-desc">{{ $data[0]->desc }}</p>
+                <p class="sltk" data-sltk="{{ $data[0]->stock }}">Sảm phẩm còn lại: {{ $data[0]->stock }}</p>
 
                 <div class="prod-detail-btn">
                     <input id="alice" type="number" step="any" value="1">
@@ -98,8 +101,9 @@
             $('#alice').on('input', function() {
                 // $('#mirror').text($('#alice').val());
                 var soluong = $('#alice').val();
+                var sltk = $('.sltk').data('sltk');
 
-                if (soluong > 4) {
+                if (soluong > sltk) {
                     alert("Quá số lượng tồn kho!");
                     reloadSoLuong();
                 }

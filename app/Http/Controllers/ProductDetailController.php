@@ -21,8 +21,12 @@ class ProductDetailController extends Controller
         ->where('id', $id)
         ->get();
 
+        $prod_details = DB::table('product_details')
+        ->where('id_prod', $id)
+        ->get();
         return view('user.product.detail',[
             'data' => $data,
+            'prod_details' => $prod_details,
         ]);
     }
 
