@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\ProductDetails;
+use Illuminate\Support\Facades\DB;
+
 
 class ProductDetailController extends Controller
 {
@@ -11,9 +14,16 @@ class ProductDetailController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($id)
     {
-        return view('user.product.detail');
+        // Lấy sản phẩm theo id
+        $data = DB::table('products')
+        ->where('id', $id)
+        ->get();
+
+        return view('user.product.detail',[
+            'data' => $data,
+        ]);
     }
 
     /**

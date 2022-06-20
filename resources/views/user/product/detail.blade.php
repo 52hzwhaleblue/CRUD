@@ -9,21 +9,12 @@
         <div class="wrap-content">
             <div class="product-detail-left">
                 <div class="fotorama" data-nav="thumbs" data-thumbwidth="98" data-thumbheight="98">
-                    <img src="https://s.fotorama.io/1.jpg" />
-                    <img src="https://s.fotorama.io/2.jpg" />
-                    <img src="https://s.fotorama.io/2.jpg" />
-                    <img src="https://s.fotorama.io/2.jpg" />
-                    <img src="https://s.fotorama.io/2.jpg" />
-                    <img src="https://s.fotorama.io/2.jpg" />
-                    <img src="https://s.fotorama.io/2.jpg" />
-                    <img src="https://s.fotorama.io/2.jpg" />
-                    <img src="https://s.fotorama.io/2.jpg" />
-                    <img src="https://s.fotorama.io/2.jpg" />
+                    <img src="{{ asset('backend/assets/img/products/' .  $data[0]->photo ) }}" />
                 </div>
             </div>
             <div class="product-detail-right">
                 <div class="row justify-content-between">
-                    <h3 class="name-product"><a href="">Tea Plus</a> </h3>
+                    <h3 class="name-product"><a href="">{{ $data[0]->name }}</a></h3> </h3>
 
                     <div class="wishlist-btn">
                         <div class="icon">
@@ -42,10 +33,7 @@
                     <span class="price-sale">120.000 <sup>đ</sup></span>
                     <span class="price-current">120.000<sup>đ</sup></span>
                 </div>
-                <p class="blog-desc">Things You Need To Know Using advanced edging technology and high-quality materials,
-                    our premium sunglasses have a luxurious look and feel with subtly curved lenses. These striking,
-                    sophisticated sunglasses offer timeless design updated with shiny gold metal accents at the temples for
-                    just a bit of bling. The wide frame...
+                <p class="blog-desc">{{ $data[0]->desc }}
                 </p>
 
                 <div class="prod-detail-btn">
@@ -87,15 +75,7 @@
                     <input type="radio" id="tabsilver" name="mytabs">
                     <label for="tabsilver">ADDITIONAL INFORMATION</label>
                     <div class="tab">
-                        <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum
-                            deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non
-                            provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et
-                            dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum
-                            soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere
-                            possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et
-                            aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et
-                            molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis
-                            voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.</p>
+                        <p>{{ $data[0]->content }}</p>
                     </div>
 
                     <input type="radio" id="tabgold" name="mytabs">
