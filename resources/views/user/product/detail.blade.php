@@ -9,15 +9,16 @@
         <div class="wrap-content">
             <div class="product-detail-left">
                 <div class="fotorama" data-nav="thumbs" data-thumbwidth="98" data-thumbheight="98">
-                    <img src="{{ asset('backend/assets/img/products/' .  $data[0]->photo ) }}" />
+                    <img src="{{ asset('backend/assets/img/products/' . $data[0]->photo) }}" />
                     @foreach ($prod_details as $k => $v)
-                    <img src="{{ asset('backend/assets/img/products/' .  $v->photo ) }}" />
+                        <img src="{{ asset('backend/assets/img/products/' . $v->photo) }}" />
                     @endforeach
                 </div>
             </div>
             <div class="product-detail-right">
                 <div class="row justify-content-between">
-                    <h3 class="name-product"><a href="">{{ $data[0]->name }}</a></h3> </h3>
+                    <h3 class="name-product"><a href="">{{ $data[0]->name }}</a></h3>
+                    </h3>
 
                     <div class="wishlist-btn">
                         <div class="icon">
@@ -41,13 +42,13 @@
 
                 <div class="prod-detail-btn">
                     <input id="alice" type="number" step="any" value="1">
-                    <button>
+                    <a href="{{ route('cart.addToCart') }}">
                         add to cart
-                    </button>
+                    </a>
                 </div>
 
                 <div class="prod-detail-buynow">
-                    buy it now
+                    <a href="{{ route('cart.buyNow') }}">buy iyt now</a>
                 </div>
 
             </div>
@@ -78,7 +79,10 @@
                     <input type="radio" id="tabsilver" name="mytabs">
                     <label for="tabsilver">ADDITIONAL INFORMATION</label>
                     <div class="tab">
-                        <p>{{ $data[0]->content }}</p>
+                        <?php
+                        $str = $data[0]->content;
+                        echo htmlspecialchars_decode($str);
+                        ?>
                     </div>
 
                     <input type="radio" id="tabgold" name="mytabs">

@@ -4,7 +4,8 @@
         <div class="header-left">
             <div class="logo">
                 <a href="{{ route('user.index') }}">
-                    <img src="https://cdn.shopify.com/s/files/1/0563/5827/3071/files/logo.png?v=1646210955" alt="" />
+                    <img src="https://cdn.shopify.com/s/files/1/0563/5827/3071/files/logo.png?v=1646210955"
+                        alt="" />
                 </a>
             </div>
         </div>
@@ -52,8 +53,12 @@
             <div class="cart">
                 <i class="fa-solid fa-bag-shopping"></i>
             </div>
+            @auth
+                <div onclick="location.href='http://127.0.0.1:8000/profile'" class="header-user d-flex justify-content-center">
+                    <img src="{{ auth()->user()->avatar }}" alt="profile-pic"
+                        style="border-radius:50%; width:50px;height:50px;">
+                </div>
+            @endauth
         </div>
-
-
     </div>
 </div>

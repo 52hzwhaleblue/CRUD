@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductDetailController;
+use App\Http\Controllers\CartController;
 
 # ====================Admin Controllers
 use App\Http\Controllers\Admin\ProductListController;
@@ -22,7 +23,7 @@ use App\Http\Controllers\Admin\VideoController;
 Route::group(['middleware' => ['web']], function () {
     Route::get('login',[AuthController::class,'login'])->name("user.login");
     Route::get('register',[AuthController::class,'register'])->name("user.register");
-    Route::post('registering',[AuthController::class,'registering'])->name("user.registering");
+    Route::post('register',[AuthController::class,'registering'])->name("user.registering");
 
     Route::get('/auth/redirect/{provider}', function ($provider) {
     return Socialite::driver($provider)->redirect();
@@ -51,6 +52,9 @@ Route::post('/laySanPhamNoiBat',[HomeController::class,'laySanPhamNoiBat'])->nam
 # ===============Chi tiết sản phẩm
 Route::get('/product-detail/{id}',[ProductDetailController::class,'index'])->name("user.product_detail");
 
+# ===============Giỏ hàng
+Route::get('/addToCart',[CartController::class,'addToCart'])->name("cart.addToCart");
+Route::get('/buyNow',[CartController::class,'buyNow'])->name("cart.buyNow");
 
 
 
