@@ -183,6 +183,9 @@ span.price-current {
     justify-content: end;
     align-items: center;
 }
+.header-user{
+    cursor: pointer;
+}
 /* logo */
 
 .logo img {
@@ -1986,18 +1989,19 @@ abc a .icon {
     text-indent: calc(100% / 2.5);
 }
 
-.prod-detail-btn button {
+.prod-detail-btn a {
     width: 405px;
     padding: 14px;
     background: #738443;
     font-size: 14px;
     text-transform: uppercase;
-    color: #fff;
+    color: #fff !important;
     border: none;
+    text-align: center;
     font-family: "SofiaPro";
 }
 
-.prod-detail-btn button:hover {
+.prod-detail-btn a:hover {
     background: #e96d00;
     transition: 0.3s;
 }
@@ -2006,14 +2010,23 @@ abc a .icon {
     width: 305px;
     padding: 14px;
     background: #111;
-    font-size: 14px;
     text-transform: uppercase;
     color: #fff;
     border: none;
-    font-family: "SofiaPro";
+    
     text-align: center;
 }
+.prod-detail-buynow a{
+    color: #fff;
+    font-family: "SofiaPro";
+    font-size: 14px;
 
+}
+.prod-detail-buynow:hover a{
+    text-decoration: none;
+    color: #fff;
+
+}
 .prod-detail-buynow:hover {
     background: #738443;
 }
@@ -2066,3 +2079,50 @@ abc a .icon {
     background: #738443;
     color: #fff;
 }
+
+/* Giỏ hàng */
+.cart-wrapper{
+    background: #f5f5fa;
+}
+
+.cart-wrapper .wrap-content{
+    display: flex;
+    justify-content: space-between;
+    padding: 60px 0;
+}
+
+.cart-right{
+width: 79.1666666667%;
+}
+
+.cart-right .mytabs label {
+    background: transparent;
+}
+.cart-right .mytabs input[type="radio"]:checked + label {
+    color: #738443;
+    background-color: unset;
+    border-bottom: 1px #111 solid;
+}
+
+.cart-search {
+    position: relative;
+}
+
+.cart-search i{
+    position: absolute;
+    top: 33%;
+    left: 15px;
+}
+input.cart-input {
+    transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s, -webkit-box-shadow 0.15s ease-in-out 0s;
+    height: 36px;
+    width: 100%;
+    border-radius: 4px;
+    padding: 10px 12px;
+    line-height: 20px;
+    outline: none;
+    flex: 1 1 0%;
+    border: 1px solid rgb(196, 196, 207);
+    text-indent: 30px;
+}
+
