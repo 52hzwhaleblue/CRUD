@@ -1862,6 +1862,7 @@ abc a .icon {
 
 .profile-wrapper .wrap-content {
     display: flex;
+    padding: 30px 15px;
     justify-content: space-between;
 }
 /* Product Detail */
@@ -1989,7 +1990,7 @@ abc a .icon {
     text-indent: calc(100% / 2.5);
 }
 
-.prod-detail-btn a {
+.prod-detail-btn button {
     width: 405px;
     padding: 14px;
     background: #738443;
@@ -2001,9 +2002,11 @@ abc a .icon {
     font-family: "SofiaPro";
 }
 
-.prod-detail-btn a:hover {
+.prod-detail-btn button:hover {
     background: #e96d00;
     transition: 0.3s;
+    text-decoration: none;
+    
 }
 
 .prod-detail-buynow {

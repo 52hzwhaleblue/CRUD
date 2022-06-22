@@ -51,7 +51,8 @@
                 <a href="{{ route('user.login') }}"> <i class="fa-solid fa-user"></i></a>
             </div>
             <div class="cart">
-                <i class="fa-solid fa-bag-shopping"></i>
+                <a href="{{ route('user.login') }}"><i class="fa-solid fa-bag-shopping"></i></a>
+                
             </div>
             @auth
                 <div onclick="location.href='http://127.0.0.1:8000/profile'" class="header-user d-flex justify-content-center">

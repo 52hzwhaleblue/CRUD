@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductDetailController;
-use App\Http\Controllers\CartController;
+use App\Http\Controllers\OrderController;
 
 # ====================Admin Controllers
 use App\Http\Controllers\Admin\ProductListController;
@@ -53,8 +53,8 @@ Route::post('/laySanPhamNoiBat',[HomeController::class,'laySanPhamNoiBat'])->nam
 Route::get('/product-detail/{id}',[ProductDetailController::class,'index'])->name("user.product_detail");
 
 # ===============Giỏ hàng
-Route::get('/addToCart',[CartController::class,'addToCart'])->name("cart.addToCart");
-Route::get('/buyNow',[CartController::class,'buyNow'])->name("cart.buyNow");
+Route::get('/cart',[OrderController::class,'index'])->name("cart.index");
+Route::post('/addToCart',[OrderController::class,'addToCart'])->name("cart.addToCart");
 
 
 
