@@ -13,37 +13,41 @@ Thông tin
         <div class="profile-mid">
             <span class="info-title">Thông tin cá nhân</span>
             <from>
-
                 <div class="form-avatar">
                     <div class="iRBxWb">
-                        <div>
-                            <div class="avatar-view">
-                                <ing src="images/avatar.png">
-                                    <div class="edit">
-                                        <img src="images/edit.png">
-                                    </div>
-                            </div>
+                        <div onclick="location.href='http://127.0.0.1:8000/profile'"
+                            class="header-user d-flex justify-content-center">
+                            <img src="{{ auth()->user()->avatar }}" alt="profile-pic"
+                                style="border-radius:50%; width:50px;height:50px;">
                         </div>
                     </div>
                 </div>
                 <div class="form-name">
-                    <div class="">
-                        <label class="input-label">Họ & Tên</label>
+                    <div class="mb-3">
+                        <label class="input-label">UserID</label>
                         <div>
-                            <div class="hisWEc">
-                                <input class="input " type="search">
+                            <div class="hisWEc profile-id" data-userid="{{ auth()->user()->id }}">
+                                <input class="input " type="text" value="{{ auth()->user()->id }}" disabled>
                             </div>
                         </div>
                     </div>
-                    <div class="">
-                        <label class="input-label">Nick name</label>
+                    <div class="profile-name" data-username="{{ auth()->user()->name }}">
+                        <label class="input-label">Name</label>
                         <div>
                             <div class="hisWEc">
-                                <input class="input " type="search">
+                                <input class="input " type="text" value="{{ auth()->user()->name }}" disabled>
                             </div>
                         </div>
                     </div>
-                    <div class="">
+                    <div class="profile-email" data-useremail="{{ auth()->user()->email }}">
+                        <label class="input-label">Email</label>
+                        <div>
+                            <div class="hisWEc">
+                                <input class="input " type="text" value="{{ auth()->user()->email }}" disabled>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-3">
                         <label class="input-label">Ngày sinh</label>
                         <div class="bvIJNZ">
                             <select name="day">
@@ -102,7 +106,7 @@ Thông tin
                             </select>
                         </div>
                     </div>
-                    <div class="">
+                    <div class="mb-3">
                         <label class="input-label">Giới tính</label>
                         <label class="eQckrx">
                             <input type="radio" name="gender" value="male">
@@ -117,7 +121,7 @@ Thông tin
                             <span class="label">Khác</span>
                         </label>
                     </div>
-                    <div class="">
+                    <div class="mb-3">
                         <label class="input-label">Quốc tịch</label>
                         <div>
                             <div class="hisWEc">
@@ -132,9 +136,9 @@ Thông tin
                             </div>
                         </div>
                     </div>
-                    <div class="">
+                    <div class="mb-3">
                         <label class="input-label">&nbsp;</label>
-                        <button type="submit" class="cqEaiM btn-submit">Lưu và thay
+                        <button type="submit" class="cqEaiM btn-submit LTD">Lưu và thay
                             đổi</button>
                     </div>
                 </div>
@@ -201,4 +205,32 @@ Thông tin
 
         </div>
     </div>
+    <script type="text/javascript">
+        $(document).ready(function() {
+                // Thêm vào giỏ hàng
+                $(".LTD").click(function() {
+            
+                    var id_user = $('.profile-id').data('userid');
+                    var email = $('.profile-email').data('useremail');
+                    var fullname = $('.profile-name').data('username');
+                    alert(fullname);
+                    $.ajaxSetup({
+                        headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        }
+                    });
+                    $.ajax({
+                        type: 'post',
+                        url: '/addToCart',
+                        data: {
+                            id_user: id_user,
+                            email: email,
+                            fullname: fullname,
+                        },
+                    dataType: 'json',
+                    });
+    
+                    })
+            });
+    </script>
     @endsection
