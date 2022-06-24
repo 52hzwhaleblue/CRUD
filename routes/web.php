@@ -6,6 +6,8 @@ use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductDetailController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\CartController;
+use App\Http\Controllers\PaymentController;
 
 # ====================Admin Controllers
 use App\Http\Controllers\Admin\ProductListController;
@@ -17,6 +19,7 @@ use App\Http\Controllers\Admin\CriteriaController;
 use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\SlideController;
 use App\Http\Controllers\Admin\VideoController;
+use App\Http\Controllers\Admin\OrderManagement;
 
 # ========================================User Routes
 # ===============Auth
@@ -52,9 +55,16 @@ Route::post('/laySanPhamNoiBat',[HomeController::class,'laySanPhamNoiBat'])->nam
 # ===============Chi tiết sản phẩm
 Route::get('/product-detail/{id}',[ProductDetailController::class,'index'])->name("user.product_detail");
 
+# ===============Đơn hàng
+Route::get('/order',[OrderController::class,'index'])->name("order.index");
+Route::post('/order',[OrderController::class,'store'])->name("order.store");
+
 # ===============Giỏ hàng
-Route::get('/cart',[OrderController::class,'index'])->name("cart.index");
-Route::post('/addToCart',[OrderController::class,'addToCart'])->name("cart.addToCart");
+Route::get('/cart',[CartController::class,'index'])->name("checkout.cart");
+Route::post('/cart',[CartController::class,'store'])->name("checkout.cart.store");
+
+# ===============Thanh toán
+Route::get('/payment',[PaymentController::class,'index'])->name("checkout.payment");
 
 
 
@@ -65,6 +75,12 @@ Route::post('/addToCart',[OrderController::class,'addToCart'])->name("cart.addTo
 Route::get('admin', function () {
     return view('admin.dashboard');
 });
+# ===============Quản lý đơn hàng
+Route::get('admin/order',[OrderManagement::class,'index'])->name("ordermanagement.index");
+
+Route::get('admin/order/edit/{order}',[OrderManagement::class,'edit'])->name("ordermanagement.edit");
+Route::put('admin/order/edit/{order}',[OrderManagement::class,'update'])->name("ordermanagement.update");
+
 /* Product List */
 Route::get('admin/product-list',[ProductListController::class,'index'])->name("product_list.index");
 

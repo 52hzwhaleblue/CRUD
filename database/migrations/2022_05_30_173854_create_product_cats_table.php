@@ -26,7 +26,7 @@ class CreateProductCatsTable extends Migration
             $table->string('name');
             $table->string('desc');
             $table->string('content');
-            $table->json('stat us')->nullable();
+            $table->json('status')->nullable();
             $table->timestamps();
         });
     }

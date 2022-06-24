@@ -115,6 +115,7 @@ class ProductListController extends Controller
      */
     public function update(Request $request,ProductList $productList)
     {
+        // dd($productList);
         $fix_status = implode(',', $request->get('status'));
 
         $countproductList = ProductList::all()->count();

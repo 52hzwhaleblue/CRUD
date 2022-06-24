@@ -51,7 +51,7 @@
                 <a href="{{ route('user.login') }}"> <i class="fa-solid fa-user"></i></a>
             </div>
             <div class="cart">
-                <a href="{{ route('user.login') }}"><i class="fa-solid fa-bag-shopping"></i></a>
+                <a href="{{ route('checkout.cart') }}"><i class="fa-solid fa-bag-shopping"></i></a>
                 
             </div>
             @auth

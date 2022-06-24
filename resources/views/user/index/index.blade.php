@@ -66,6 +66,9 @@ Trang chủ
         </div>
 
         <div class="producttype-wrapper">
+            <div class="producttype-title" data-type="tatca">
+                <p>TATCA</p>
+            </div>
             <div class="producttype-title" data-type="noibat">
                 <p>NOIBAT</p>
             </div>
@@ -306,6 +309,7 @@ Trang chủ
     $(".producttype-title").click(function() {
 
             var type = $(this).data("type");
+            
             $.ajaxSetup({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')

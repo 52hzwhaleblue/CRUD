@@ -38,7 +38,7 @@ class AuthController extends Controller
 
             Auth::login($user);
         }
-
+        // return redirect()->route('user.product_detail', ['id' => 6]);
         return redirect()->route('user.index');
     }
 

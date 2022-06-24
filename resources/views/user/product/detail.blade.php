@@ -39,7 +39,7 @@ Chi Tiết Sản Phẩm
             <p class="blog-desc">{{ $data[0]->desc }}</p>
             <p class="sltk" data-sltk="{{ $data[0]->stock }}">Sảm phẩm còn lại: {{ $data[0]->stock }}</p>
 
-            <form action="{{ route('cart.addToCart') }}" method="post">
+            <form action="{{ route('checkout.cart.store') }}" method="post">
                 @csrf
                 <div class="prod-detail-btn ">
                     <input class="product-detail-quantity" id="alice" type="number" name="quantity" value="1">
@@ -70,17 +70,9 @@ Chi Tiết Sản Phẩm
                 <input type="radio" id="tabfree" name="mytabs" checked="checked">
                 <label for="tabfree">DESCRIPTION </label>
                 <div class="tab">
-                    <p>Maecenas pulvinar ex a fermentum egestas. Curabitur tristique aliquam felis, a blandit nisl
-                        consequat quis. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac
-                        turpis egestas. Etiam porttitor purus elit, sit amet viverra orci pretium non. Sed libero lorem,
-                        eleifend at congue quis, semper eget mauris. Nunc ullamcorper cursus libero a luctus. Nunc urna
-                        neque, consectetur eget viverra pretium, tempor eu ex. Donec faucibus, dui at consectetur
-                        gravida, nisi diam varius metus, sit amet maximus orci eros nec felis. Ut nisi neque,
-                        condimentum id magna non, sollicitudin lobortis nibh. Etiam in fermentum felis, non venenatis
-                        augue. Donec quis ipsum tortor. Suspendisse tempor turpis vitae velit pharetra, ac varius ipsum
-                        pharetra. Ut at metus lobortis, porta tellus at, faucibus odio. Maecenas dictum quam vulputate
-                        lacus pharetra, et iaculis erat scelerisque. Nullam nec dui porta, ultricies leo nec, malesuada
-                        enim.</p>
+                    <p>
+                        {{ $data[0]->desc }}
+                    </p>
                 </div>
 
                 <input type="radio" id="tabsilver" name="mytabs">
