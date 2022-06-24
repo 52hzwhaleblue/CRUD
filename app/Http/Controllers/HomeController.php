@@ -25,7 +25,7 @@ class HomeController extends Controller
             'prod' => $prod,
         ]);
     }
-    public function laySanPhamNoiBat()
+    public function laySanPhamNoiBat(Request $request)
     {
         $prodnb = DB::table('products')
         ->whereJsonContains('status', 'noibat')

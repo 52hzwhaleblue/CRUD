@@ -18,7 +18,7 @@ Thông tin
                         <div onclick="location.href='http://127.0.0.1:8000/profile'"
                             class="header-user d-flex justify-content-center">
                             <img src="{{ auth()->user()->avatar }}" alt="profile-pic"
-                                style="border-radius:50%; width:50px;height:50px;">
+                                style="border-radius:50%; width:100px;height:100px;">
                         </div>
                     </div>
                 </div>

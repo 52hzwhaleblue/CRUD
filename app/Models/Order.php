@@ -19,4 +19,9 @@ class Order extends Model
         'id_order_status',
         'id_payment_method',
     ];
+
+    public function order_details()
+    {
+        return $this->hasMany(OrderDetails::class,'id');
+    }
 }

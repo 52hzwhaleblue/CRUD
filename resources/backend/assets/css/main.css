@@ -13729,7 +13729,7 @@ align-items: center;}
 }
 
 .widget-small.primary.coloured-icon .icon {
-  background-color: #009688;
+  background-color: #007bff!important;
   color: #fff;
 }
 
@@ -13757,7 +13757,7 @@ align-items: center;}
 }
 
 .widget-small.warning.coloured-icon .icon {
-  background-color: #ffc107;
+  background-color: #28a745!important;
   color: #fff;
 }
 
