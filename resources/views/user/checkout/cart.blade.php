@@ -8,6 +8,7 @@ Giỏ hàng
 <div class="cart-wrapper">
     <div class="wrap-content">
         <div class="cart-left">
+            <h4>giỏ hàng</h4>
             <div class="table-responsive">
                 <table class="table table-hover e-commerce-table">
                     <thead>
@@ -17,7 +18,6 @@ Giỏ hàng
                                     <input type="checkbox" name="">
                                     <p class="mb-0 pl-3">Tất cả</p>
                                 </div>
-
                             </th>
                             <th>Đơn giá</th>
                             <th>Số lượng</th>
@@ -51,7 +51,7 @@ Giỏ hàng
 
                             <td>
                                 <input class="product-detail-quantity" id="alice" type="number" name="quantity"
-                                    value="{{ $v->quantity }}">
+                                    value="{{ $v->quantity }}" min="0">
                             </td>
                             <td>
                                 <span class="temp-price">
@@ -85,38 +85,44 @@ Giỏ hàng
                     </p>
                 </div>
 
-                <div class="tamtinh-wrapper">
-                    <div class="tamtinh-title d-flex justify-content-between">
-                        <span>Tạm tính</span>
-                        <span class="tamtinh-price">000.000 đ</span>
-                    </div>
-                </div>
                 <div class="tongtien-wrapper">
                     <div class="tongtien-title d-flex justify-content-between">
                         <span>Tổng tiền</span>
                         <span class="tongtien-price">000.000 đ</span>
                     </div>
                 </div>
-                <form action="{{ route('order.store') }}" method="post">
-                    @csrf
-                    <div class="muahang-btn ">
-                        <input name="id_prod" type="text" value="{{ $v->id }}" hidden>
-                        <input name="photo" type="text" value="{{ $v->photo }}" hidden>
-                        <input name="name" type="text" value="{{ $v->name }}" hidden>
-                        <input name="regular_price" type="text" value="{{ $v->regular_price }}" hidden>
-                        <input name="sale_price" type="text" value="{{ $v->sale_price }}" hidden>
-                        <input name="quantity" type="text" value="{{ $v->quantity }}" hidden>
-                        <input name="temp_price" type="text" value="{{ $v->temp_price }}" hidden>
-
-
-                        <button type="submit">mua hàng</button>
-                    </div>
-                </form>
+                <div class="muahang-btn">
+                    <a href="{{ route('checkout.payment') }}">Mua hàng</a>
+                </div>
             </div>
         </div>
     </div>
 </div>
+<script>
+    $(document).ready(function() {
+            // $('#mirror').text($('#alice').val());
 
+            $('#alice').on('input', function() {
+                // $('#mirror').text($('#alice').val());
+                var soluong = $('#alice').val();
+                var sltk = $('.sltk').data('sltk');
+
+                if (soluong > sltk) {
+                    alert("Quá số lượng tồn kho!");
+                    reloadSoLuong();
+                }
+                $('.product-detail-quantity').attr('value', soluong);
+            })
+
+            function reloadSoLuong() {
+                var soluong = 1;
+
+                // get a ref to your element and assign value
+                var elem = document.getElementById("alice");
+                elem.value = soluong;
+            }
+        });
+</script>
 <script type="text/javascript">
     $(document).ready(function() {
         // Lấy đơn giá  khi click từng checkbox
@@ -127,40 +133,6 @@ Giỏ hàng
             $('.tamtinh-wrapper').find('.tamtinh-price').text(format_temp_price);
             $('.tongtien-wrapper').find('.tongtien-price').text(format_temp_price);
         });
-
-        // // Đặt hàng
-        // $(document).ready(function() {
-        //     $(".muahang-btn").click(function(){
-                
-        //         var id_prod = 
-        //     $.ajaxSetup({
-        //         headers: {
-        //             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        //         }
-        //     });
-        //     $.ajax({
-        //         type: 'POST',
-        //         url: '/addToOrder',
-        //         data: {
-        //             'id_prod': 6,
-        //             'photo': "sdasd",
-        //             'name': "name",
-        //             'regular_price': "regular_price",
-        //             'sale_price': "sale_price",
-        //             'quantity': "quantity",
-        //             'temp_price': "temp_price",
-        //         },
-        //         datatype: 'JSON',
-        //         success: function (response) {
-        //             alert(response);
-        //         },
-        //         error: function (response) {
-                
-        //         }
-        //     });
-            
-        //     });
-        // });
     });
 </script>
 @endsection

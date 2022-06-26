@@ -52,6 +52,10 @@ Route::get('/profile', function () {
 Route::get('/laySanPhamNoiBat',[HomeController::class,'laySanPhamNoiBat'])->name("user.laySanPhamNoiBat");
 Route::post('/laySanPhamNoiBat',[HomeController::class,'laySanPhamNoiBat'])->name("user.laySanPhamNoiBat");
 
+# ===============Lấy popup sản phẩm chi tiết
+Route::get('/popup-product',[HomeController::class,'popup_product'])->name("user.popup_product");
+Route::post('/popup-product',[HomeController::class,'popup_product'])->name("user.popup_product");
+
 # ===============Chi tiết sản phẩm
 Route::get('/product-detail/{id}',[ProductDetailController::class,'index'])->name("user.product_detail");
 
@@ -65,6 +69,10 @@ Route::post('/cart',[CartController::class,'store'])->name("checkout.cart.store"
 
 # ===============Thanh toán
 Route::get('/payment',[PaymentController::class,'index'])->name("checkout.payment");
+
+# ===============Cổng thanh toán
+Route::post('/momo_payment',[PaymentController::class,'momo_payment'])->name("momo_payment");
+
 
 
 

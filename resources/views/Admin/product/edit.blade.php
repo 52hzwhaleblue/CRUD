@@ -134,7 +134,7 @@
 
                 <div class="card card-primary card-outline text-sm">
                     <div class="card-header">
-                        <h5>Ảnh sản phẩm</h5>
+                        <h4>Ảnh sản phẩm</h4>
 
                         <div style=" width: 60%; margin: auto;" class="card-image">
                             <img style="background:white;"

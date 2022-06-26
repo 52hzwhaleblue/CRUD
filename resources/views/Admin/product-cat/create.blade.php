@@ -1,25 +1,23 @@
 @extends('admin.layout')
 @section('title')
-    Thêm sản phẩm cấp 2
+Thêm sản phẩm cấp 2
 @endsection
 @section('content')
-    <form method="post" action="{{ route('product_cat.store') }}" enctype="multipart/form-data">
-        @csrf
-        <div class="row">
-            <div class="col-lg-8">
+<form method="post" action="{{ route('product_cat.store') }}" enctype="multipart/form-data">
+    @csrf
+    <div class="d-flex justify-content-between">
+        <div class="col-lg-8">
+            <div class="card card-primary card-outline text-sm">
+                <div class="card-header">
+                    <h4>Nội dung sản phẩm</h4>
+                </div>
                 <div class="card-body">
+
                     <div class="form-group">
-                        <label for="menu">Ảnh Sản Phẩm</label>
-                        <input type="file" name="image" class="form-control" id="upload">
+                        <label for="menu">Tên Sản Phẩm</label>
+                        <input type="text" name="name" class="form-control" placeholder="Nhập tên sản phẩm">
                     </div>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="menu">Tên Sản Phẩm</label>
-                                <input type="text" name="name" class="form-control" placeholder="Nhập tên sản phẩm">
-                            </div>
-                        </div>
-                    </div>
+
 
                     <div class="form-group">
                         <label>Mô Tả </label>
@@ -41,25 +39,44 @@
                 </div>
             </div>
 
-            <div class="col-lg-4">
-                Danh mục cấp 1
-                <div class="d-md-flex">
-                    <div class="m-b-10 m-r-15">
-                        <select name="id_list" class="custom-select" style="min-width: 180px;">
-                            @foreach ($splist as $k => $v)
+        </div>
+
+        <div class="col-lg-4">
+            <div class="card card-primary card-outline text-sm">
+                <div class="card-header">
+                    <h4>Danh mục cấp 1</h4>
+                </div>
+
+                <div class="card-body">
+                    <div class="d-md-flex">
+                        <div class="m-b-10 m-r-15">
+                            <select name="id_list" class="custom-select" style="min-width: 180px;">
+                                @foreach ($splist as $k => $v)
                                 <option value="{{ $v->id }}"> {{ $v->name }}</option>
-                            @endforeach
-                        </select>
+                                @endforeach
+                            </select>
+                        </div>
                     </div>
                 </div>
             </div>
+
+            <div class="card card-primary card-outline text-sm">
+                <div class="card-header">
+                    <h4>Ảnh sản phẩm</h4>
+                </div>
+
+                <div class="form-group">
+                    <input type="file" name="image" class="form-control" id="upload">
+                </div>
+            </div>
+
         </div>
-        </div>
+    </div>
+    </div>
 
 
-        <div class="card-footer">
-            <button type="submit" class="btn btn-primary">Thêm</button>
-        </div>
-        @csrf
-    </form>
+    <div class="card-footer">
+        <button type="submit" class="btn btn-primary">Thêm</button>
+    </div>
+</form>
 @endsection
