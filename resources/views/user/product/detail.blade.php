@@ -42,7 +42,7 @@ Chi Tiết Sản Phẩm
             <form action="{{ route('checkout.cart.store') }}" method="post">
                 @csrf
                 <div class="prod-detail-btn ">
-                    <input class="product-detail-quantity" id="alice" type="number" name="quantity" value="1">
+                    <input class="product-detail-quantity" id="alice" type="number" name="quantity" value="1" min="0">
 
                     <input  name="id_prod" type="text"  value="{{ $data[0]->id }}" hidden>
                     <input  name="photo" type="text"  value="{{ $data[0]->photo }}" hidden>
@@ -97,7 +97,7 @@ Chi Tiết Sản Phẩm
         </div>
     </div>
 </div>
-<script type="text/javascript">
+{{-- <script type="text/javascript">
     $(document).ready(function() {
                     // Thêm vào giỏ hàng
                     $(".addToCart").click(function() {
@@ -124,7 +124,7 @@ Chi Tiết Sản Phẩm
         
                         })
                 });
-</script>
+</script> --}}
 
 <script>
     $(document).ready(function() {

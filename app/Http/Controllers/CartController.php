@@ -22,6 +22,7 @@ class CartController extends Controller
             ->Where('id_user', auth()->user()->id)
             ->get();
 
+        
             return view('user.checkout.cart',[
                 'carts' => $carts,
             ]);

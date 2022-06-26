@@ -118,12 +118,12 @@ class ProductListController extends Controller
         // dd($productList);
         $fix_status = implode(',', $request->get('status'));
 
-        $countproductList = ProductList::all()->count();
+        // $countproductList = ProductList::all()->count();
 
         if($request->has('image')){
             $file= $request->image;
             $ext = $request->image->extension();
-            $file_name = Date('Ymd').'-'.'productList'.$countproductList.'.'.$ext;
+            $file_name = Date('Ymd').'-'.'productList'.'.'.$ext;
             $file->move(public_path('backend/assets/img/products'),$file_name);
         }else{
             $id = $request->input('id');

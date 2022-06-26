@@ -38,7 +38,7 @@ class OrderController extends Controller
         ->get();
 
         // Lấy order đã hủy
-        $orders_dagiao = DB::table('orders')
+        $orders_dahuy = DB::table('orders')
         ->Where('id_user', auth()->user()->id)
         ->where('id_order_status',5)
         ->get();

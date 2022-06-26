@@ -10,7 +10,7 @@
 @endif
 <div class="app-title">
     <div>
-        <h1>All Blogs</h1>
+        <h1>All News</h1>
         {{-- <p>Xin chào {{ Session::get('emp')->fullName }} </p> --}}
     </div>
     <ul class="app-breadcrumb breadcrumb">
@@ -27,29 +27,6 @@
 
 <div class="card">
     <div class="card-body">
-        <div class="row m-b-30">
-            <div class="col-lg-8">
-                <div class="d-md-flex">
-                    <div class="m-b-10 m-r-15">
-                        <select class="custom-select" style="min-width: 180px;">
-                            <option selected>Catergory</option>
-                            <option value="all">All</option>
-                            <option value="homeDeco">Home Decoration</option>
-                            <option value="eletronic">Eletronic</option>
-                            <option value="jewellery">Jewellery</option>
-                        </select>
-                    </div>
-                    <div class="m-b-10">
-                        <select class="custom-select" style="min-width: 180px;">
-                            <option selected>Status</option>
-                            <option value="all">All</option>
-                            <option value="inStock">In Stock </option>
-                            <option value="outOfStock">Out of Stock</option>
-                        </select>
-                    </div>
-                </div>
-            </div>
-        </div>
         <div class="table-responsive">
             <table class="table table-hover e-commerce-table">
                 <thead>
@@ -63,8 +40,6 @@
                         <th>STT</th>
                         <th>Hình</th>
                         <th>Tiêu đề</th>
-                        <th>Mô tả</th>
-                        <th>Nội dung</th>
                         <th>Trạng thái</th>
                     </tr>
                 </thead>
@@ -87,8 +62,6 @@
                         </td>
 
                         <td>{{ $v->name }}</td>
-                        <td>{{ $v->desc }}</td>
-                        <td>{{ $v->content }}</td>
                         <td>
                             {{-- {{ $v->status }} --}}
                             <?php if($v->status == 'noibat,hienthi') {?>

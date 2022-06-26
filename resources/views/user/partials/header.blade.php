@@ -42,8 +42,6 @@
                     <li><a href="{{ route('user.shop') }}">Shop</a></li>
                     <li><a href="#">About</a></li>
                     <li><a href="#">Blog</a></li>
-                    <li><a href="#">Contact</a></li>
-                    <li><a href="#">Contact</a></li>
                 </ul>
             </div>
 
@@ -51,7 +49,7 @@
                 <a href="{{ route('user.login') }}"> <i class="fa-solid fa-user"></i></a>
             </div>
             <div class="cart">
-                <a href="{{ route('checkout.cart') }}"><i class="fa-solid fa-bag-shopping"></i></a>
+                <a href="{{ route('checkout.cart') }}" title="giỏ hàng"><i class="fa-solid fa-bag-shopping"></i></a>
                 
             </div>
             @auth

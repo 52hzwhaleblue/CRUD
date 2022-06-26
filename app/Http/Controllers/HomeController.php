@@ -16,20 +16,38 @@ class HomeController extends Controller
      */
     public function index()
     {
-        // Lấy danh mục cấp 1
-        $prod_list = ProductList::get();
-        $prod = Products::get();
-
-        return view('user.index.index',[
-            'prod_list' => $prod_list,
-            'prod' => $prod,
-        ]);
-    }
-    public function laySanPhamNoiBat(Request $request)
-    {
-        $prodnb = DB::table('products')
+        $sanpham = Products::get();
+        $splist = DB::table('product_lists')
         ->whereJsonContains('status', 'noibat')
         ->get();
+
+        $splistnb = DB::table('products')
+        ->join('product_lists', 'product_lists.id', '=', 'products.id_list')
+        ->select('products.*')
+        ->get();
+
+        // $prod_details = DB::table('product_details')
+        // ->where('id_prod', $id)
+        // ->get();
+        
+        return view('user.index.index',[
+            'splist' => $splist,
+            'sanpham' => $sanpham,
+            'splistnb' => $splistnb,
+        ]);
+    }
+
+    public function laySanPhamNoiBat(Request $request)
+    {
+        if($request->get('"noibat,hienthi"')){
+            $prodnb = DB::table('products')
+            ->all();
+        }
+        else{
+            $prodnb = DB::table('products')
+            ->whereJsonContains('status', $request->get('type'))
+            ->get();
+        }
 
         $output = '';
         foreach ($prodnb as $k =>$v){
@@ -37,7 +55,7 @@ class HomeController extends Controller
             $output .='
             <div class="product-item">
                     <div class="product-img scale-img">
-                        <a href="">
+                        <a href='. route('user.product_detail', $v->id) .'>
                             <img src='.asset("backend/assets/img/products/$v->photo").'
                                 alt="" />
                         </a>
@@ -64,6 +82,36 @@ class HomeController extends Controller
         }
         
         // return response()->json(array('prodnb'=> $prodnb), 200);
+        return response()->json($output);
+
+    }
+
+    public function popup_product(Request $request)
+    {
+        $prods = DB::table('products')
+        ->where('id', $request->id)
+        ->get();
+
+        $output = '';
+        foreach ($prods as $k =>$v){
+        $output .='
+            <div class="popup-item">
+                <div class="fotorama" data-nav="thumbs" data-thumbwidth="98" data-thumbheight="98">
+                    <img src='.asset("backend/assets/img/products/$v->photo").' alt="" width="365" height="365" />
+                    @foreach($prod_details as $k => $v)
+                        <img src='.asset("backend/assets/img/products/$v->photo").' alt="" />
+                    @endforeach
+                </div>
+
+                </div>
+                <h3 class="name-product"><a href=""> '.$v->name.' </a></h3>
+                <div class="product-price">
+                    <span class="price-sale">'.number_format($v->regular_price, 2).' <sup>đ</sup></span>
+                    <span class="price-current">'.$v->sale_price.' <sup>đ</sup></span>
+                </div>
+            </div>
+            ';
+        }
         return response()->json($output);
 
     }

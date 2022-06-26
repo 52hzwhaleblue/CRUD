@@ -78,22 +78,32 @@ Giỏ hàng
                 <input type="radio" id="choxacnhan" name="mytabs">
                 <label for="choxacnhan">Đã xác nhận</label>
                 <div class="tab">
+                    <div class="mb-3 d-flex align-center">
+                        <i class="mr-2 fa-solid fa-truck"></i>
+                        <p class="mb-0">Đơn hàng của bạn đang được xử lý</p>
+                    </div>
                     <div class="order-items">
                         @if(isset($orderDetails_xacnhan))
-                        @foreach ($orderDetails_xacnhan as $k => $v)
-                        <div class="order-item">
-                            <div class="order-left">
-                                <div class="order-image">
-                                    <img style="background:white"
-                                        src="{{ asset('backend/assets/img/products/' . $v->photo) }}" class="rounded"
-                                        alt="Ảnh" width="70" height="70">
+                            @foreach ($orderDetails_xacnhan as $k => $v)
+                            <div class="mb-5 order-item">
+                                <div class="order-left d-flex">
+                                    <div class="order-image mr-3">
+                                        <img style="background:white"
+                                            src="{{ asset('backend/assets/img/products/' . $v->photo) }}" class="rounded"
+                                            alt="Ảnh" width="110" height="110">
+                                    </div>
+                                    <div class="w-100 d-flex justify-content-between">
+                                        <div class="d-flex flex-column">
+                                            <h3 class="name-product">{{ $v->name }}</h3>
+                                            <p class="product-price"><span>Số lượng: x{{ $v->quantity }}</span></p>
+                                        </div>
+
+                                        <p class="product-price"> <span><?php echo number_format($v->sale_price, 0); ?> <sup>đ</sup></span></p>
+                                    </div>
+
                                 </div>
-                                <div class="order-image"></div>
-                                <div class="order-soluong"></div>
                             </div>
-                            <div class="order-right"></div>
-                        </div>
-                        @endforeach
+                            @endforeach
                         @endif
                     </div>
                 </div>
