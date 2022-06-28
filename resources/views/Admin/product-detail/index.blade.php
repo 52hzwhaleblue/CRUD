@@ -11,7 +11,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <div class="app-title">
         <div>
-            <h1>All Products</h1>
+            <h1>Chi tiết hình ảnh sản phẩm</h1>
             {{-- <p>Xin chào {{ Session::get('emp')->fullName }} </p> --}}
         </div>
         <ul class="app-breadcrumb breadcrumb">
@@ -20,11 +20,7 @@
             <li class="breadcrumb-item"><a href="#">All Products</a></li>
         </ul>
     </div>
-    <div class="col-sm-4">
-        <button type="button" class="btn btn-info add-btn "><i class="fa fa-plus"></i><a
-                href="{{ route('product_list.create') }}"> Add New</a></button>
-    </div>
-    {{-- {{ $data->links() }} --}}
+
 
     <div class="card">
         <div class="card-body">
@@ -48,12 +44,6 @@
                             </select>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-4 text-right">
-                    <button class="btn btn-primary">
-                        <i class="anticon anticon-plus-circle m-r-5"></i>
-                        <span>Add Product</span>
-                    </button>
                 </div>
             </div>
             <div class="table-responsive">

@@ -37,7 +37,7 @@ Chi Tiết Sản Phẩm
                 <span class="price-current">{{ $data[0]->regular_price }}<sup>đ</sup></span>
             </div>
             <p class="blog-desc">{{ $data[0]->desc }}</p>
-            <p class="sltk" data-sltk="{{ $data[0]->stock }}">Sảm phẩm còn lại: {{ $data[0]->stock }}</p>
+            <p class="sltk" data-sltk="{{ $data[0]->stock }}">Sản phẩm còn lại: {{ $data[0]->stock }}</p>
 
             <form action="{{ route('checkout.cart.store') }}" method="post">
                 @csrf

@@ -8,6 +8,7 @@ use App\Http\Controllers\ProductDetailController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\ContactController;
 
 # ====================Admin Controllers
 use App\Http\Controllers\Admin\ProductListController;
@@ -34,6 +35,12 @@ Route::group(['middleware' => ['web']], function () {
 
     Route::get('/auth/callback/{provider}', [AuthController::class,'callback'])->name('auth.callback');
 });
+
+# ===============Liên hệ
+Route::get('/send-email',[ContactController::class,'index'])->name('send.email');
+
+Route::post('/send-email',[ContactController::class,'sendEmail'])->name('send.email');
+
 # ===============Home 
 Route::get('/',[HomeController::class,'index'])->name("user.index");
 Route::get('/shop', function () {
@@ -61,6 +68,7 @@ Route::post('/laySanPhamNoiBat',[HomeController::class,'laySanPhamNoiBat'])->nam
 # ===============Lấy popup sản phẩm chi tiết
 Route::get('/popup-product',[HomeController::class,'popup_product'])->name("user.popup_product");
 Route::post('/popup-product',[HomeController::class,'popup_product'])->name("user.popup_product");
+Route::post('/popup_productDetails',[HomeController::class,'popup_productDetails'])->name("user.popup_productDetails");
 
 # ===============Chi tiết sản phẩm
 Route::get('/product-detail/{id}',[ProductDetailController::class,'index'])->name("user.product_detail");

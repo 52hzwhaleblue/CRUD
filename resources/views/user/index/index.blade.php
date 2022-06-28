@@ -70,7 +70,7 @@ Trang chủ
                 <p>All</p>
             </div>
             <div class="producttype-title" data-type="noibat">
-                <p>Hot</p>
+                <p>New Arrivals</p>
             </div>
             <div class="producttype-title" data-type="bestseller">
                 <p>best seller</p>
@@ -139,7 +139,7 @@ Trang chủ
                         <div class="modal-cart">
                             <i class="fa-solid fa-bag-shopping"></i>
                         </div>
-                        <div class="modal-quickview">
+                        <div class="modal-quickview" data-popupid="{{ $v->id }}">
                             <i class="fa-solid fa-magnifying-glass"></i>
                         </div>
                         <div class="modal-wishlist">
@@ -315,13 +315,10 @@ Trang chủ
 
 <div class="popup-product">
     <div class="wrap-content">
-        <div class="popup-left col-lg-6">
-            <div class="popup-items">
-                
-            </div>
-        </div>
-        <div class="popup-right col-lg-6"></div>
     </div>
+    <div class="popup-btn">
+            <i class="fa-solid fa-xmark"></i>
+        </div>
 </div>
 <script type="text/javascript">
     $(".producttype-title").click(function() {
@@ -349,7 +346,6 @@ Trang chủ
 
 <script type="text/javascript">
     $(".modal-quickview").click(function() {
-
         $(this).parents().find('.popup-product').addClass('show');
             var id = $(this).data("popupid");
             // alert(id);
@@ -367,10 +363,14 @@ Trang chủ
                 },
                 dataType: 'json',
                 success: function(data) {
-                    $(".popup-items").html(data);
+                    $(".popup-product .wrap-content").html(data);
                 }
             });
-
         })
+
+        $(".popup-btn").click(function() {
+            $(this).parents().find('.popup-product').removeClass('show');
+
+        });
 </script>
 @endsection

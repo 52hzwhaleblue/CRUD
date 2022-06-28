@@ -123,6 +123,7 @@ a:hover {
 
 .name-product a:hover {
     color: #738443;
+    text-decoration: none;
 }
 
 .product-price {
@@ -168,7 +169,10 @@ span.price-current {
     justify-content: center;
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
 }
-
+.product-modal > div:hover{
+    background:#738443;
+    color:#fff;
+}
 /* header */
 
 .header-wrapper {
@@ -478,24 +482,69 @@ h3.slideprod-title > a {
 }
 /* Popup Product */
 .popup-product.show{
-    display: block;
+    /* display: block; */
+    visibility: visible;
+    opacity: 1;
+    transform: scale(1);
+
 }
 .popup-product{
     width: 800px;
     height: 500px;
-    background: teal;
+    background: #95aa44;
     position: fixed;
     top: 20%;
     /* right:0; */
-    transform: translate(-50%);bottom:0;
-    left: 50%;
+    transform: scale(0);
+    bottom:0;
+    left: calc((100% - 800px) / 2);
     z-index: 9999;
-    display: none;
+    /* display: none; */
+    visibility: hidden;
+    opacity: 0;
+    transition: all .5s;
 }
 .popup-product .wrap-content{
     padding: 15px;
     display: flex;
     justify-content: space-between;
+    position: relative;
+}
+.popup-product .name-product{
+    text-align: left;
+}
+.popup-product .name-product a{
+     color: #fff;
+}
+
+.popup-product .product-price{
+    display: block;
+    border-bottom: 1px #fff solid;
+    padding-bottom: 20px;
+}
+.popup-product .product-price > span{
+    padding: 0;
+    color: #fff;
+}
+
+.popup-product .product-desc{
+    color: #fff;
+}
+.popup-product .sltk{
+    color: #fff;
+}
+.popup-product .product-detail-right{
+    width: 100%;
+}
+.popup-btn {
+    position: absolute;
+    top: 0;
+    right: -31px;
+    font-size: 30px;
+}
+
+.popup-btn:hover i{
+    color:#738443;
 }
 .readmore-btn {
     width: 130px;
