@@ -47,11 +47,8 @@ Route::get('/products', function () {
 Route::get('/profile', function () {
     return view('user.profile.index');
 })->name('user.profile');
-Route::get('/address',function () {
+Route::get('/addrees',function () {
     return view('user.profile.address');
-})->name('user.profile');
-Route::get('/createaddress',function () {
-    return view('user.profile.createaddress');
 })->name('user.profile');
 
 # ===============Lấy sản phẩm nổi bât

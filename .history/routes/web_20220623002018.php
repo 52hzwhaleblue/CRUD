@@ -6,8 +6,6 @@ use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductDetailController;
 use App\Http\Controllers\OrderController;
-use App\Http\Controllers\CartController;
-use App\Http\Controllers\PaymentController;
 
 # ====================Admin Controllers
 use App\Http\Controllers\Admin\ProductListController;
@@ -19,7 +17,6 @@ use App\Http\Controllers\Admin\CriteriaController;
 use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\SlideController;
 use App\Http\Controllers\Admin\VideoController;
-use App\Http\Controllers\Admin\OrderManagement;
 
 # ========================================User Routes
 # ===============Auth
@@ -47,38 +44,17 @@ Route::get('/products', function () {
 Route::get('/profile', function () {
     return view('user.profile.index');
 })->name('user.profile');
-Route::get('/address',function () {
-    return view('user.profile.address');
-})->name('user.profile');
-Route::get('/createaddress',function () {
-    return view('user.profile.createaddress');
-})->name('user.profile');
 
 # ===============Lấy sản phẩm nổi bât
 Route::get('/laySanPhamNoiBat',[HomeController::class,'laySanPhamNoiBat'])->name("user.laySanPhamNoiBat");
 Route::post('/laySanPhamNoiBat',[HomeController::class,'laySanPhamNoiBat'])->name("user.laySanPhamNoiBat");
 
-# ===============Lấy popup sản phẩm chi tiết
-Route::get('/popup-product',[HomeController::class,'popup_product'])->name("user.popup_product");
-Route::post('/popup-product',[HomeController::class,'popup_product'])->name("user.popup_product");
-
 # ===============Chi tiết sản phẩm
 Route::get('/product-detail/{id}',[ProductDetailController::class,'index'])->name("user.product_detail");
 
-# ===============Đơn hàng
-Route::get('/order',[OrderController::class,'index'])->name("order.index");
-Route::post('/order',[OrderController::class,'store'])->name("order.store");
-
 # ===============Giỏ hàng
-Route::get('/cart',[CartController::class,'index'])->name("checkout.cart");
-Route::post('/cart',[CartController::class,'store'])->name("checkout.cart.store");
-
-# ===============Thanh toán
-Route::get('/payment',[PaymentController::class,'index'])->name("checkout.payment");
-
-# ===============Cổng thanh toán
-Route::post('/momo_payment',[PaymentController::class,'momo_payment'])->name("momo_payment");
-
+Route::get('/cart',[OrderController::class,'index'])->name("cart.index");
+Route::post('/addToCart',[OrderController::class,'addToCart'])->name("cart.addToCart");
 
 
 
@@ -89,12 +65,6 @@ Route::post('/momo_payment',[PaymentController::class,'momo_payment'])->name("mo
 Route::get('admin', function () {
     return view('admin.dashboard');
 });
-# ===============Quản lý đơn hàng
-Route::get('admin/order',[OrderManagement::class,'index'])->name("ordermanagement.index");
-
-Route::get('admin/order/edit/{order}',[OrderManagement::class,'edit'])->name("ordermanagement.edit");
-Route::put('admin/order/edit/{order}',[OrderManagement::class,'update'])->name("ordermanagement.update");
-
 /* Product List */
 Route::get('admin/product-list',[ProductListController::class,'index'])->name("product_list.index");
 

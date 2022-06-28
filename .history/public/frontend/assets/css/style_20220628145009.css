@@ -2254,7 +2254,7 @@ h3.payment-title {
     font-weight: 300;
     margin: 20px 0px 15px;
   } 
- .form-control select {
+ /* .form-control select {
     width: 100%;
     border: 1px solid rgb(204, 204, 204);
     height: 34px;
@@ -2264,7 +2264,7 @@ h3.payment-title {
     background: 0px center;
     border-radius: 4px;
     box-shadow: none;
-  }
+  } */
    .form-control textarea {
     border: 1px solid rgb(204, 204, 204);
     border-radius: 4px;

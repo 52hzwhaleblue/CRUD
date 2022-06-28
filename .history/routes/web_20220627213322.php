@@ -53,7 +53,6 @@ Route::get('/address',function () {
 Route::get('/createaddress',function () {
     return view('user.profile.createaddress');
 })->name('user.profile');
-
 # ===============Lấy sản phẩm nổi bât
 Route::get('/laySanPhamNoiBat',[HomeController::class,'laySanPhamNoiBat'])->name("user.laySanPhamNoiBat");
 Route::post('/laySanPhamNoiBat',[HomeController::class,'laySanPhamNoiBat'])->name("user.laySanPhamNoiBat");

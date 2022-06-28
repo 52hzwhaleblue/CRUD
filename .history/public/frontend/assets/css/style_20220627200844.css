@@ -2253,8 +2253,8 @@ h3.payment-title {
     line-height: 21px;
     font-weight: 300;
     margin: 20px 0px 15px;
-  } 
- .form-control select {
+  }
+.form-control1 select {
     width: 100%;
     border: 1px solid rgb(204, 204, 204);
     height: 34px;
@@ -2265,7 +2265,7 @@ h3.payment-title {
     border-radius: 4px;
     box-shadow: none;
   }
-   .form-control textarea {
+  .form-control textarea {
     border: 1px solid rgb(204, 204, 204);
     border-radius: 4px;
     width: 100%;
@@ -2278,7 +2278,7 @@ h3.payment-title {
     vertical-align: middle;
     text-align: justify;
   }
-   .btn-submit {
+  .btn-submit {
     border: 0px;
     width: 176px;
     height: 40px;
@@ -2287,59 +2287,4 @@ h3.payment-title {
     font-size: 14px;
     background-color: rgb(253, 216, 53);
     cursor: pointer;
-  } 
-   .khBVOu .form-control{
-    display: flex;
-    -webkit-box-align: center;
-    align-items: center;
-    margin: 0px 0px 34px;
   }
-  * ---------address1--------- */
-.heading {
-  font-size: 19px;
-  line-height: 21px;
-  font-weight: 300;
-  margin: 20px 0px 15px;
-}
-.new a{
-    background-color: rgb(255, 255, 255);
-    font-size: 15px;
-    height: 60px;
-    border: 1px dashed rgb(216, 216, 216);
-    margin: 0px 0px 10px;
-    display: flex;
-    -webkit-box-align: center;
-    align-items: center;
-    -webkit-box-pack: center;
-    justify-content: center;
-}
-.new svg {
-  color: rgb(120, 120, 120);
-    font-size: 28px;
-    margin: 0px 20px;
-}
-.item {
-  background-color: rgb(255, 255, 255);
-  padding: 17px;
-  border-radius: 4px;
-  margin: 0px 0px 10px;
-  display: flex;
-  -webkit-box-pack: justify;
-  justify-content: space-between;
-  font-size: 13px;
-  line-height: 19px;
-}
-.item .name > span {
-  font-size: 12px;
-  margin: 0px 0px 0px 15px;
-  display: inline-block;
-  -webkit-box-align: center;
-  align-items: center;
-  color: rgb(38, 188, 78);
-  text-transform: none;
-}
-.item .name > span span {
-  display: inline-block;
-  vertical-align: middle;
-  margin: 0px 0px 0px 5px;
-}

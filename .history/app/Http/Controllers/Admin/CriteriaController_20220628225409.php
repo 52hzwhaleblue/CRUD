@@ -52,7 +52,7 @@ class CriteriaController extends Controller
 
         $Criteria->name = $request->get('name');
         $Criteria->desc = $request->get('desc');
-       /*  $Criteria->content = $request->get('content'); */
+        $Criteria->content = $request->get('content');
         $Criteria->photo = $file_name;
        /*  $Criteria->status = implode(',', $request->get('status')); */
 

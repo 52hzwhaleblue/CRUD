@@ -1677,7 +1677,7 @@ abc a .icon {
     /* font-size: 20px;
   line-height: 32px; */
     font-weight: 300;
-    margin: -270px 187px 54px;
+   /*  margin: -270px 187px 54px; */
 }
 .dfHeIP .info-2 {
     display: flex;

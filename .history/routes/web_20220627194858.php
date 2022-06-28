@@ -50,9 +50,6 @@ Route::get('/profile', function () {
 Route::get('/address',function () {
     return view('user.profile.address');
 })->name('user.profile');
-Route::get('/createaddress',function () {
-    return view('user.profile.createaddress');
-})->name('user.profile');
 
 # ===============Lấy sản phẩm nổi bât
 Route::get('/laySanPhamNoiBat',[HomeController::class,'laySanPhamNoiBat'])->name("user.laySanPhamNoiBat");
