@@ -64,7 +64,7 @@ class HomeController extends Controller
                             <div class="modal-cart">
                                 <i class="fa-solid fa-bag-shopping"></i>
                             </div>
-                            <div class="modal-quickview" data-popupid="'.$v->id.'">
+                            <div class="modal-quickview aaa" data-popupid="'.$v->id.'">
                                 <i class="fa-solid fa-magnifying-glass"></i>
                             </div>
                             <div class="modal-wishlist">

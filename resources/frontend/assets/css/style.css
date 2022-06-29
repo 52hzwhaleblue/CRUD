@@ -22,11 +22,11 @@ body {
 }
 
 /* General */
-.table td{
+.table td {
     vertical-align: unset !important;
 }
 
-td input{
+td input {
     text-indent: 50%;
 }
 input[type="number"]::-webkit-inner-spin-button,
@@ -169,9 +169,9 @@ span.price-current {
     justify-content: center;
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
 }
-.product-modal > div:hover{
-    background:#738443;
-    color:#fff;
+.product-modal > div:hover {
+    background: #738443;
+    color: #fff;
 }
 /* header */
 
@@ -270,7 +270,7 @@ span.price-current {
     left: 0;
     top: 100%;
     visibility: hidden;
-    transition: all .5s;
+    transition: all 0.5s;
 }
 
 .menu ul li ul li {
@@ -410,7 +410,7 @@ span.price-current {
     bottom: 0;
     padding: 10px;
     background-color: #49505796;
-    transition: all .8s;
+    transition: all 0.8s;
 }
 
 .slideprod-border {
@@ -481,14 +481,13 @@ h3.slideprod-title > a {
     height: 330px;
 }
 /* Popup Product */
-.popup-product.show{
+.popup-product.show {
     /* display: block; */
     visibility: visible;
     opacity: 1;
     transform: scale(1);
-
 }
-.popup-product{
+.popup-product {
     width: 800px;
     height: 500px;
     background: #95aa44;
@@ -496,55 +495,55 @@ h3.slideprod-title > a {
     top: 20%;
     /* right:0; */
     transform: scale(0);
-    bottom:0;
+    bottom: 0;
     left: calc((100% - 800px) / 2);
     z-index: 9999;
     /* display: none; */
     visibility: hidden;
     opacity: 0;
-    transition: all .5s;
+    transition: all 0.5s;
 }
-.popup-product .wrap-content{
+.popup-product .wrap-content {
     padding: 15px;
     display: flex;
     justify-content: space-between;
     position: relative;
 }
-.popup-product .name-product{
+.popup-product .name-product {
     text-align: left;
 }
-.popup-product .name-product a{
-     color: #fff;
+.popup-product .name-product a {
+    color: #fff;
 }
 
-.popup-product .product-price{
+.popup-product .product-price {
     display: block;
     border-bottom: 1px #fff solid;
     padding-bottom: 20px;
 }
-.popup-product .product-price > span{
+.popup-product .product-price > span {
     padding: 0;
     color: #fff;
 }
 
-.popup-product .product-desc{
+.popup-product .product-desc {
     color: #fff;
 }
-.popup-product .sltk{
+.popup-product .sltk {
     color: #fff;
 }
-.popup-product .product-detail-right{
+.popup-product .product-detail-right {
     width: 100%;
 }
 .popup-btn {
     position: absolute;
     top: 0;
-    right: -31px;
-    font-size: 30px;
+    right: -30px;
+    font-size: 26px;
 }
 
-.popup-btn:hover i{
-    color:#738443;
+.popup-btn:hover i {
+    color: #738443;
 }
 .readmore-btn {
     width: 130px;
@@ -828,7 +827,7 @@ h3.slideprod-title > a {
 .blog-img {
     position: relative;
     margin-bottom: 20px;
-    transition: all .8s;
+    transition: all 0.8s;
 }
 .blog-img:hover {
     opacity: 0.7;
@@ -2202,7 +2201,7 @@ input.order-input {
     background: #fff;
 }
 
-.cart-left h4{
+.cart-left h4 {
     font-size: 20px;
     font-weight: 500;
     margin: 0px;
@@ -2265,7 +2264,7 @@ input.order-input {
 }
 h3.payment-title {
     font-size: 18px;
-    font-family: 'SofiaPro';
+    font-family: "SofiaPro";
 }
 
 .paymentmethod-items {
@@ -2274,20 +2273,20 @@ h3.payment-title {
     padding: 15px;
     border: 1px solid rgb(194, 225, 255);
     border-radius: 20px;
-    position:relative;
+    position: relative;
 }
 
-.paymentmethod-items::after{
-    content:
-    "";
+.paymentmethod-items::after {
+    content: "";
     width: 50px;
     height: 50px;
-    background:url(https://salt.tikicdn.com/ts/upload/05/9e/d8/f13e86df128f19d197397e44924f9616.png) no-repeat;
+    background: url(https://salt.tikicdn.com/ts/upload/05/9e/d8/f13e86df128f19d197397e44924f9616.png)
+        no-repeat;
     background-size: contain;
     left: 50%;
     bottom: -48px;
     transform: translate(-50%);
-    position:absolute;
+    position: absolute;
 }
 .payment-item {
     display: flex;
@@ -2295,4 +2294,120 @@ h3.payment-title {
     border: 1px #dedede solid;
     border-radius: 20px;
     margin-bottom: 20px;
+}
+
+/* Contact Popup */
+.contact-wrapper.hidden{
+    visibility: hidden;
+    opacity: 0;
+    transform: scale(0);
+}
+.contact-wrapper.show{
+    visibility: visible;
+    opacity: 1;
+    transform: scale(1);
+}
+.contact-wrapper {
+    width: 920px;
+    background: #fff;
+    position: fixed;
+    top: 20%;
+    left: calc((100% - 920px) / 2);
+    z-index: 9999;
+    visibility: hidden;
+    opacity: 0;
+    transition: all 0.5s;
+    transform: scale(0);
+}
+.contact-wrapper .wrap-content {
+    padding: 45px;
+    text-align: center;
+    width: 96%;
+    margin: 0;
+    margin: 26px auto;
+    border: 1px #111 solid;
+}
+.contact-name {
+    font-family: "SofiaPro";
+
+    font-size: 22px;
+
+    font-weight: 500;
+
+    line-height: 24px;
+
+    color: #333333;
+
+    margin-bottom: 30px;
+
+    padding-bottom: 20px;
+
+    position: relative;
+}
+.contact-name:before {
+    content: "";
+    width: 68px;
+    height: 2px;
+    background: #bc9e6b;
+    position: absolute;
+    bottom: 0;
+    left: calc(50% - 34px);
+}
+.contact-title {
+    font-size: 35px;
+    font-weight: 500;
+    padding-bottom: 10px;
+    margin: auto;
+    position: relative;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+.contact-desc {
+    font-size: 16px;
+    line-height: 26px;
+    margin: auto;
+    margin-bottom: 35px;
+    color: #8b8b8b;
+}
+.contact-input {
+    border-radius: 0;
+    border: 1px solid #dfdfdf;
+    font-size: 15px;
+    line-height: 55px;
+    height: 55px;
+    padding-left: 30px;
+    margin: 0;
+}
+
+.contact-btn {
+    background-color: #000;
+    border: none;
+    border-radius: 0;
+    padding-left: 50px;
+    padding-right: 50px;
+    font-size: 15px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    height: 55px;
+    color: #fff;
+}
+
+.contact-btn:hover {
+    outline: 0;
+    box-shadow: none;
+    background: #b59867;
+}
+.contact-close {
+    position: absolute;
+    top: 40px;
+    right: 40px;
+    font-size: 30px;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px #111 solid;
+    border-radius: 50%;
 }

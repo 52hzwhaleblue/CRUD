@@ -21,6 +21,7 @@ use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\SlideController;
 use App\Http\Controllers\Admin\VideoController;
 use App\Http\Controllers\Admin\OrderManagement;
+use App\Http\Controllers\Admin\ThongKeController;
 
 # ========================================User Routes
 # ===============Auth
@@ -37,8 +38,7 @@ Route::group(['middleware' => ['web']], function () {
 });
 
 # ===============Liên hệ
-Route::get('/send-email',[ContactController::class,'index'])->name('send.email');
-
+Route::get('/send-mail',[ContactController::class,'index'])->name('send.email');
 Route::post('/send-email',[ContactController::class,'sendEmail'])->name('send.email');
 
 # ===============Home 
@@ -91,6 +91,9 @@ Route::post('/momo_payment',[PaymentController::class,'momo_payment'])->name("mo
 Route::get('admin', function () {
     return view('admin.dashboard');
 });
+# ===============Thống Kê
+Route::post('admin/thongke-theongay',[ThongKeController::class,'thongke_theongay'])->name("thongke_theongay");
+
 # ===============Quản lý đơn hàng
 Route::get('admin/order',[OrderManagement::class,'index'])->name("ordermanagement.index");
 
