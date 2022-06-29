@@ -27,6 +27,8 @@ define('RESOURCES', './resources/');
         integrity="sha512-qkeymXyips4Xo5rbFhX+IDuWMDEmSn7Qo7KpPMmZ1BmuIA95IPVYsVZNn8n4NH/N30EY7PUZS3gTeTPoAGo1mA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 
+    {{-- Jquery UI CSS --}}
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
     <title>@yield('title')</title>
 </head>
 
@@ -44,16 +46,56 @@ define('RESOURCES', './resources/');
     <script src="{{ asset('backend/ckeditor/ckeditor.js') }}"></script>
     <script type="text/javascript">
         CKEDITOR.replace('cke_content');
-  
     </script>
-    {{-- <script src="/template/admin/plugins/jquery/jquery.min.js"></script>
-<!-- Bootstrap 4 -->
-<script src="/template/admin/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- AdminLTE App -->
-<script src="/template/admin/dist/js/adminlte.min.js"></script>
-{{-- ----aJax------------- --}}
-    {{-- <script src="/template/admin/js/main.js"></script> --}}
+    {{-- jquery UI --}}
+    <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
 
+    <script>
+        $(function() {
+            $( "#datepicker" ).datepicker({
+                prevText: "Tháng trước",
+                nextText: "Tháng sau",
+                dateFormat: "yy-mm-dd",
+                dayNamesMin: ["Thứ 2","Thứ 3","Thứ 4","Thứ 5","Thứ 6","Thứ 7","Chủ nhật"],
+                duration: "slow"
+            });
+        });
+
+        $(function() {
+            $( "#datepicker2" ).datepicker({
+                prevText: "Tháng trước",
+                nextText: "Tháng sau",
+                dateFormat: "yy-mm-dd",
+                dayNamesMin: ["Thứ 2","Thứ 3","Thứ 4","Thứ 5","Thứ 6","Thứ 7","Chủ nhật"],
+                duration: "slow"
+            });
+        });
+
+        $('#thongke-btn').click(function() {
+            var _token = $('input[name="token"]').val();
+            var from_date = $('#datepicker').val();
+            var to_date = $('#datepicker2').val();
+
+            $.ajaxSetup({
+                    headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                    });
+            $.ajax({
+                type: 'POST',
+                url: '/admin/thongke-theongay',
+                data: {
+                    _token: _token,
+                    from_date: from_date,
+                    to_date: to_date,
+                },
+                dataType: 'json',
+                success: function(data) {
+                    chart.setData(data);
+                }
+                });
+        });
+    </script>
 </body>
 
 </html>
