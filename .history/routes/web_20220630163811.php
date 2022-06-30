@@ -9,7 +9,7 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ContactController;
-use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ProductController
 
 # ====================Admin Controllers
 use App\Http\Controllers\Admin\ProductListController;
@@ -62,8 +62,7 @@ Route::get('/createaddress',function () {
     return view('user.profile.createaddress');
 })->name('user.profile');
 # ===============Tim kiem
-Route::get('/products',[ProductController::class,'index'])->name("user.products");
-Route::post('/search',[ProductController::class,'search'])->name("user.search");
+Route::post('/timKiem',[ProductController::class,'timKiem'])->name("product.timkiem");
 # ===============Lấy sản phẩm nổi bât
 Route::get('/laySanPhamNoiBat',[HomeController::class,'laySanPhamNoiBat'])->name("user.laySanPhamNoiBat");
 Route::post('/laySanPhamNoiBat',[HomeController::class,'laySanPhamNoiBat'])->name("user.laySanPhamNoiBat");

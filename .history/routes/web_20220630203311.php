@@ -63,7 +63,7 @@ Route::get('/createaddress',function () {
 })->name('user.profile');
 # ===============Tim kiem
 Route::get('/products',[ProductController::class,'index'])->name("user.products");
-Route::post('/search',[ProductController::class,'search'])->name("user.search");
+Route::post('/timKiem',[ProductController::class,'search'])->name("user.products");
 # ===============Lấy sản phẩm nổi bât
 Route::get('/laySanPhamNoiBat',[HomeController::class,'laySanPhamNoiBat'])->name("user.laySanPhamNoiBat");
 Route::post('/laySanPhamNoiBat',[HomeController::class,'laySanPhamNoiBat'])->name("user.laySanPhamNoiBat");

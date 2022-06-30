@@ -1,7 +1,7 @@
 @extends('user.layout')
 
 @section('title')
-    Products
+   Tìm kiếm
 @endsection
 
 @section('content')
@@ -17,17 +17,11 @@
                 </p>
             </div>
             <div class="product-wrapper">
-                <form action="{{asset('search')}}" method="POST">
-                    {{csrf_field()}}
-                    <div class="search_box">
-                         <input type="text" name="result"  placeholder="Tìm kiếm sản phẩm">
-                         <input type="submit" name="search_items" class="btn btn-default btn-sm" value="Tìm kiếm">
-                    </div>
-                </form>
+                <h3>Tìm kiếm với từ khóa: <span>Trà xanh</span></h3>
             </div>
             <!-- product items -->
             <div class="product-items">
-                @foreach ($sanpham as $k => $v)
+                @foreach ($sanphams as $k => $v)
                 <div class="product-item">
                     <div class="product-img scale-img">
                         <a href="{{ route('user.product_detail', $v->id) }}">

@@ -17,7 +17,7 @@
                 </p>
             </div>
             <div class="product-wrapper">
-                <form action="{{asset('search')}}" method="POST">
+                <form action="{{asset('timKiem')}}" method="POST">
                     {{csrf_field()}}
                     <div class="search_box">
                          <input type="text" name="result"  placeholder="Tìm kiếm sản phẩm">
