@@ -92,7 +92,8 @@ Route::get('admin', function () {
     return view('admin.dashboard');
 });
 # ===============Thống Kê
-Route::post('admin/thongke-theongay',[ThongKeController::class,'thongke_theongay'])->name("thongke_theongay");
+Route::post('admin/filter-by-date',[ThongKeController::class,'filter_by_date'])->name("filter_by_date");
+Route::post('admin/dashboard-filter',[ThongKeController::class,'dashboard_filter'])->name("dashboard_filter");
 
 # ===============Quản lý đơn hàng
 Route::get('admin/order',[OrderManagement::class,'index'])->name("ordermanagement.index");
