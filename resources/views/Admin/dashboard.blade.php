@@ -55,18 +55,22 @@
     <div class="d-flex justify-content-start align-items-center">
         <div class="col-md-2">
             <p class="mb-0">Từ ngày: <input type="text" name="" id="datepicker"> </p>
-            <input type="button" id="thongke-btn" value="Lọc kết quả">
+            <input type="button" id="btn-dashboard-filter" value="Lọc kết quả">
         </div>
         <div class="col-md-2">
             <p class="mb-0">Đến ngày: <input type="text" name="" id="datepicker2"> </p>
         </div>
-        <select name="id_list" class="custom-select" style="max-width: 180px;">
-            <option value=""> Ngày</option>
+        <select name="id_list" class="dashboard-filter custom-select" style="max-width: 180px;">
+            <option>-- Chọn --</option>
+            <option value="7ngayqua">7 Ngày qua </option>
+            <option value="thangtruoc"> Tháng trước</option>
+            <option value="thangnay"> Tháng này</option>
+            <option value="365ngayqua"> 365 ngày qua </option>
         </select>
     </div>
 
     <div class="col-md-12">
-        <div id="thongke-chart"></div>
+        <div id="myfirstchart" style="height: 250px;"></div>
     </div>
 </div>
 </div>
