@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 
@@ -12,24 +12,27 @@ use App\Models\User;
 
 class AuthController extends Controller
 {
-    public function login(){
-        return view('user.auth.login');
-    }
 
-    public function register(){
-        return view('user.auth.register');
-    }
 
     public function registering(Request $request){
 
         $password = Hash::make($request->get('password'));
         if(Auth::check()){
+            $request->validate([
+                'password' => 'required|min:5|max:12',
+            ]);
             User::where('id', auth()->user()->id)
                 ->update([
                     'password' => $password,
                 ]);
         }
         else{
+            $request->validate([
+                'name' => 'required',
+                'email' => 'required|email|unique:users',
+                'password' => 'required|min:5|max:12',
+            ]);
+
             $user = User::create([
                 'name' => $request->get('name'),
                 'password' => $password,

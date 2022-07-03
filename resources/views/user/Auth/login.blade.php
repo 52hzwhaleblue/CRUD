@@ -10,9 +10,12 @@
             <img src="https://cdn.shopify.com/s/files/1/0563/5827/3071/files/logo.png?v=1646210955" alt="" />
         </div>
         <h3 style="font-family:SofiaPro; font-weight: 100; font-size:20px; padding-top:20px;">Great to have you back!</h3>
-        <form id="LoginForm">
-                <input type="text" placeholder="Name" class="form-control">
-                <input type="password" placeholder="Password" class="form-control">
+        <form action="{{ route('user.login') }}" id="LoginForm" method="post">
+            @csrf
+                <input name='email' type="text" placeholder="Email" class="form-control">
+                <span class="text-danger">@error('email') {{ $message }} @enderror </span>
+                <input name='password' type="password" placeholder="Password" class="form-control">
+                <span class="text-danger">@error('password') {{ $message }} @enderror </span>
                 <button type="submit" class="btn3">Login</button>
                 <a href="">Forgot password</a>
             </form>
