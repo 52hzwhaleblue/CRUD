@@ -63,7 +63,7 @@
     @yield('content')
 
     <!--   ------------footer-------------- -->
-    @include('user.partials.footer')
+    @yield('footer')
 </body>
 
 {{-- JS File --}}

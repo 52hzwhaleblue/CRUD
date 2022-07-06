@@ -32,7 +32,7 @@
     </div>
     <div class="col-md-6 col-lg-3">
         <div class="widget-small warning coloured-icon">
-           <i class="fa-solid fa-file-arrow-down fa-3x icon"></i>
+            <i class="fa-solid fa-file-arrow-down fa-3x icon"></i>
             <div class="info">
                 <h4>Uploades</h4>
                 <p><b>10</b></p>
@@ -48,5 +48,30 @@
             </div>
         </div>
     </div>
+</div>
+<div class="thongke-wrapper">
+
+    <h3>Thống kê đơn hàng theo doanh số</h3>
+    <div class="d-flex justify-content-start align-items-center">
+        <div class="col-md-2">
+            <p class="mb-0">Từ ngày: <input type="text" name="" id="datepicker"> </p>
+            <input type="button" id="btn-dashboard-filter" value="Lọc kết quả">
+        </div>
+        <div class="col-md-2">
+            <p class="mb-0">Đến ngày: <input type="text" name="" id="datepicker2"> </p>
+        </div>
+        <select name="id_list" class="dashboard-filter custom-select" style="max-width: 180px;">
+            <option>-- Chọn --</option>
+            <option value="7ngayqua">7 Ngày qua </option>
+            <option value="thangtruoc"> Tháng trước</option>
+            <option value="thangnay"> Tháng này</option>
+            <option value="365ngayqua"> 365 ngày qua </option>
+        </select>
+    </div>
+
+    <div class="col-md-12">
+        <div id="myfirstchart" style="height: 250px;"></div>
+    </div>
+</div>
 </div>
 @endsection

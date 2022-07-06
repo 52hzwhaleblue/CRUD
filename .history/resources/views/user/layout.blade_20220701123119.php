@@ -63,7 +63,45 @@
     @yield('content')
 
     <!--   ------------footer-------------- -->
-    @include('user.partials.footer')
+<div class="footer">
+    <div class="container">
+        <div class="row-5">
+            <div class="footer-col-1">
+                <h3>TẢI XUỐNG ỨNG DỤNG CỦA CHÚNG TÔI</h3>
+                <p>Tải xuống ứng dụng cho điện thoại di động Android và iOS..</p>
+                <div class="app-logo">
+                  <img src="{{asset('frontend/assets/img/play-store.png')}}">
+                  <img src="{{asset('frontend/assets/img/images/app-store.png')}}">
+              </div>
+                 
+            </div>
+            <div class="footer-col-2">
+                <img src="https://cdn.shopify.com/s/files/1/0563/5827/3071/files/logo.png?v=1646210955" alt="" />
+                <p>Khách hàng là trọng tâm kinh doanh của chúng tôi.</p>
+            </div>
+            <div class="footer-col-3">
+                <h3>TRANG</h3>
+                <ul>
+                    <li>Liên hệ</li>
+                    <li>Giới thiệu</li>
+                    <li>Sản phẩm</li>
+                    <li>Bài viết</li>
+                </ul>
+            </div>
+            <div class="footer-col-4">
+                <h3>LIÊN HỆ</h3>
+                <ul>
+                    <li>Facebook</li>
+                    <li>Twitter</li>
+                    <li>Instagram</li>
+                    <li>Youtube</li>
+                </ul>
+            </div>
+        </div>
+        <hr>
+        <p class="copyright">Copyright © 2022</p>
+    </div>
+
 </body>
 
 {{-- JS File --}}
