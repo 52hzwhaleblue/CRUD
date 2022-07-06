@@ -9,7 +9,7 @@
     </div>
     <ul class="app-menu">
         <li>
-            <a class="app-menu__item active" href="index-2.html"><i class="app-menu__icon fa fa-dashboard"></i><span
+            <a class="app-menu__item active" href="{{ route('dashboard') }}"><i class="app-menu__icon fa fa-dashboard"></i><span
                     class="app-menu__label">Dashboard</span></a>
         </li>
 

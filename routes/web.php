@@ -2,13 +2,14 @@
 use Illuminate\Support\Facades\Route;
 
 # ====================User Controllers
-use App\Http\Controllers\Admin\AuthController;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductDetailController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\UserController;
 
 # ====================Admin Controllers
 use App\Http\Controllers\Admin\ProductListController;
@@ -22,13 +23,16 @@ use App\Http\Controllers\Admin\SlideController;
 use App\Http\Controllers\Admin\VideoController;
 use App\Http\Controllers\Admin\OrderManagement;
 use App\Http\Controllers\Admin\ThongKeController;
+use App\Http\Controllers\Admin\AdminController;
 
 # ========================================User Routes
-# ===============Auth
+# ===============View Logn Register
+Route::get('login',[UserController::class,'login_view'])->name("user.login");
+Route::get('register',[UserController::class,'register_view'])->name("user.register");
+
+# ===============Login Mạng xã hội
 Route::group(['middleware' => ['web']], function () {
-    Route::get('login',[AuthController::class,'login'])->name("user.login");
-    Route::get('register',[AuthController::class,'register'])->name("user.register");
-    Route::post('register',[AuthController::class,'registering'])->name("user.registering");
+    Route::post('register',[AuthController::class,'registering'])->name("auth.registering");
 
     Route::get('/auth/redirect/{provider}', function ($provider) {
     return Socialite::driver($provider)->redirect();
@@ -36,6 +40,9 @@ Route::group(['middleware' => ['web']], function () {
 
     Route::get('/auth/callback/{provider}', [AuthController::class,'callback'])->name('auth.callback');
 });
+
+# ===============Login Thường
+Route::post('login',[UserController::class,'login'])->name("user.login");
 
 # ===============Liên hệ
 Route::get('/send-mail',[ContactController::class,'index'])->name('send.email');
@@ -88,9 +95,8 @@ Route::post('/momo_payment',[PaymentController::class,'momo_payment'])->name("mo
 
 
 # ========================================Admin Routes
-Route::get('admin', function () {
-    return view('admin.dashboard');
-});
+Route::get('admin',[AdminController::class,'index'])->name("dashboard");
+
 # ===============Thống Kê
 Route::post('admin/filter-by-date',[ThongKeController::class,'filter_by_date'])->name("filter_by_date");
 Route::post('admin/dashboard-filter',[ThongKeController::class,'dashboard_filter'])->name("dashboard_filter");
